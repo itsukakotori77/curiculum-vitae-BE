@@ -1,0 +1,102 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("NEST_DATABASE_URL")
+}
+
+model User {
+  id        BigInt   @id @default(autoincrement())
+  email     String   @unique
+  name      String?
+  password  String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  CVitae CVitae[]
+
+  @@map("user")
+}
+
+model CVitae {
+  id        String   @id @default(cuid())
+  user_id   BigInt
+  name      String
+  email     String
+  phone     String
+  address   String
+  summary   String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  user             User               @relation(fields: [user_id], references: [id])
+  CVitaeEducation  CVitaeEducation[]
+  CVitaeExperience CVitaeExperience[]
+  CVitaeSkill      CVitaeSkill[]
+  CVitaeTemplate   CVitaeTemplate[]
+
+  @@map("curiculum_vitae")
+}
+
+model CVitaeEducation {
+  id        String   @id @default(cuid())
+  cvitae_id String
+  school    String
+  degree    String
+  start     DateTime
+  end       DateTime
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  cvitae CVitae @relation(fields: [cvitae_id], references: [id])
+
+  @@map("curiculum_vitae_education")
+}
+
+model CVitaeExperience {
+  id        String   @id @default(cuid())
+  cvitae_id String
+  company   String
+  position  String
+  start     DateTime
+  end       DateTime
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  cvitae CVitae @relation(fields: [cvitae_id], references: [id])
+
+  @@map("curiculum_vitae_experience")
+}
+
+model CVitaeSkill {
+  id        String   @id @default(cuid())
+  cvitae_id String
+  skill     String
+  level     Int
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  cvitae CVitae @relation(fields: [cvitae_id], references: [id])
+
+  @@map("curiculum_vitae_skill")
+}
+
+model CVitaeTemplate {
+  id        String   @id @default(cuid())
+  name      String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  CVitae CVitae[]
+
+  @@map("curiculum_vitae_template")
+}
