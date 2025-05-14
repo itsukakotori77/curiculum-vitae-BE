@@ -15,12 +15,12 @@ datasource db {
 }
 
 model User {
-  id        BigInt   @id @default(autoincrement())
-  email     String   @unique
-  name      String?
-  password  String
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id         BigInt   @id @default(autoincrement())
+  email      String   @unique
+  name       String?
+  password   String
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
 
   CVitae CVitae[]
 
@@ -28,15 +28,15 @@ model User {
 }
 
 model CVitae {
-  id        String   @id @default(cuid())
-  user_id   BigInt
-  name      String
-  email     String
-  phone     String
-  address   String
-  summary   String
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id         String   @id @default(cuid())
+  user_id    BigInt
+  name       String
+  email      String
+  phone      String
+  address    String
+  summary    String
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
 
   user             User               @relation(fields: [user_id], references: [id])
   CVitaeEducation  CVitaeEducation[]
@@ -48,14 +48,14 @@ model CVitae {
 }
 
 model CVitaeEducation {
-  id        String   @id @default(cuid())
-  cvitae_id String
-  school    String
-  degree    String
-  start     DateTime
-  end       DateTime
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id         String   @id @default(cuid())
+  cvitae_id  String
+  school     String
+  degree     String
+  start_date DateTime
+  end_date   DateTime
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
 
   cvitae CVitae @relation(fields: [cvitae_id], references: [id])
 
@@ -63,14 +63,14 @@ model CVitaeEducation {
 }
 
 model CVitaeExperience {
-  id        String   @id @default(cuid())
-  cvitae_id String
-  company   String
-  position  String
-  start     DateTime
-  end       DateTime
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id         String   @id @default(cuid())
+  cvitae_id  String
+  company    String
+  position   String
+  start_date DateTime
+  end_date   DateTime
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
 
   cvitae CVitae @relation(fields: [cvitae_id], references: [id])
 
@@ -78,12 +78,12 @@ model CVitaeExperience {
 }
 
 model CVitaeSkill {
-  id        String   @id @default(cuid())
-  cvitae_id String
-  skill     String
-  level     Int
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id         String   @id @default(cuid())
+  cvitae_id  String
+  skill      String
+  level      Int
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
 
   cvitae CVitae @relation(fields: [cvitae_id], references: [id])
 
@@ -91,10 +91,10 @@ model CVitaeSkill {
 }
 
 model CVitaeTemplate {
-  id        String   @id @default(cuid())
-  name      String
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id         String   @id @default(cuid())
+  name       String
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
 
   CVitae CVitae[]
 

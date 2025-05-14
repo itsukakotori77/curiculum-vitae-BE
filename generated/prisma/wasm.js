@@ -122,8 +122,8 @@ exports.Prisma.UserScalarFieldEnum = {
   email: 'email',
   name: 'name',
   password: 'password',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  created_at: 'created_at',
+  updated_at: 'updated_at'
 };
 
 exports.Prisma.CVitaeScalarFieldEnum = {
@@ -134,8 +134,8 @@ exports.Prisma.CVitaeScalarFieldEnum = {
   phone: 'phone',
   address: 'address',
   summary: 'summary',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  created_at: 'created_at',
+  updated_at: 'updated_at'
 };
 
 exports.Prisma.CVitaeEducationScalarFieldEnum = {
@@ -143,10 +143,10 @@ exports.Prisma.CVitaeEducationScalarFieldEnum = {
   cvitae_id: 'cvitae_id',
   school: 'school',
   degree: 'degree',
-  start: 'start',
-  end: 'end',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  start_date: 'start_date',
+  end_date: 'end_date',
+  created_at: 'created_at',
+  updated_at: 'updated_at'
 };
 
 exports.Prisma.CVitaeExperienceScalarFieldEnum = {
@@ -154,10 +154,10 @@ exports.Prisma.CVitaeExperienceScalarFieldEnum = {
   cvitae_id: 'cvitae_id',
   company: 'company',
   position: 'position',
-  start: 'start',
-  end: 'end',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  start_date: 'start_date',
+  end_date: 'end_date',
+  created_at: 'created_at',
+  updated_at: 'updated_at'
 };
 
 exports.Prisma.CVitaeSkillScalarFieldEnum = {
@@ -165,15 +165,15 @@ exports.Prisma.CVitaeSkillScalarFieldEnum = {
   cvitae_id: 'cvitae_id',
   skill: 'skill',
   level: 'level',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  created_at: 'created_at',
+  updated_at: 'updated_at'
 };
 
 exports.Prisma.CVitaeTemplateScalarFieldEnum = {
   id: 'id',
   name: 'name',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  created_at: 'created_at',
+  updated_at: 'updated_at'
 };
 
 exports.Prisma.SortOrder = {

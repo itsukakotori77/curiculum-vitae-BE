@@ -1420,8 +1420,8 @@ export namespace Prisma {
     email: string | null
     name: string | null
     password: string | null
-    createdAt: Date | null
-    updatedAt: Date | null
+    created_at: Date | null
+    updated_at: Date | null
   }
 
   export type UserMaxAggregateOutputType = {
@@ -1429,8 +1429,8 @@ export namespace Prisma {
     email: string | null
     name: string | null
     password: string | null
-    createdAt: Date | null
-    updatedAt: Date | null
+    created_at: Date | null
+    updated_at: Date | null
   }
 
   export type UserCountAggregateOutputType = {
@@ -1438,8 +1438,8 @@ export namespace Prisma {
     email: number
     name: number
     password: number
-    createdAt: number
-    updatedAt: number
+    created_at: number
+    updated_at: number
     _all: number
   }
 
@@ -1457,8 +1457,8 @@ export namespace Prisma {
     email?: true
     name?: true
     password?: true
-    createdAt?: true
-    updatedAt?: true
+    created_at?: true
+    updated_at?: true
   }
 
   export type UserMaxAggregateInputType = {
@@ -1466,8 +1466,8 @@ export namespace Prisma {
     email?: true
     name?: true
     password?: true
-    createdAt?: true
-    updatedAt?: true
+    created_at?: true
+    updated_at?: true
   }
 
   export type UserCountAggregateInputType = {
@@ -1475,8 +1475,8 @@ export namespace Prisma {
     email?: true
     name?: true
     password?: true
-    createdAt?: true
-    updatedAt?: true
+    created_at?: true
+    updated_at?: true
     _all?: true
   }
 
@@ -1571,8 +1571,8 @@ export namespace Prisma {
     email: string
     name: string | null
     password: string
-    createdAt: Date
-    updatedAt: Date
+    created_at: Date
+    updated_at: Date
     _count: UserCountAggregateOutputType | null
     _avg: UserAvgAggregateOutputType | null
     _sum: UserSumAggregateOutputType | null
@@ -1599,8 +1599,8 @@ export namespace Prisma {
     email?: boolean
     name?: boolean
     password?: boolean
-    createdAt?: boolean
-    updatedAt?: boolean
+    created_at?: boolean
+    updated_at?: boolean
     CVitae?: boolean | User$CVitaeArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
@@ -1612,11 +1612,11 @@ export namespace Prisma {
     email?: boolean
     name?: boolean
     password?: boolean
-    createdAt?: boolean
-    updatedAt?: boolean
+    created_at?: boolean
+    updated_at?: boolean
   }
 
-  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "email" | "name" | "password" | "createdAt" | "updatedAt", ExtArgs["result"]["user"]>
+  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "email" | "name" | "password" | "created_at" | "updated_at", ExtArgs["result"]["user"]>
   export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     CVitae?: boolean | User$CVitaeArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
@@ -1632,8 +1632,8 @@ export namespace Prisma {
       email: string
       name: string | null
       password: string
-      createdAt: Date
-      updatedAt: Date
+      created_at: Date
+      updated_at: Date
     }, ExtArgs["result"]["user"]>
     composites: {}
   }
@@ -2008,8 +2008,8 @@ export namespace Prisma {
     readonly email: FieldRef<"User", 'String'>
     readonly name: FieldRef<"User", 'String'>
     readonly password: FieldRef<"User", 'String'>
-    readonly createdAt: FieldRef<"User", 'DateTime'>
-    readonly updatedAt: FieldRef<"User", 'DateTime'>
+    readonly created_at: FieldRef<"User", 'DateTime'>
+    readonly updated_at: FieldRef<"User", 'DateTime'>
   }
     
 
@@ -2423,8 +2423,8 @@ export namespace Prisma {
     phone: string | null
     address: string | null
     summary: string | null
-    createdAt: Date | null
-    updatedAt: Date | null
+    created_at: Date | null
+    updated_at: Date | null
   }
 
   export type CVitaeMaxAggregateOutputType = {
@@ -2435,8 +2435,8 @@ export namespace Prisma {
     phone: string | null
     address: string | null
     summary: string | null
-    createdAt: Date | null
-    updatedAt: Date | null
+    created_at: Date | null
+    updated_at: Date | null
   }
 
   export type CVitaeCountAggregateOutputType = {
@@ -2447,8 +2447,8 @@ export namespace Prisma {
     phone: number
     address: number
     summary: number
-    createdAt: number
-    updatedAt: number
+    created_at: number
+    updated_at: number
     _all: number
   }
 
@@ -2469,8 +2469,8 @@ export namespace Prisma {
     phone?: true
     address?: true
     summary?: true
-    createdAt?: true
-    updatedAt?: true
+    created_at?: true
+    updated_at?: true
   }
 
   export type CVitaeMaxAggregateInputType = {
@@ -2481,8 +2481,8 @@ export namespace Prisma {
     phone?: true
     address?: true
     summary?: true
-    createdAt?: true
-    updatedAt?: true
+    created_at?: true
+    updated_at?: true
   }
 
   export type CVitaeCountAggregateInputType = {
@@ -2493,8 +2493,8 @@ export namespace Prisma {
     phone?: true
     address?: true
     summary?: true
-    createdAt?: true
-    updatedAt?: true
+    created_at?: true
+    updated_at?: true
     _all?: true
   }
 
@@ -2592,8 +2592,8 @@ export namespace Prisma {
     phone: string
     address: string
     summary: string
-    createdAt: Date
-    updatedAt: Date
+    created_at: Date
+    updated_at: Date
     _count: CVitaeCountAggregateOutputType | null
     _avg: CVitaeAvgAggregateOutputType | null
     _sum: CVitaeSumAggregateOutputType | null
@@ -2623,8 +2623,8 @@ export namespace Prisma {
     phone?: boolean
     address?: boolean
     summary?: boolean
-    createdAt?: boolean
-    updatedAt?: boolean
+    created_at?: boolean
+    updated_at?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
     CVitaeEducation?: boolean | CVitae$CVitaeEducationArgs<ExtArgs>
     CVitaeExperience?: boolean | CVitae$CVitaeExperienceArgs<ExtArgs>
@@ -2643,11 +2643,11 @@ export namespace Prisma {
     phone?: boolean
     address?: boolean
     summary?: boolean
-    createdAt?: boolean
-    updatedAt?: boolean
+    created_at?: boolean
+    updated_at?: boolean
   }
 
-  export type CVitaeOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "user_id" | "name" | "email" | "phone" | "address" | "summary" | "createdAt" | "updatedAt", ExtArgs["result"]["cVitae"]>
+  export type CVitaeOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "user_id" | "name" | "email" | "phone" | "address" | "summary" | "created_at" | "updated_at", ExtArgs["result"]["cVitae"]>
   export type CVitaeInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserDefaultArgs<ExtArgs>
     CVitaeEducation?: boolean | CVitae$CVitaeEducationArgs<ExtArgs>
@@ -2674,8 +2674,8 @@ export namespace Prisma {
       phone: string
       address: string
       summary: string
-      createdAt: Date
-      updatedAt: Date
+      created_at: Date
+      updated_at: Date
     }, ExtArgs["result"]["cVitae"]>
     composites: {}
   }
@@ -3057,8 +3057,8 @@ export namespace Prisma {
     readonly phone: FieldRef<"CVitae", 'String'>
     readonly address: FieldRef<"CVitae", 'String'>
     readonly summary: FieldRef<"CVitae", 'String'>
-    readonly createdAt: FieldRef<"CVitae", 'DateTime'>
-    readonly updatedAt: FieldRef<"CVitae", 'DateTime'>
+    readonly created_at: FieldRef<"CVitae", 'DateTime'>
+    readonly updated_at: FieldRef<"CVitae", 'DateTime'>
   }
     
 
@@ -3531,10 +3531,10 @@ export namespace Prisma {
     cvitae_id: string | null
     school: string | null
     degree: string | null
-    start: Date | null
-    end: Date | null
-    createdAt: Date | null
-    updatedAt: Date | null
+    start_date: Date | null
+    end_date: Date | null
+    created_at: Date | null
+    updated_at: Date | null
   }
 
   export type CVitaeEducationMaxAggregateOutputType = {
@@ -3542,10 +3542,10 @@ export namespace Prisma {
     cvitae_id: string | null
     school: string | null
     degree: string | null
-    start: Date | null
-    end: Date | null
-    createdAt: Date | null
-    updatedAt: Date | null
+    start_date: Date | null
+    end_date: Date | null
+    created_at: Date | null
+    updated_at: Date | null
   }
 
   export type CVitaeEducationCountAggregateOutputType = {
@@ -3553,10 +3553,10 @@ export namespace Prisma {
     cvitae_id: number
     school: number
     degree: number
-    start: number
-    end: number
-    createdAt: number
-    updatedAt: number
+    start_date: number
+    end_date: number
+    created_at: number
+    updated_at: number
     _all: number
   }
 
@@ -3566,10 +3566,10 @@ export namespace Prisma {
     cvitae_id?: true
     school?: true
     degree?: true
-    start?: true
-    end?: true
-    createdAt?: true
-    updatedAt?: true
+    start_date?: true
+    end_date?: true
+    created_at?: true
+    updated_at?: true
   }
 
   export type CVitaeEducationMaxAggregateInputType = {
@@ -3577,10 +3577,10 @@ export namespace Prisma {
     cvitae_id?: true
     school?: true
     degree?: true
-    start?: true
-    end?: true
-    createdAt?: true
-    updatedAt?: true
+    start_date?: true
+    end_date?: true
+    created_at?: true
+    updated_at?: true
   }
 
   export type CVitaeEducationCountAggregateInputType = {
@@ -3588,10 +3588,10 @@ export namespace Prisma {
     cvitae_id?: true
     school?: true
     degree?: true
-    start?: true
-    end?: true
-    createdAt?: true
-    updatedAt?: true
+    start_date?: true
+    end_date?: true
+    created_at?: true
+    updated_at?: true
     _all?: true
   }
 
@@ -3672,10 +3672,10 @@ export namespace Prisma {
     cvitae_id: string
     school: string
     degree: string
-    start: Date
-    end: Date
-    createdAt: Date
-    updatedAt: Date
+    start_date: Date
+    end_date: Date
+    created_at: Date
+    updated_at: Date
     _count: CVitaeEducationCountAggregateOutputType | null
     _min: CVitaeEducationMinAggregateOutputType | null
     _max: CVitaeEducationMaxAggregateOutputType | null
@@ -3700,10 +3700,10 @@ export namespace Prisma {
     cvitae_id?: boolean
     school?: boolean
     degree?: boolean
-    start?: boolean
-    end?: boolean
-    createdAt?: boolean
-    updatedAt?: boolean
+    start_date?: boolean
+    end_date?: boolean
+    created_at?: boolean
+    updated_at?: boolean
     cvitae?: boolean | CVitaeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["cVitaeEducation"]>
 
@@ -3714,13 +3714,13 @@ export namespace Prisma {
     cvitae_id?: boolean
     school?: boolean
     degree?: boolean
-    start?: boolean
-    end?: boolean
-    createdAt?: boolean
-    updatedAt?: boolean
+    start_date?: boolean
+    end_date?: boolean
+    created_at?: boolean
+    updated_at?: boolean
   }
 
-  export type CVitaeEducationOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "cvitae_id" | "school" | "degree" | "start" | "end" | "createdAt" | "updatedAt", ExtArgs["result"]["cVitaeEducation"]>
+  export type CVitaeEducationOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "cvitae_id" | "school" | "degree" | "start_date" | "end_date" | "created_at" | "updated_at", ExtArgs["result"]["cVitaeEducation"]>
   export type CVitaeEducationInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     cvitae?: boolean | CVitaeDefaultArgs<ExtArgs>
   }
@@ -3735,10 +3735,10 @@ export namespace Prisma {
       cvitae_id: string
       school: string
       degree: string
-      start: Date
-      end: Date
-      createdAt: Date
-      updatedAt: Date
+      start_date: Date
+      end_date: Date
+      created_at: Date
+      updated_at: Date
     }, ExtArgs["result"]["cVitaeEducation"]>
     composites: {}
   }
@@ -4113,10 +4113,10 @@ export namespace Prisma {
     readonly cvitae_id: FieldRef<"CVitaeEducation", 'String'>
     readonly school: FieldRef<"CVitaeEducation", 'String'>
     readonly degree: FieldRef<"CVitaeEducation", 'String'>
-    readonly start: FieldRef<"CVitaeEducation", 'DateTime'>
-    readonly end: FieldRef<"CVitaeEducation", 'DateTime'>
-    readonly createdAt: FieldRef<"CVitaeEducation", 'DateTime'>
-    readonly updatedAt: FieldRef<"CVitaeEducation", 'DateTime'>
+    readonly start_date: FieldRef<"CVitaeEducation", 'DateTime'>
+    readonly end_date: FieldRef<"CVitaeEducation", 'DateTime'>
+    readonly created_at: FieldRef<"CVitaeEducation", 'DateTime'>
+    readonly updated_at: FieldRef<"CVitaeEducation", 'DateTime'>
   }
     
 
@@ -4493,10 +4493,10 @@ export namespace Prisma {
     cvitae_id: string | null
     company: string | null
     position: string | null
-    start: Date | null
-    end: Date | null
-    createdAt: Date | null
-    updatedAt: Date | null
+    start_date: Date | null
+    end_date: Date | null
+    created_at: Date | null
+    updated_at: Date | null
   }
 
   export type CVitaeExperienceMaxAggregateOutputType = {
@@ -4504,10 +4504,10 @@ export namespace Prisma {
     cvitae_id: string | null
     company: string | null
     position: string | null
-    start: Date | null
-    end: Date | null
-    createdAt: Date | null
-    updatedAt: Date | null
+    start_date: Date | null
+    end_date: Date | null
+    created_at: Date | null
+    updated_at: Date | null
   }
 
   export type CVitaeExperienceCountAggregateOutputType = {
@@ -4515,10 +4515,10 @@ export namespace Prisma {
     cvitae_id: number
     company: number
     position: number
-    start: number
-    end: number
-    createdAt: number
-    updatedAt: number
+    start_date: number
+    end_date: number
+    created_at: number
+    updated_at: number
     _all: number
   }
 
@@ -4528,10 +4528,10 @@ export namespace Prisma {
     cvitae_id?: true
     company?: true
     position?: true
-    start?: true
-    end?: true
-    createdAt?: true
-    updatedAt?: true
+    start_date?: true
+    end_date?: true
+    created_at?: true
+    updated_at?: true
   }
 
   export type CVitaeExperienceMaxAggregateInputType = {
@@ -4539,10 +4539,10 @@ export namespace Prisma {
     cvitae_id?: true
     company?: true
     position?: true
-    start?: true
-    end?: true
-    createdAt?: true
-    updatedAt?: true
+    start_date?: true
+    end_date?: true
+    created_at?: true
+    updated_at?: true
   }
 
   export type CVitaeExperienceCountAggregateInputType = {
@@ -4550,10 +4550,10 @@ export namespace Prisma {
     cvitae_id?: true
     company?: true
     position?: true
-    start?: true
-    end?: true
-    createdAt?: true
-    updatedAt?: true
+    start_date?: true
+    end_date?: true
+    created_at?: true
+    updated_at?: true
     _all?: true
   }
 
@@ -4634,10 +4634,10 @@ export namespace Prisma {
     cvitae_id: string
     company: string
     position: string
-    start: Date
-    end: Date
-    createdAt: Date
-    updatedAt: Date
+    start_date: Date
+    end_date: Date
+    created_at: Date
+    updated_at: Date
     _count: CVitaeExperienceCountAggregateOutputType | null
     _min: CVitaeExperienceMinAggregateOutputType | null
     _max: CVitaeExperienceMaxAggregateOutputType | null
@@ -4662,10 +4662,10 @@ export namespace Prisma {
     cvitae_id?: boolean
     company?: boolean
     position?: boolean
-    start?: boolean
-    end?: boolean
-    createdAt?: boolean
-    updatedAt?: boolean
+    start_date?: boolean
+    end_date?: boolean
+    created_at?: boolean
+    updated_at?: boolean
     cvitae?: boolean | CVitaeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["cVitaeExperience"]>
 
@@ -4676,13 +4676,13 @@ export namespace Prisma {
     cvitae_id?: boolean
     company?: boolean
     position?: boolean
-    start?: boolean
-    end?: boolean
-    createdAt?: boolean
-    updatedAt?: boolean
+    start_date?: boolean
+    end_date?: boolean
+    created_at?: boolean
+    updated_at?: boolean
   }
 
-  export type CVitaeExperienceOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "cvitae_id" | "company" | "position" | "start" | "end" | "createdAt" | "updatedAt", ExtArgs["result"]["cVitaeExperience"]>
+  export type CVitaeExperienceOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "cvitae_id" | "company" | "position" | "start_date" | "end_date" | "created_at" | "updated_at", ExtArgs["result"]["cVitaeExperience"]>
   export type CVitaeExperienceInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     cvitae?: boolean | CVitaeDefaultArgs<ExtArgs>
   }
@@ -4697,10 +4697,10 @@ export namespace Prisma {
       cvitae_id: string
       company: string
       position: string
-      start: Date
-      end: Date
-      createdAt: Date
-      updatedAt: Date
+      start_date: Date
+      end_date: Date
+      created_at: Date
+      updated_at: Date
     }, ExtArgs["result"]["cVitaeExperience"]>
     composites: {}
   }
@@ -5075,10 +5075,10 @@ export namespace Prisma {
     readonly cvitae_id: FieldRef<"CVitaeExperience", 'String'>
     readonly company: FieldRef<"CVitaeExperience", 'String'>
     readonly position: FieldRef<"CVitaeExperience", 'String'>
-    readonly start: FieldRef<"CVitaeExperience", 'DateTime'>
-    readonly end: FieldRef<"CVitaeExperience", 'DateTime'>
-    readonly createdAt: FieldRef<"CVitaeExperience", 'DateTime'>
-    readonly updatedAt: FieldRef<"CVitaeExperience", 'DateTime'>
+    readonly start_date: FieldRef<"CVitaeExperience", 'DateTime'>
+    readonly end_date: FieldRef<"CVitaeExperience", 'DateTime'>
+    readonly created_at: FieldRef<"CVitaeExperience", 'DateTime'>
+    readonly updated_at: FieldRef<"CVitaeExperience", 'DateTime'>
   }
     
 
@@ -5465,8 +5465,8 @@ export namespace Prisma {
     cvitae_id: string | null
     skill: string | null
     level: number | null
-    createdAt: Date | null
-    updatedAt: Date | null
+    created_at: Date | null
+    updated_at: Date | null
   }
 
   export type CVitaeSkillMaxAggregateOutputType = {
@@ -5474,8 +5474,8 @@ export namespace Prisma {
     cvitae_id: string | null
     skill: string | null
     level: number | null
-    createdAt: Date | null
-    updatedAt: Date | null
+    created_at: Date | null
+    updated_at: Date | null
   }
 
   export type CVitaeSkillCountAggregateOutputType = {
@@ -5483,8 +5483,8 @@ export namespace Prisma {
     cvitae_id: number
     skill: number
     level: number
-    createdAt: number
-    updatedAt: number
+    created_at: number
+    updated_at: number
     _all: number
   }
 
@@ -5502,8 +5502,8 @@ export namespace Prisma {
     cvitae_id?: true
     skill?: true
     level?: true
-    createdAt?: true
-    updatedAt?: true
+    created_at?: true
+    updated_at?: true
   }
 
   export type CVitaeSkillMaxAggregateInputType = {
@@ -5511,8 +5511,8 @@ export namespace Prisma {
     cvitae_id?: true
     skill?: true
     level?: true
-    createdAt?: true
-    updatedAt?: true
+    created_at?: true
+    updated_at?: true
   }
 
   export type CVitaeSkillCountAggregateInputType = {
@@ -5520,8 +5520,8 @@ export namespace Prisma {
     cvitae_id?: true
     skill?: true
     level?: true
-    createdAt?: true
-    updatedAt?: true
+    created_at?: true
+    updated_at?: true
     _all?: true
   }
 
@@ -5616,8 +5616,8 @@ export namespace Prisma {
     cvitae_id: string
     skill: string
     level: number
-    createdAt: Date
-    updatedAt: Date
+    created_at: Date
+    updated_at: Date
     _count: CVitaeSkillCountAggregateOutputType | null
     _avg: CVitaeSkillAvgAggregateOutputType | null
     _sum: CVitaeSkillSumAggregateOutputType | null
@@ -5644,8 +5644,8 @@ export namespace Prisma {
     cvitae_id?: boolean
     skill?: boolean
     level?: boolean
-    createdAt?: boolean
-    updatedAt?: boolean
+    created_at?: boolean
+    updated_at?: boolean
     cvitae?: boolean | CVitaeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["cVitaeSkill"]>
 
@@ -5656,11 +5656,11 @@ export namespace Prisma {
     cvitae_id?: boolean
     skill?: boolean
     level?: boolean
-    createdAt?: boolean
-    updatedAt?: boolean
+    created_at?: boolean
+    updated_at?: boolean
   }
 
-  export type CVitaeSkillOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "cvitae_id" | "skill" | "level" | "createdAt" | "updatedAt", ExtArgs["result"]["cVitaeSkill"]>
+  export type CVitaeSkillOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "cvitae_id" | "skill" | "level" | "created_at" | "updated_at", ExtArgs["result"]["cVitaeSkill"]>
   export type CVitaeSkillInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     cvitae?: boolean | CVitaeDefaultArgs<ExtArgs>
   }
@@ -5675,8 +5675,8 @@ export namespace Prisma {
       cvitae_id: string
       skill: string
       level: number
-      createdAt: Date
-      updatedAt: Date
+      created_at: Date
+      updated_at: Date
     }, ExtArgs["result"]["cVitaeSkill"]>
     composites: {}
   }
@@ -6051,8 +6051,8 @@ export namespace Prisma {
     readonly cvitae_id: FieldRef<"CVitaeSkill", 'String'>
     readonly skill: FieldRef<"CVitaeSkill", 'String'>
     readonly level: FieldRef<"CVitaeSkill", 'Int'>
-    readonly createdAt: FieldRef<"CVitaeSkill", 'DateTime'>
-    readonly updatedAt: FieldRef<"CVitaeSkill", 'DateTime'>
+    readonly created_at: FieldRef<"CVitaeSkill", 'DateTime'>
+    readonly updated_at: FieldRef<"CVitaeSkill", 'DateTime'>
   }
     
 
@@ -6427,22 +6427,22 @@ export namespace Prisma {
   export type CVitaeTemplateMinAggregateOutputType = {
     id: string | null
     name: string | null
-    createdAt: Date | null
-    updatedAt: Date | null
+    created_at: Date | null
+    updated_at: Date | null
   }
 
   export type CVitaeTemplateMaxAggregateOutputType = {
     id: string | null
     name: string | null
-    createdAt: Date | null
-    updatedAt: Date | null
+    created_at: Date | null
+    updated_at: Date | null
   }
 
   export type CVitaeTemplateCountAggregateOutputType = {
     id: number
     name: number
-    createdAt: number
-    updatedAt: number
+    created_at: number
+    updated_at: number
     _all: number
   }
 
@@ -6450,22 +6450,22 @@ export namespace Prisma {
   export type CVitaeTemplateMinAggregateInputType = {
     id?: true
     name?: true
-    createdAt?: true
-    updatedAt?: true
+    created_at?: true
+    updated_at?: true
   }
 
   export type CVitaeTemplateMaxAggregateInputType = {
     id?: true
     name?: true
-    createdAt?: true
-    updatedAt?: true
+    created_at?: true
+    updated_at?: true
   }
 
   export type CVitaeTemplateCountAggregateInputType = {
     id?: true
     name?: true
-    createdAt?: true
-    updatedAt?: true
+    created_at?: true
+    updated_at?: true
     _all?: true
   }
 
@@ -6544,8 +6544,8 @@ export namespace Prisma {
   export type CVitaeTemplateGroupByOutputType = {
     id: string
     name: string
-    createdAt: Date
-    updatedAt: Date
+    created_at: Date
+    updated_at: Date
     _count: CVitaeTemplateCountAggregateOutputType | null
     _min: CVitaeTemplateMinAggregateOutputType | null
     _max: CVitaeTemplateMaxAggregateOutputType | null
@@ -6568,8 +6568,8 @@ export namespace Prisma {
   export type CVitaeTemplateSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     name?: boolean
-    createdAt?: boolean
-    updatedAt?: boolean
+    created_at?: boolean
+    updated_at?: boolean
     CVitae?: boolean | CVitaeTemplate$CVitaeArgs<ExtArgs>
     _count?: boolean | CVitaeTemplateCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["cVitaeTemplate"]>
@@ -6579,11 +6579,11 @@ export namespace Prisma {
   export type CVitaeTemplateSelectScalar = {
     id?: boolean
     name?: boolean
-    createdAt?: boolean
-    updatedAt?: boolean
+    created_at?: boolean
+    updated_at?: boolean
   }
 
-  export type CVitaeTemplateOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "createdAt" | "updatedAt", ExtArgs["result"]["cVitaeTemplate"]>
+  export type CVitaeTemplateOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "created_at" | "updated_at", ExtArgs["result"]["cVitaeTemplate"]>
   export type CVitaeTemplateInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     CVitae?: boolean | CVitaeTemplate$CVitaeArgs<ExtArgs>
     _count?: boolean | CVitaeTemplateCountOutputTypeDefaultArgs<ExtArgs>
@@ -6597,8 +6597,8 @@ export namespace Prisma {
     scalars: $Extensions.GetPayloadResult<{
       id: string
       name: string
-      createdAt: Date
-      updatedAt: Date
+      created_at: Date
+      updated_at: Date
     }, ExtArgs["result"]["cVitaeTemplate"]>
     composites: {}
   }
@@ -6971,8 +6971,8 @@ export namespace Prisma {
   interface CVitaeTemplateFieldRefs {
     readonly id: FieldRef<"CVitaeTemplate", 'String'>
     readonly name: FieldRef<"CVitaeTemplate", 'String'>
-    readonly createdAt: FieldRef<"CVitaeTemplate", 'DateTime'>
-    readonly updatedAt: FieldRef<"CVitaeTemplate", 'DateTime'>
+    readonly created_at: FieldRef<"CVitaeTemplate", 'DateTime'>
+    readonly updated_at: FieldRef<"CVitaeTemplate", 'DateTime'>
   }
     
 
@@ -7377,8 +7377,8 @@ export namespace Prisma {
     email: 'email',
     name: 'name',
     password: 'password',
-    createdAt: 'createdAt',
-    updatedAt: 'updatedAt'
+    created_at: 'created_at',
+    updated_at: 'updated_at'
   };
 
   export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
@@ -7392,8 +7392,8 @@ export namespace Prisma {
     phone: 'phone',
     address: 'address',
     summary: 'summary',
-    createdAt: 'createdAt',
-    updatedAt: 'updatedAt'
+    created_at: 'created_at',
+    updated_at: 'updated_at'
   };
 
   export type CVitaeScalarFieldEnum = (typeof CVitaeScalarFieldEnum)[keyof typeof CVitaeScalarFieldEnum]
@@ -7404,10 +7404,10 @@ export namespace Prisma {
     cvitae_id: 'cvitae_id',
     school: 'school',
     degree: 'degree',
-    start: 'start',
-    end: 'end',
-    createdAt: 'createdAt',
-    updatedAt: 'updatedAt'
+    start_date: 'start_date',
+    end_date: 'end_date',
+    created_at: 'created_at',
+    updated_at: 'updated_at'
   };
 
   export type CVitaeEducationScalarFieldEnum = (typeof CVitaeEducationScalarFieldEnum)[keyof typeof CVitaeEducationScalarFieldEnum]
@@ -7418,10 +7418,10 @@ export namespace Prisma {
     cvitae_id: 'cvitae_id',
     company: 'company',
     position: 'position',
-    start: 'start',
-    end: 'end',
-    createdAt: 'createdAt',
-    updatedAt: 'updatedAt'
+    start_date: 'start_date',
+    end_date: 'end_date',
+    created_at: 'created_at',
+    updated_at: 'updated_at'
   };
 
   export type CVitaeExperienceScalarFieldEnum = (typeof CVitaeExperienceScalarFieldEnum)[keyof typeof CVitaeExperienceScalarFieldEnum]
@@ -7432,8 +7432,8 @@ export namespace Prisma {
     cvitae_id: 'cvitae_id',
     skill: 'skill',
     level: 'level',
-    createdAt: 'createdAt',
-    updatedAt: 'updatedAt'
+    created_at: 'created_at',
+    updated_at: 'updated_at'
   };
 
   export type CVitaeSkillScalarFieldEnum = (typeof CVitaeSkillScalarFieldEnum)[keyof typeof CVitaeSkillScalarFieldEnum]
@@ -7442,8 +7442,8 @@ export namespace Prisma {
   export const CVitaeTemplateScalarFieldEnum: {
     id: 'id',
     name: 'name',
-    createdAt: 'createdAt',
-    updatedAt: 'updatedAt'
+    created_at: 'created_at',
+    updated_at: 'updated_at'
   };
 
   export type CVitaeTemplateScalarFieldEnum = (typeof CVitaeTemplateScalarFieldEnum)[keyof typeof CVitaeTemplateScalarFieldEnum]
@@ -7574,8 +7574,8 @@ export namespace Prisma {
     email?: StringFilter<"User"> | string
     name?: StringNullableFilter<"User"> | string | null
     password?: StringFilter<"User"> | string
-    createdAt?: DateTimeFilter<"User"> | Date | string
-    updatedAt?: DateTimeFilter<"User"> | Date | string
+    created_at?: DateTimeFilter<"User"> | Date | string
+    updated_at?: DateTimeFilter<"User"> | Date | string
     CVitae?: CVitaeListRelationFilter
   }
 
@@ -7584,8 +7584,8 @@ export namespace Prisma {
     email?: SortOrder
     name?: SortOrderInput | SortOrder
     password?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
     CVitae?: CVitaeOrderByRelationAggregateInput
     _relevance?: UserOrderByRelevanceInput
   }
@@ -7598,8 +7598,8 @@ export namespace Prisma {
     NOT?: UserWhereInput | UserWhereInput[]
     name?: StringNullableFilter<"User"> | string | null
     password?: StringFilter<"User"> | string
-    createdAt?: DateTimeFilter<"User"> | Date | string
-    updatedAt?: DateTimeFilter<"User"> | Date | string
+    created_at?: DateTimeFilter<"User"> | Date | string
+    updated_at?: DateTimeFilter<"User"> | Date | string
     CVitae?: CVitaeListRelationFilter
   }, "id" | "email">
 
@@ -7608,8 +7608,8 @@ export namespace Prisma {
     email?: SortOrder
     name?: SortOrderInput | SortOrder
     password?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
     _count?: UserCountOrderByAggregateInput
     _avg?: UserAvgOrderByAggregateInput
     _max?: UserMaxOrderByAggregateInput
@@ -7625,8 +7625,8 @@ export namespace Prisma {
     email?: StringWithAggregatesFilter<"User"> | string
     name?: StringNullableWithAggregatesFilter<"User"> | string | null
     password?: StringWithAggregatesFilter<"User"> | string
-    createdAt?: DateTimeWithAggregatesFilter<"User"> | Date | string
-    updatedAt?: DateTimeWithAggregatesFilter<"User"> | Date | string
+    created_at?: DateTimeWithAggregatesFilter<"User"> | Date | string
+    updated_at?: DateTimeWithAggregatesFilter<"User"> | Date | string
   }
 
   export type CVitaeWhereInput = {
@@ -7640,8 +7640,8 @@ export namespace Prisma {
     phone?: StringFilter<"CVitae"> | string
     address?: StringFilter<"CVitae"> | string
     summary?: StringFilter<"CVitae"> | string
-    createdAt?: DateTimeFilter<"CVitae"> | Date | string
-    updatedAt?: DateTimeFilter<"CVitae"> | Date | string
+    created_at?: DateTimeFilter<"CVitae"> | Date | string
+    updated_at?: DateTimeFilter<"CVitae"> | Date | string
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
     CVitaeEducation?: CVitaeEducationListRelationFilter
     CVitaeExperience?: CVitaeExperienceListRelationFilter
@@ -7657,8 +7657,8 @@ export namespace Prisma {
     phone?: SortOrder
     address?: SortOrder
     summary?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
     user?: UserOrderByWithRelationInput
     CVitaeEducation?: CVitaeEducationOrderByRelationAggregateInput
     CVitaeExperience?: CVitaeExperienceOrderByRelationAggregateInput
@@ -7678,8 +7678,8 @@ export namespace Prisma {
     phone?: StringFilter<"CVitae"> | string
     address?: StringFilter<"CVitae"> | string
     summary?: StringFilter<"CVitae"> | string
-    createdAt?: DateTimeFilter<"CVitae"> | Date | string
-    updatedAt?: DateTimeFilter<"CVitae"> | Date | string
+    created_at?: DateTimeFilter<"CVitae"> | Date | string
+    updated_at?: DateTimeFilter<"CVitae"> | Date | string
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
     CVitaeEducation?: CVitaeEducationListRelationFilter
     CVitaeExperience?: CVitaeExperienceListRelationFilter
@@ -7695,8 +7695,8 @@ export namespace Prisma {
     phone?: SortOrder
     address?: SortOrder
     summary?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
     _count?: CVitaeCountOrderByAggregateInput
     _avg?: CVitaeAvgOrderByAggregateInput
     _max?: CVitaeMaxOrderByAggregateInput
@@ -7715,8 +7715,8 @@ export namespace Prisma {
     phone?: StringWithAggregatesFilter<"CVitae"> | string
     address?: StringWithAggregatesFilter<"CVitae"> | string
     summary?: StringWithAggregatesFilter<"CVitae"> | string
-    createdAt?: DateTimeWithAggregatesFilter<"CVitae"> | Date | string
-    updatedAt?: DateTimeWithAggregatesFilter<"CVitae"> | Date | string
+    created_at?: DateTimeWithAggregatesFilter<"CVitae"> | Date | string
+    updated_at?: DateTimeWithAggregatesFilter<"CVitae"> | Date | string
   }
 
   export type CVitaeEducationWhereInput = {
@@ -7727,10 +7727,10 @@ export namespace Prisma {
     cvitae_id?: StringFilter<"CVitaeEducation"> | string
     school?: StringFilter<"CVitaeEducation"> | string
     degree?: StringFilter<"CVitaeEducation"> | string
-    start?: DateTimeFilter<"CVitaeEducation"> | Date | string
-    end?: DateTimeFilter<"CVitaeEducation"> | Date | string
-    createdAt?: DateTimeFilter<"CVitaeEducation"> | Date | string
-    updatedAt?: DateTimeFilter<"CVitaeEducation"> | Date | string
+    start_date?: DateTimeFilter<"CVitaeEducation"> | Date | string
+    end_date?: DateTimeFilter<"CVitaeEducation"> | Date | string
+    created_at?: DateTimeFilter<"CVitaeEducation"> | Date | string
+    updated_at?: DateTimeFilter<"CVitaeEducation"> | Date | string
     cvitae?: XOR<CVitaeScalarRelationFilter, CVitaeWhereInput>
   }
 
@@ -7739,10 +7739,10 @@ export namespace Prisma {
     cvitae_id?: SortOrder
     school?: SortOrder
     degree?: SortOrder
-    start?: SortOrder
-    end?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
+    start_date?: SortOrder
+    end_date?: SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
     cvitae?: CVitaeOrderByWithRelationInput
     _relevance?: CVitaeEducationOrderByRelevanceInput
   }
@@ -7755,10 +7755,10 @@ export namespace Prisma {
     cvitae_id?: StringFilter<"CVitaeEducation"> | string
     school?: StringFilter<"CVitaeEducation"> | string
     degree?: StringFilter<"CVitaeEducation"> | string
-    start?: DateTimeFilter<"CVitaeEducation"> | Date | string
-    end?: DateTimeFilter<"CVitaeEducation"> | Date | string
-    createdAt?: DateTimeFilter<"CVitaeEducation"> | Date | string
-    updatedAt?: DateTimeFilter<"CVitaeEducation"> | Date | string
+    start_date?: DateTimeFilter<"CVitaeEducation"> | Date | string
+    end_date?: DateTimeFilter<"CVitaeEducation"> | Date | string
+    created_at?: DateTimeFilter<"CVitaeEducation"> | Date | string
+    updated_at?: DateTimeFilter<"CVitaeEducation"> | Date | string
     cvitae?: XOR<CVitaeScalarRelationFilter, CVitaeWhereInput>
   }, "id">
 
@@ -7767,10 +7767,10 @@ export namespace Prisma {
     cvitae_id?: SortOrder
     school?: SortOrder
     degree?: SortOrder
-    start?: SortOrder
-    end?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
+    start_date?: SortOrder
+    end_date?: SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
     _count?: CVitaeEducationCountOrderByAggregateInput
     _max?: CVitaeEducationMaxOrderByAggregateInput
     _min?: CVitaeEducationMinOrderByAggregateInput
@@ -7784,10 +7784,10 @@ export namespace Prisma {
     cvitae_id?: StringWithAggregatesFilter<"CVitaeEducation"> | string
     school?: StringWithAggregatesFilter<"CVitaeEducation"> | string
     degree?: StringWithAggregatesFilter<"CVitaeEducation"> | string
-    start?: DateTimeWithAggregatesFilter<"CVitaeEducation"> | Date | string
-    end?: DateTimeWithAggregatesFilter<"CVitaeEducation"> | Date | string
-    createdAt?: DateTimeWithAggregatesFilter<"CVitaeEducation"> | Date | string
-    updatedAt?: DateTimeWithAggregatesFilter<"CVitaeEducation"> | Date | string
+    start_date?: DateTimeWithAggregatesFilter<"CVitaeEducation"> | Date | string
+    end_date?: DateTimeWithAggregatesFilter<"CVitaeEducation"> | Date | string
+    created_at?: DateTimeWithAggregatesFilter<"CVitaeEducation"> | Date | string
+    updated_at?: DateTimeWithAggregatesFilter<"CVitaeEducation"> | Date | string
   }
 
   export type CVitaeExperienceWhereInput = {
@@ -7798,10 +7798,10 @@ export namespace Prisma {
     cvitae_id?: StringFilter<"CVitaeExperience"> | string
     company?: StringFilter<"CVitaeExperience"> | string
     position?: StringFilter<"CVitaeExperience"> | string
-    start?: DateTimeFilter<"CVitaeExperience"> | Date | string
-    end?: DateTimeFilter<"CVitaeExperience"> | Date | string
-    createdAt?: DateTimeFilter<"CVitaeExperience"> | Date | string
-    updatedAt?: DateTimeFilter<"CVitaeExperience"> | Date | string
+    start_date?: DateTimeFilter<"CVitaeExperience"> | Date | string
+    end_date?: DateTimeFilter<"CVitaeExperience"> | Date | string
+    created_at?: DateTimeFilter<"CVitaeExperience"> | Date | string
+    updated_at?: DateTimeFilter<"CVitaeExperience"> | Date | string
     cvitae?: XOR<CVitaeScalarRelationFilter, CVitaeWhereInput>
   }
 
@@ -7810,10 +7810,10 @@ export namespace Prisma {
     cvitae_id?: SortOrder
     company?: SortOrder
     position?: SortOrder
-    start?: SortOrder
-    end?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
+    start_date?: SortOrder
+    end_date?: SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
     cvitae?: CVitaeOrderByWithRelationInput
     _relevance?: CVitaeExperienceOrderByRelevanceInput
   }
@@ -7826,10 +7826,10 @@ export namespace Prisma {
     cvitae_id?: StringFilter<"CVitaeExperience"> | string
     company?: StringFilter<"CVitaeExperience"> | string
     position?: StringFilter<"CVitaeExperience"> | string
-    start?: DateTimeFilter<"CVitaeExperience"> | Date | string
-    end?: DateTimeFilter<"CVitaeExperience"> | Date | string
-    createdAt?: DateTimeFilter<"CVitaeExperience"> | Date | string
-    updatedAt?: DateTimeFilter<"CVitaeExperience"> | Date | string
+    start_date?: DateTimeFilter<"CVitaeExperience"> | Date | string
+    end_date?: DateTimeFilter<"CVitaeExperience"> | Date | string
+    created_at?: DateTimeFilter<"CVitaeExperience"> | Date | string
+    updated_at?: DateTimeFilter<"CVitaeExperience"> | Date | string
     cvitae?: XOR<CVitaeScalarRelationFilter, CVitaeWhereInput>
   }, "id">
 
@@ -7838,10 +7838,10 @@ export namespace Prisma {
     cvitae_id?: SortOrder
     company?: SortOrder
     position?: SortOrder
-    start?: SortOrder
-    end?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
+    start_date?: SortOrder
+    end_date?: SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
     _count?: CVitaeExperienceCountOrderByAggregateInput
     _max?: CVitaeExperienceMaxOrderByAggregateInput
     _min?: CVitaeExperienceMinOrderByAggregateInput
@@ -7855,10 +7855,10 @@ export namespace Prisma {
     cvitae_id?: StringWithAggregatesFilter<"CVitaeExperience"> | string
     company?: StringWithAggregatesFilter<"CVitaeExperience"> | string
     position?: StringWithAggregatesFilter<"CVitaeExperience"> | string
-    start?: DateTimeWithAggregatesFilter<"CVitaeExperience"> | Date | string
-    end?: DateTimeWithAggregatesFilter<"CVitaeExperience"> | Date | string
-    createdAt?: DateTimeWithAggregatesFilter<"CVitaeExperience"> | Date | string
-    updatedAt?: DateTimeWithAggregatesFilter<"CVitaeExperience"> | Date | string
+    start_date?: DateTimeWithAggregatesFilter<"CVitaeExperience"> | Date | string
+    end_date?: DateTimeWithAggregatesFilter<"CVitaeExperience"> | Date | string
+    created_at?: DateTimeWithAggregatesFilter<"CVitaeExperience"> | Date | string
+    updated_at?: DateTimeWithAggregatesFilter<"CVitaeExperience"> | Date | string
   }
 
   export type CVitaeSkillWhereInput = {
@@ -7869,8 +7869,8 @@ export namespace Prisma {
     cvitae_id?: StringFilter<"CVitaeSkill"> | string
     skill?: StringFilter<"CVitaeSkill"> | string
     level?: IntFilter<"CVitaeSkill"> | number
-    createdAt?: DateTimeFilter<"CVitaeSkill"> | Date | string
-    updatedAt?: DateTimeFilter<"CVitaeSkill"> | Date | string
+    created_at?: DateTimeFilter<"CVitaeSkill"> | Date | string
+    updated_at?: DateTimeFilter<"CVitaeSkill"> | Date | string
     cvitae?: XOR<CVitaeScalarRelationFilter, CVitaeWhereInput>
   }
 
@@ -7879,8 +7879,8 @@ export namespace Prisma {
     cvitae_id?: SortOrder
     skill?: SortOrder
     level?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
     cvitae?: CVitaeOrderByWithRelationInput
     _relevance?: CVitaeSkillOrderByRelevanceInput
   }
@@ -7893,8 +7893,8 @@ export namespace Prisma {
     cvitae_id?: StringFilter<"CVitaeSkill"> | string
     skill?: StringFilter<"CVitaeSkill"> | string
     level?: IntFilter<"CVitaeSkill"> | number
-    createdAt?: DateTimeFilter<"CVitaeSkill"> | Date | string
-    updatedAt?: DateTimeFilter<"CVitaeSkill"> | Date | string
+    created_at?: DateTimeFilter<"CVitaeSkill"> | Date | string
+    updated_at?: DateTimeFilter<"CVitaeSkill"> | Date | string
     cvitae?: XOR<CVitaeScalarRelationFilter, CVitaeWhereInput>
   }, "id">
 
@@ -7903,8 +7903,8 @@ export namespace Prisma {
     cvitae_id?: SortOrder
     skill?: SortOrder
     level?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
     _count?: CVitaeSkillCountOrderByAggregateInput
     _avg?: CVitaeSkillAvgOrderByAggregateInput
     _max?: CVitaeSkillMaxOrderByAggregateInput
@@ -7920,8 +7920,8 @@ export namespace Prisma {
     cvitae_id?: StringWithAggregatesFilter<"CVitaeSkill"> | string
     skill?: StringWithAggregatesFilter<"CVitaeSkill"> | string
     level?: IntWithAggregatesFilter<"CVitaeSkill"> | number
-    createdAt?: DateTimeWithAggregatesFilter<"CVitaeSkill"> | Date | string
-    updatedAt?: DateTimeWithAggregatesFilter<"CVitaeSkill"> | Date | string
+    created_at?: DateTimeWithAggregatesFilter<"CVitaeSkill"> | Date | string
+    updated_at?: DateTimeWithAggregatesFilter<"CVitaeSkill"> | Date | string
   }
 
   export type CVitaeTemplateWhereInput = {
@@ -7930,16 +7930,16 @@ export namespace Prisma {
     NOT?: CVitaeTemplateWhereInput | CVitaeTemplateWhereInput[]
     id?: StringFilter<"CVitaeTemplate"> | string
     name?: StringFilter<"CVitaeTemplate"> | string
-    createdAt?: DateTimeFilter<"CVitaeTemplate"> | Date | string
-    updatedAt?: DateTimeFilter<"CVitaeTemplate"> | Date | string
+    created_at?: DateTimeFilter<"CVitaeTemplate"> | Date | string
+    updated_at?: DateTimeFilter<"CVitaeTemplate"> | Date | string
     CVitae?: CVitaeListRelationFilter
   }
 
   export type CVitaeTemplateOrderByWithRelationInput = {
     id?: SortOrder
     name?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
     CVitae?: CVitaeOrderByRelationAggregateInput
     _relevance?: CVitaeTemplateOrderByRelevanceInput
   }
@@ -7950,16 +7950,16 @@ export namespace Prisma {
     OR?: CVitaeTemplateWhereInput[]
     NOT?: CVitaeTemplateWhereInput | CVitaeTemplateWhereInput[]
     name?: StringFilter<"CVitaeTemplate"> | string
-    createdAt?: DateTimeFilter<"CVitaeTemplate"> | Date | string
-    updatedAt?: DateTimeFilter<"CVitaeTemplate"> | Date | string
+    created_at?: DateTimeFilter<"CVitaeTemplate"> | Date | string
+    updated_at?: DateTimeFilter<"CVitaeTemplate"> | Date | string
     CVitae?: CVitaeListRelationFilter
   }, "id">
 
   export type CVitaeTemplateOrderByWithAggregationInput = {
     id?: SortOrder
     name?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
     _count?: CVitaeTemplateCountOrderByAggregateInput
     _max?: CVitaeTemplateMaxOrderByAggregateInput
     _min?: CVitaeTemplateMinOrderByAggregateInput
@@ -7971,8 +7971,8 @@ export namespace Prisma {
     NOT?: CVitaeTemplateScalarWhereWithAggregatesInput | CVitaeTemplateScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"CVitaeTemplate"> | string
     name?: StringWithAggregatesFilter<"CVitaeTemplate"> | string
-    createdAt?: DateTimeWithAggregatesFilter<"CVitaeTemplate"> | Date | string
-    updatedAt?: DateTimeWithAggregatesFilter<"CVitaeTemplate"> | Date | string
+    created_at?: DateTimeWithAggregatesFilter<"CVitaeTemplate"> | Date | string
+    updated_at?: DateTimeWithAggregatesFilter<"CVitaeTemplate"> | Date | string
   }
 
   export type UserCreateInput = {
@@ -7980,8 +7980,8 @@ export namespace Prisma {
     email: string
     name?: string | null
     password: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
+    created_at?: Date | string
+    updated_at?: Date | string
     CVitae?: CVitaeCreateNestedManyWithoutUserInput
   }
 
@@ -7990,8 +7990,8 @@ export namespace Prisma {
     email: string
     name?: string | null
     password: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
+    created_at?: Date | string
+    updated_at?: Date | string
     CVitae?: CVitaeUncheckedCreateNestedManyWithoutUserInput
   }
 
@@ -8000,8 +8000,8 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
     password?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     CVitae?: CVitaeUpdateManyWithoutUserNestedInput
   }
 
@@ -8010,8 +8010,8 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
     password?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     CVitae?: CVitaeUncheckedUpdateManyWithoutUserNestedInput
   }
 
@@ -8020,8 +8020,8 @@ export namespace Prisma {
     email: string
     name?: string | null
     password: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
+    created_at?: Date | string
+    updated_at?: Date | string
   }
 
   export type UserUpdateManyMutationInput = {
@@ -8029,8 +8029,8 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
     password?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type UserUncheckedUpdateManyInput = {
@@ -8038,8 +8038,8 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
     password?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type CVitaeCreateInput = {
@@ -8049,8 +8049,8 @@ export namespace Prisma {
     phone: string
     address: string
     summary: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
+    created_at?: Date | string
+    updated_at?: Date | string
     user: UserCreateNestedOneWithoutCVitaeInput
     CVitaeEducation?: CVitaeEducationCreateNestedManyWithoutCvitaeInput
     CVitaeExperience?: CVitaeExperienceCreateNestedManyWithoutCvitaeInput
@@ -8066,8 +8066,8 @@ export namespace Prisma {
     phone: string
     address: string
     summary: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
+    created_at?: Date | string
+    updated_at?: Date | string
     CVitaeEducation?: CVitaeEducationUncheckedCreateNestedManyWithoutCvitaeInput
     CVitaeExperience?: CVitaeExperienceUncheckedCreateNestedManyWithoutCvitaeInput
     CVitaeSkill?: CVitaeSkillUncheckedCreateNestedManyWithoutCvitaeInput
@@ -8081,8 +8081,8 @@ export namespace Prisma {
     phone?: StringFieldUpdateOperationsInput | string
     address?: StringFieldUpdateOperationsInput | string
     summary?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUpdateOneRequiredWithoutCVitaeNestedInput
     CVitaeEducation?: CVitaeEducationUpdateManyWithoutCvitaeNestedInput
     CVitaeExperience?: CVitaeExperienceUpdateManyWithoutCvitaeNestedInput
@@ -8098,8 +8098,8 @@ export namespace Prisma {
     phone?: StringFieldUpdateOperationsInput | string
     address?: StringFieldUpdateOperationsInput | string
     summary?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     CVitaeEducation?: CVitaeEducationUncheckedUpdateManyWithoutCvitaeNestedInput
     CVitaeExperience?: CVitaeExperienceUncheckedUpdateManyWithoutCvitaeNestedInput
     CVitaeSkill?: CVitaeSkillUncheckedUpdateManyWithoutCvitaeNestedInput
@@ -8114,8 +8114,8 @@ export namespace Prisma {
     phone: string
     address: string
     summary: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
+    created_at?: Date | string
+    updated_at?: Date | string
   }
 
   export type CVitaeUpdateManyMutationInput = {
@@ -8125,8 +8125,8 @@ export namespace Prisma {
     phone?: StringFieldUpdateOperationsInput | string
     address?: StringFieldUpdateOperationsInput | string
     summary?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type CVitaeUncheckedUpdateManyInput = {
@@ -8137,18 +8137,18 @@ export namespace Prisma {
     phone?: StringFieldUpdateOperationsInput | string
     address?: StringFieldUpdateOperationsInput | string
     summary?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type CVitaeEducationCreateInput = {
     id?: string
     school: string
     degree: string
-    start: Date | string
-    end: Date | string
-    createdAt?: Date | string
-    updatedAt?: Date | string
+    start_date: Date | string
+    end_date: Date | string
+    created_at?: Date | string
+    updated_at?: Date | string
     cvitae: CVitaeCreateNestedOneWithoutCVitaeEducationInput
   }
 
@@ -8157,20 +8157,20 @@ export namespace Prisma {
     cvitae_id: string
     school: string
     degree: string
-    start: Date | string
-    end: Date | string
-    createdAt?: Date | string
-    updatedAt?: Date | string
+    start_date: Date | string
+    end_date: Date | string
+    created_at?: Date | string
+    updated_at?: Date | string
   }
 
   export type CVitaeEducationUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     school?: StringFieldUpdateOperationsInput | string
     degree?: StringFieldUpdateOperationsInput | string
-    start?: DateTimeFieldUpdateOperationsInput | Date | string
-    end?: DateTimeFieldUpdateOperationsInput | Date | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    start_date?: DateTimeFieldUpdateOperationsInput | Date | string
+    end_date?: DateTimeFieldUpdateOperationsInput | Date | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     cvitae?: CVitaeUpdateOneRequiredWithoutCVitaeEducationNestedInput
   }
 
@@ -8179,10 +8179,10 @@ export namespace Prisma {
     cvitae_id?: StringFieldUpdateOperationsInput | string
     school?: StringFieldUpdateOperationsInput | string
     degree?: StringFieldUpdateOperationsInput | string
-    start?: DateTimeFieldUpdateOperationsInput | Date | string
-    end?: DateTimeFieldUpdateOperationsInput | Date | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    start_date?: DateTimeFieldUpdateOperationsInput | Date | string
+    end_date?: DateTimeFieldUpdateOperationsInput | Date | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type CVitaeEducationCreateManyInput = {
@@ -8190,20 +8190,20 @@ export namespace Prisma {
     cvitae_id: string
     school: string
     degree: string
-    start: Date | string
-    end: Date | string
-    createdAt?: Date | string
-    updatedAt?: Date | string
+    start_date: Date | string
+    end_date: Date | string
+    created_at?: Date | string
+    updated_at?: Date | string
   }
 
   export type CVitaeEducationUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
     school?: StringFieldUpdateOperationsInput | string
     degree?: StringFieldUpdateOperationsInput | string
-    start?: DateTimeFieldUpdateOperationsInput | Date | string
-    end?: DateTimeFieldUpdateOperationsInput | Date | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    start_date?: DateTimeFieldUpdateOperationsInput | Date | string
+    end_date?: DateTimeFieldUpdateOperationsInput | Date | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type CVitaeEducationUncheckedUpdateManyInput = {
@@ -8211,20 +8211,20 @@ export namespace Prisma {
     cvitae_id?: StringFieldUpdateOperationsInput | string
     school?: StringFieldUpdateOperationsInput | string
     degree?: StringFieldUpdateOperationsInput | string
-    start?: DateTimeFieldUpdateOperationsInput | Date | string
-    end?: DateTimeFieldUpdateOperationsInput | Date | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    start_date?: DateTimeFieldUpdateOperationsInput | Date | string
+    end_date?: DateTimeFieldUpdateOperationsInput | Date | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type CVitaeExperienceCreateInput = {
     id?: string
     company: string
     position: string
-    start: Date | string
-    end: Date | string
-    createdAt?: Date | string
-    updatedAt?: Date | string
+    start_date: Date | string
+    end_date: Date | string
+    created_at?: Date | string
+    updated_at?: Date | string
     cvitae: CVitaeCreateNestedOneWithoutCVitaeExperienceInput
   }
 
@@ -8233,20 +8233,20 @@ export namespace Prisma {
     cvitae_id: string
     company: string
     position: string
-    start: Date | string
-    end: Date | string
-    createdAt?: Date | string
-    updatedAt?: Date | string
+    start_date: Date | string
+    end_date: Date | string
+    created_at?: Date | string
+    updated_at?: Date | string
   }
 
   export type CVitaeExperienceUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     company?: StringFieldUpdateOperationsInput | string
     position?: StringFieldUpdateOperationsInput | string
-    start?: DateTimeFieldUpdateOperationsInput | Date | string
-    end?: DateTimeFieldUpdateOperationsInput | Date | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    start_date?: DateTimeFieldUpdateOperationsInput | Date | string
+    end_date?: DateTimeFieldUpdateOperationsInput | Date | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     cvitae?: CVitaeUpdateOneRequiredWithoutCVitaeExperienceNestedInput
   }
 
@@ -8255,10 +8255,10 @@ export namespace Prisma {
     cvitae_id?: StringFieldUpdateOperationsInput | string
     company?: StringFieldUpdateOperationsInput | string
     position?: StringFieldUpdateOperationsInput | string
-    start?: DateTimeFieldUpdateOperationsInput | Date | string
-    end?: DateTimeFieldUpdateOperationsInput | Date | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    start_date?: DateTimeFieldUpdateOperationsInput | Date | string
+    end_date?: DateTimeFieldUpdateOperationsInput | Date | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type CVitaeExperienceCreateManyInput = {
@@ -8266,20 +8266,20 @@ export namespace Prisma {
     cvitae_id: string
     company: string
     position: string
-    start: Date | string
-    end: Date | string
-    createdAt?: Date | string
-    updatedAt?: Date | string
+    start_date: Date | string
+    end_date: Date | string
+    created_at?: Date | string
+    updated_at?: Date | string
   }
 
   export type CVitaeExperienceUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
     company?: StringFieldUpdateOperationsInput | string
     position?: StringFieldUpdateOperationsInput | string
-    start?: DateTimeFieldUpdateOperationsInput | Date | string
-    end?: DateTimeFieldUpdateOperationsInput | Date | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    start_date?: DateTimeFieldUpdateOperationsInput | Date | string
+    end_date?: DateTimeFieldUpdateOperationsInput | Date | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type CVitaeExperienceUncheckedUpdateManyInput = {
@@ -8287,18 +8287,18 @@ export namespace Prisma {
     cvitae_id?: StringFieldUpdateOperationsInput | string
     company?: StringFieldUpdateOperationsInput | string
     position?: StringFieldUpdateOperationsInput | string
-    start?: DateTimeFieldUpdateOperationsInput | Date | string
-    end?: DateTimeFieldUpdateOperationsInput | Date | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    start_date?: DateTimeFieldUpdateOperationsInput | Date | string
+    end_date?: DateTimeFieldUpdateOperationsInput | Date | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type CVitaeSkillCreateInput = {
     id?: string
     skill: string
     level: number
-    createdAt?: Date | string
-    updatedAt?: Date | string
+    created_at?: Date | string
+    updated_at?: Date | string
     cvitae: CVitaeCreateNestedOneWithoutCVitaeSkillInput
   }
 
@@ -8307,16 +8307,16 @@ export namespace Prisma {
     cvitae_id: string
     skill: string
     level: number
-    createdAt?: Date | string
-    updatedAt?: Date | string
+    created_at?: Date | string
+    updated_at?: Date | string
   }
 
   export type CVitaeSkillUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     skill?: StringFieldUpdateOperationsInput | string
     level?: IntFieldUpdateOperationsInput | number
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     cvitae?: CVitaeUpdateOneRequiredWithoutCVitaeSkillNestedInput
   }
 
@@ -8325,8 +8325,8 @@ export namespace Prisma {
     cvitae_id?: StringFieldUpdateOperationsInput | string
     skill?: StringFieldUpdateOperationsInput | string
     level?: IntFieldUpdateOperationsInput | number
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type CVitaeSkillCreateManyInput = {
@@ -8334,16 +8334,16 @@ export namespace Prisma {
     cvitae_id: string
     skill: string
     level: number
-    createdAt?: Date | string
-    updatedAt?: Date | string
+    created_at?: Date | string
+    updated_at?: Date | string
   }
 
   export type CVitaeSkillUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
     skill?: StringFieldUpdateOperationsInput | string
     level?: IntFieldUpdateOperationsInput | number
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type CVitaeSkillUncheckedUpdateManyInput = {
@@ -8351,61 +8351,61 @@ export namespace Prisma {
     cvitae_id?: StringFieldUpdateOperationsInput | string
     skill?: StringFieldUpdateOperationsInput | string
     level?: IntFieldUpdateOperationsInput | number
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type CVitaeTemplateCreateInput = {
     id?: string
     name: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
+    created_at?: Date | string
+    updated_at?: Date | string
     CVitae?: CVitaeCreateNestedManyWithoutCVitaeTemplateInput
   }
 
   export type CVitaeTemplateUncheckedCreateInput = {
     id?: string
     name: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
+    created_at?: Date | string
+    updated_at?: Date | string
     CVitae?: CVitaeUncheckedCreateNestedManyWithoutCVitaeTemplateInput
   }
 
   export type CVitaeTemplateUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     CVitae?: CVitaeUpdateManyWithoutCVitaeTemplateNestedInput
   }
 
   export type CVitaeTemplateUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     CVitae?: CVitaeUncheckedUpdateManyWithoutCVitaeTemplateNestedInput
   }
 
   export type CVitaeTemplateCreateManyInput = {
     id?: string
     name: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
+    created_at?: Date | string
+    updated_at?: Date | string
   }
 
   export type CVitaeTemplateUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type CVitaeTemplateUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type BigIntFilter<$PrismaModel = never> = {
@@ -8486,8 +8486,8 @@ export namespace Prisma {
     email?: SortOrder
     name?: SortOrder
     password?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
   }
 
   export type UserAvgOrderByAggregateInput = {
@@ -8499,8 +8499,8 @@ export namespace Prisma {
     email?: SortOrder
     name?: SortOrder
     password?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
   }
 
   export type UserMinOrderByAggregateInput = {
@@ -8508,8 +8508,8 @@ export namespace Prisma {
     email?: SortOrder
     name?: SortOrder
     password?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
   }
 
   export type UserSumOrderByAggregateInput = {
@@ -8641,8 +8641,8 @@ export namespace Prisma {
     phone?: SortOrder
     address?: SortOrder
     summary?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
   }
 
   export type CVitaeAvgOrderByAggregateInput = {
@@ -8657,8 +8657,8 @@ export namespace Prisma {
     phone?: SortOrder
     address?: SortOrder
     summary?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
   }
 
   export type CVitaeMinOrderByAggregateInput = {
@@ -8669,8 +8669,8 @@ export namespace Prisma {
     phone?: SortOrder
     address?: SortOrder
     summary?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
   }
 
   export type CVitaeSumOrderByAggregateInput = {
@@ -8693,10 +8693,10 @@ export namespace Prisma {
     cvitae_id?: SortOrder
     school?: SortOrder
     degree?: SortOrder
-    start?: SortOrder
-    end?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
+    start_date?: SortOrder
+    end_date?: SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
   }
 
   export type CVitaeEducationMaxOrderByAggregateInput = {
@@ -8704,10 +8704,10 @@ export namespace Prisma {
     cvitae_id?: SortOrder
     school?: SortOrder
     degree?: SortOrder
-    start?: SortOrder
-    end?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
+    start_date?: SortOrder
+    end_date?: SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
   }
 
   export type CVitaeEducationMinOrderByAggregateInput = {
@@ -8715,10 +8715,10 @@ export namespace Prisma {
     cvitae_id?: SortOrder
     school?: SortOrder
     degree?: SortOrder
-    start?: SortOrder
-    end?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
+    start_date?: SortOrder
+    end_date?: SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
   }
 
   export type CVitaeExperienceOrderByRelevanceInput = {
@@ -8732,10 +8732,10 @@ export namespace Prisma {
     cvitae_id?: SortOrder
     company?: SortOrder
     position?: SortOrder
-    start?: SortOrder
-    end?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
+    start_date?: SortOrder
+    end_date?: SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
   }
 
   export type CVitaeExperienceMaxOrderByAggregateInput = {
@@ -8743,10 +8743,10 @@ export namespace Prisma {
     cvitae_id?: SortOrder
     company?: SortOrder
     position?: SortOrder
-    start?: SortOrder
-    end?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
+    start_date?: SortOrder
+    end_date?: SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
   }
 
   export type CVitaeExperienceMinOrderByAggregateInput = {
@@ -8754,10 +8754,10 @@ export namespace Prisma {
     cvitae_id?: SortOrder
     company?: SortOrder
     position?: SortOrder
-    start?: SortOrder
-    end?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
+    start_date?: SortOrder
+    end_date?: SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
   }
 
   export type IntFilter<$PrismaModel = never> = {
@@ -8782,8 +8782,8 @@ export namespace Prisma {
     cvitae_id?: SortOrder
     skill?: SortOrder
     level?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
   }
 
   export type CVitaeSkillAvgOrderByAggregateInput = {
@@ -8795,8 +8795,8 @@ export namespace Prisma {
     cvitae_id?: SortOrder
     skill?: SortOrder
     level?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
   }
 
   export type CVitaeSkillMinOrderByAggregateInput = {
@@ -8804,8 +8804,8 @@ export namespace Prisma {
     cvitae_id?: SortOrder
     skill?: SortOrder
     level?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
   }
 
   export type CVitaeSkillSumOrderByAggregateInput = {
@@ -8837,22 +8837,22 @@ export namespace Prisma {
   export type CVitaeTemplateCountOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
   }
 
   export type CVitaeTemplateMaxOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
   }
 
   export type CVitaeTemplateMinOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
   }
 
   export type CVitaeCreateNestedManyWithoutUserInput = {
@@ -9357,8 +9357,8 @@ export namespace Prisma {
     phone: string
     address: string
     summary: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
+    created_at?: Date | string
+    updated_at?: Date | string
     CVitaeEducation?: CVitaeEducationCreateNestedManyWithoutCvitaeInput
     CVitaeExperience?: CVitaeExperienceCreateNestedManyWithoutCvitaeInput
     CVitaeSkill?: CVitaeSkillCreateNestedManyWithoutCvitaeInput
@@ -9372,8 +9372,8 @@ export namespace Prisma {
     phone: string
     address: string
     summary: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
+    created_at?: Date | string
+    updated_at?: Date | string
     CVitaeEducation?: CVitaeEducationUncheckedCreateNestedManyWithoutCvitaeInput
     CVitaeExperience?: CVitaeExperienceUncheckedCreateNestedManyWithoutCvitaeInput
     CVitaeSkill?: CVitaeSkillUncheckedCreateNestedManyWithoutCvitaeInput
@@ -9417,8 +9417,8 @@ export namespace Prisma {
     phone?: StringFilter<"CVitae"> | string
     address?: StringFilter<"CVitae"> | string
     summary?: StringFilter<"CVitae"> | string
-    createdAt?: DateTimeFilter<"CVitae"> | Date | string
-    updatedAt?: DateTimeFilter<"CVitae"> | Date | string
+    created_at?: DateTimeFilter<"CVitae"> | Date | string
+    updated_at?: DateTimeFilter<"CVitae"> | Date | string
   }
 
   export type UserCreateWithoutCVitaeInput = {
@@ -9426,8 +9426,8 @@ export namespace Prisma {
     email: string
     name?: string | null
     password: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
+    created_at?: Date | string
+    updated_at?: Date | string
   }
 
   export type UserUncheckedCreateWithoutCVitaeInput = {
@@ -9435,8 +9435,8 @@ export namespace Prisma {
     email: string
     name?: string | null
     password: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
+    created_at?: Date | string
+    updated_at?: Date | string
   }
 
   export type UserCreateOrConnectWithoutCVitaeInput = {
@@ -9448,20 +9448,20 @@ export namespace Prisma {
     id?: string
     school: string
     degree: string
-    start: Date | string
-    end: Date | string
-    createdAt?: Date | string
-    updatedAt?: Date | string
+    start_date: Date | string
+    end_date: Date | string
+    created_at?: Date | string
+    updated_at?: Date | string
   }
 
   export type CVitaeEducationUncheckedCreateWithoutCvitaeInput = {
     id?: string
     school: string
     degree: string
-    start: Date | string
-    end: Date | string
-    createdAt?: Date | string
-    updatedAt?: Date | string
+    start_date: Date | string
+    end_date: Date | string
+    created_at?: Date | string
+    updated_at?: Date | string
   }
 
   export type CVitaeEducationCreateOrConnectWithoutCvitaeInput = {
@@ -9478,20 +9478,20 @@ export namespace Prisma {
     id?: string
     company: string
     position: string
-    start: Date | string
-    end: Date | string
-    createdAt?: Date | string
-    updatedAt?: Date | string
+    start_date: Date | string
+    end_date: Date | string
+    created_at?: Date | string
+    updated_at?: Date | string
   }
 
   export type CVitaeExperienceUncheckedCreateWithoutCvitaeInput = {
     id?: string
     company: string
     position: string
-    start: Date | string
-    end: Date | string
-    createdAt?: Date | string
-    updatedAt?: Date | string
+    start_date: Date | string
+    end_date: Date | string
+    created_at?: Date | string
+    updated_at?: Date | string
   }
 
   export type CVitaeExperienceCreateOrConnectWithoutCvitaeInput = {
@@ -9508,16 +9508,16 @@ export namespace Prisma {
     id?: string
     skill: string
     level: number
-    createdAt?: Date | string
-    updatedAt?: Date | string
+    created_at?: Date | string
+    updated_at?: Date | string
   }
 
   export type CVitaeSkillUncheckedCreateWithoutCvitaeInput = {
     id?: string
     skill: string
     level: number
-    createdAt?: Date | string
-    updatedAt?: Date | string
+    created_at?: Date | string
+    updated_at?: Date | string
   }
 
   export type CVitaeSkillCreateOrConnectWithoutCvitaeInput = {
@@ -9533,15 +9533,15 @@ export namespace Prisma {
   export type CVitaeTemplateCreateWithoutCVitaeInput = {
     id?: string
     name: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
+    created_at?: Date | string
+    updated_at?: Date | string
   }
 
   export type CVitaeTemplateUncheckedCreateWithoutCVitaeInput = {
     id?: string
     name: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
+    created_at?: Date | string
+    updated_at?: Date | string
   }
 
   export type CVitaeTemplateCreateOrConnectWithoutCVitaeInput = {
@@ -9565,8 +9565,8 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
     password?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type UserUncheckedUpdateWithoutCVitaeInput = {
@@ -9574,8 +9574,8 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
     password?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type CVitaeEducationUpsertWithWhereUniqueWithoutCvitaeInput = {
@@ -9602,10 +9602,10 @@ export namespace Prisma {
     cvitae_id?: StringFilter<"CVitaeEducation"> | string
     school?: StringFilter<"CVitaeEducation"> | string
     degree?: StringFilter<"CVitaeEducation"> | string
-    start?: DateTimeFilter<"CVitaeEducation"> | Date | string
-    end?: DateTimeFilter<"CVitaeEducation"> | Date | string
-    createdAt?: DateTimeFilter<"CVitaeEducation"> | Date | string
-    updatedAt?: DateTimeFilter<"CVitaeEducation"> | Date | string
+    start_date?: DateTimeFilter<"CVitaeEducation"> | Date | string
+    end_date?: DateTimeFilter<"CVitaeEducation"> | Date | string
+    created_at?: DateTimeFilter<"CVitaeEducation"> | Date | string
+    updated_at?: DateTimeFilter<"CVitaeEducation"> | Date | string
   }
 
   export type CVitaeExperienceUpsertWithWhereUniqueWithoutCvitaeInput = {
@@ -9632,10 +9632,10 @@ export namespace Prisma {
     cvitae_id?: StringFilter<"CVitaeExperience"> | string
     company?: StringFilter<"CVitaeExperience"> | string
     position?: StringFilter<"CVitaeExperience"> | string
-    start?: DateTimeFilter<"CVitaeExperience"> | Date | string
-    end?: DateTimeFilter<"CVitaeExperience"> | Date | string
-    createdAt?: DateTimeFilter<"CVitaeExperience"> | Date | string
-    updatedAt?: DateTimeFilter<"CVitaeExperience"> | Date | string
+    start_date?: DateTimeFilter<"CVitaeExperience"> | Date | string
+    end_date?: DateTimeFilter<"CVitaeExperience"> | Date | string
+    created_at?: DateTimeFilter<"CVitaeExperience"> | Date | string
+    updated_at?: DateTimeFilter<"CVitaeExperience"> | Date | string
   }
 
   export type CVitaeSkillUpsertWithWhereUniqueWithoutCvitaeInput = {
@@ -9662,8 +9662,8 @@ export namespace Prisma {
     cvitae_id?: StringFilter<"CVitaeSkill"> | string
     skill?: StringFilter<"CVitaeSkill"> | string
     level?: IntFilter<"CVitaeSkill"> | number
-    createdAt?: DateTimeFilter<"CVitaeSkill"> | Date | string
-    updatedAt?: DateTimeFilter<"CVitaeSkill"> | Date | string
+    created_at?: DateTimeFilter<"CVitaeSkill"> | Date | string
+    updated_at?: DateTimeFilter<"CVitaeSkill"> | Date | string
   }
 
   export type CVitaeTemplateUpsertWithWhereUniqueWithoutCVitaeInput = {
@@ -9688,8 +9688,8 @@ export namespace Prisma {
     NOT?: CVitaeTemplateScalarWhereInput | CVitaeTemplateScalarWhereInput[]
     id?: StringFilter<"CVitaeTemplate"> | string
     name?: StringFilter<"CVitaeTemplate"> | string
-    createdAt?: DateTimeFilter<"CVitaeTemplate"> | Date | string
-    updatedAt?: DateTimeFilter<"CVitaeTemplate"> | Date | string
+    created_at?: DateTimeFilter<"CVitaeTemplate"> | Date | string
+    updated_at?: DateTimeFilter<"CVitaeTemplate"> | Date | string
   }
 
   export type CVitaeCreateWithoutCVitaeEducationInput = {
@@ -9699,8 +9699,8 @@ export namespace Prisma {
     phone: string
     address: string
     summary: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
+    created_at?: Date | string
+    updated_at?: Date | string
     user: UserCreateNestedOneWithoutCVitaeInput
     CVitaeExperience?: CVitaeExperienceCreateNestedManyWithoutCvitaeInput
     CVitaeSkill?: CVitaeSkillCreateNestedManyWithoutCvitaeInput
@@ -9715,8 +9715,8 @@ export namespace Prisma {
     phone: string
     address: string
     summary: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
+    created_at?: Date | string
+    updated_at?: Date | string
     CVitaeExperience?: CVitaeExperienceUncheckedCreateNestedManyWithoutCvitaeInput
     CVitaeSkill?: CVitaeSkillUncheckedCreateNestedManyWithoutCvitaeInput
     CVitaeTemplate?: CVitaeTemplateUncheckedCreateNestedManyWithoutCVitaeInput
@@ -9745,8 +9745,8 @@ export namespace Prisma {
     phone?: StringFieldUpdateOperationsInput | string
     address?: StringFieldUpdateOperationsInput | string
     summary?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUpdateOneRequiredWithoutCVitaeNestedInput
     CVitaeExperience?: CVitaeExperienceUpdateManyWithoutCvitaeNestedInput
     CVitaeSkill?: CVitaeSkillUpdateManyWithoutCvitaeNestedInput
@@ -9761,8 +9761,8 @@ export namespace Prisma {
     phone?: StringFieldUpdateOperationsInput | string
     address?: StringFieldUpdateOperationsInput | string
     summary?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     CVitaeExperience?: CVitaeExperienceUncheckedUpdateManyWithoutCvitaeNestedInput
     CVitaeSkill?: CVitaeSkillUncheckedUpdateManyWithoutCvitaeNestedInput
     CVitaeTemplate?: CVitaeTemplateUncheckedUpdateManyWithoutCVitaeNestedInput
@@ -9775,8 +9775,8 @@ export namespace Prisma {
     phone: string
     address: string
     summary: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
+    created_at?: Date | string
+    updated_at?: Date | string
     user: UserCreateNestedOneWithoutCVitaeInput
     CVitaeEducation?: CVitaeEducationCreateNestedManyWithoutCvitaeInput
     CVitaeSkill?: CVitaeSkillCreateNestedManyWithoutCvitaeInput
@@ -9791,8 +9791,8 @@ export namespace Prisma {
     phone: string
     address: string
     summary: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
+    created_at?: Date | string
+    updated_at?: Date | string
     CVitaeEducation?: CVitaeEducationUncheckedCreateNestedManyWithoutCvitaeInput
     CVitaeSkill?: CVitaeSkillUncheckedCreateNestedManyWithoutCvitaeInput
     CVitaeTemplate?: CVitaeTemplateUncheckedCreateNestedManyWithoutCVitaeInput
@@ -9821,8 +9821,8 @@ export namespace Prisma {
     phone?: StringFieldUpdateOperationsInput | string
     address?: StringFieldUpdateOperationsInput | string
     summary?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUpdateOneRequiredWithoutCVitaeNestedInput
     CVitaeEducation?: CVitaeEducationUpdateManyWithoutCvitaeNestedInput
     CVitaeSkill?: CVitaeSkillUpdateManyWithoutCvitaeNestedInput
@@ -9837,8 +9837,8 @@ export namespace Prisma {
     phone?: StringFieldUpdateOperationsInput | string
     address?: StringFieldUpdateOperationsInput | string
     summary?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     CVitaeEducation?: CVitaeEducationUncheckedUpdateManyWithoutCvitaeNestedInput
     CVitaeSkill?: CVitaeSkillUncheckedUpdateManyWithoutCvitaeNestedInput
     CVitaeTemplate?: CVitaeTemplateUncheckedUpdateManyWithoutCVitaeNestedInput
@@ -9851,8 +9851,8 @@ export namespace Prisma {
     phone: string
     address: string
     summary: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
+    created_at?: Date | string
+    updated_at?: Date | string
     user: UserCreateNestedOneWithoutCVitaeInput
     CVitaeEducation?: CVitaeEducationCreateNestedManyWithoutCvitaeInput
     CVitaeExperience?: CVitaeExperienceCreateNestedManyWithoutCvitaeInput
@@ -9867,8 +9867,8 @@ export namespace Prisma {
     phone: string
     address: string
     summary: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
+    created_at?: Date | string
+    updated_at?: Date | string
     CVitaeEducation?: CVitaeEducationUncheckedCreateNestedManyWithoutCvitaeInput
     CVitaeExperience?: CVitaeExperienceUncheckedCreateNestedManyWithoutCvitaeInput
     CVitaeTemplate?: CVitaeTemplateUncheckedCreateNestedManyWithoutCVitaeInput
@@ -9897,8 +9897,8 @@ export namespace Prisma {
     phone?: StringFieldUpdateOperationsInput | string
     address?: StringFieldUpdateOperationsInput | string
     summary?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUpdateOneRequiredWithoutCVitaeNestedInput
     CVitaeEducation?: CVitaeEducationUpdateManyWithoutCvitaeNestedInput
     CVitaeExperience?: CVitaeExperienceUpdateManyWithoutCvitaeNestedInput
@@ -9913,8 +9913,8 @@ export namespace Prisma {
     phone?: StringFieldUpdateOperationsInput | string
     address?: StringFieldUpdateOperationsInput | string
     summary?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     CVitaeEducation?: CVitaeEducationUncheckedUpdateManyWithoutCvitaeNestedInput
     CVitaeExperience?: CVitaeExperienceUncheckedUpdateManyWithoutCvitaeNestedInput
     CVitaeTemplate?: CVitaeTemplateUncheckedUpdateManyWithoutCVitaeNestedInput
@@ -9927,8 +9927,8 @@ export namespace Prisma {
     phone: string
     address: string
     summary: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
+    created_at?: Date | string
+    updated_at?: Date | string
     user: UserCreateNestedOneWithoutCVitaeInput
     CVitaeEducation?: CVitaeEducationCreateNestedManyWithoutCvitaeInput
     CVitaeExperience?: CVitaeExperienceCreateNestedManyWithoutCvitaeInput
@@ -9943,8 +9943,8 @@ export namespace Prisma {
     phone: string
     address: string
     summary: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
+    created_at?: Date | string
+    updated_at?: Date | string
     CVitaeEducation?: CVitaeEducationUncheckedCreateNestedManyWithoutCvitaeInput
     CVitaeExperience?: CVitaeExperienceUncheckedCreateNestedManyWithoutCvitaeInput
     CVitaeSkill?: CVitaeSkillUncheckedCreateNestedManyWithoutCvitaeInput
@@ -9978,8 +9978,8 @@ export namespace Prisma {
     phone: string
     address: string
     summary: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
+    created_at?: Date | string
+    updated_at?: Date | string
   }
 
   export type CVitaeUpdateWithoutUserInput = {
@@ -9989,8 +9989,8 @@ export namespace Prisma {
     phone?: StringFieldUpdateOperationsInput | string
     address?: StringFieldUpdateOperationsInput | string
     summary?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     CVitaeEducation?: CVitaeEducationUpdateManyWithoutCvitaeNestedInput
     CVitaeExperience?: CVitaeExperienceUpdateManyWithoutCvitaeNestedInput
     CVitaeSkill?: CVitaeSkillUpdateManyWithoutCvitaeNestedInput
@@ -10004,8 +10004,8 @@ export namespace Prisma {
     phone?: StringFieldUpdateOperationsInput | string
     address?: StringFieldUpdateOperationsInput | string
     summary?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     CVitaeEducation?: CVitaeEducationUncheckedUpdateManyWithoutCvitaeNestedInput
     CVitaeExperience?: CVitaeExperienceUncheckedUpdateManyWithoutCvitaeNestedInput
     CVitaeSkill?: CVitaeSkillUncheckedUpdateManyWithoutCvitaeNestedInput
@@ -10019,141 +10019,141 @@ export namespace Prisma {
     phone?: StringFieldUpdateOperationsInput | string
     address?: StringFieldUpdateOperationsInput | string
     summary?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type CVitaeEducationCreateManyCvitaeInput = {
     id?: string
     school: string
     degree: string
-    start: Date | string
-    end: Date | string
-    createdAt?: Date | string
-    updatedAt?: Date | string
+    start_date: Date | string
+    end_date: Date | string
+    created_at?: Date | string
+    updated_at?: Date | string
   }
 
   export type CVitaeExperienceCreateManyCvitaeInput = {
     id?: string
     company: string
     position: string
-    start: Date | string
-    end: Date | string
-    createdAt?: Date | string
-    updatedAt?: Date | string
+    start_date: Date | string
+    end_date: Date | string
+    created_at?: Date | string
+    updated_at?: Date | string
   }
 
   export type CVitaeSkillCreateManyCvitaeInput = {
     id?: string
     skill: string
     level: number
-    createdAt?: Date | string
-    updatedAt?: Date | string
+    created_at?: Date | string
+    updated_at?: Date | string
   }
 
   export type CVitaeEducationUpdateWithoutCvitaeInput = {
     id?: StringFieldUpdateOperationsInput | string
     school?: StringFieldUpdateOperationsInput | string
     degree?: StringFieldUpdateOperationsInput | string
-    start?: DateTimeFieldUpdateOperationsInput | Date | string
-    end?: DateTimeFieldUpdateOperationsInput | Date | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    start_date?: DateTimeFieldUpdateOperationsInput | Date | string
+    end_date?: DateTimeFieldUpdateOperationsInput | Date | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type CVitaeEducationUncheckedUpdateWithoutCvitaeInput = {
     id?: StringFieldUpdateOperationsInput | string
     school?: StringFieldUpdateOperationsInput | string
     degree?: StringFieldUpdateOperationsInput | string
-    start?: DateTimeFieldUpdateOperationsInput | Date | string
-    end?: DateTimeFieldUpdateOperationsInput | Date | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    start_date?: DateTimeFieldUpdateOperationsInput | Date | string
+    end_date?: DateTimeFieldUpdateOperationsInput | Date | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type CVitaeEducationUncheckedUpdateManyWithoutCvitaeInput = {
     id?: StringFieldUpdateOperationsInput | string
     school?: StringFieldUpdateOperationsInput | string
     degree?: StringFieldUpdateOperationsInput | string
-    start?: DateTimeFieldUpdateOperationsInput | Date | string
-    end?: DateTimeFieldUpdateOperationsInput | Date | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    start_date?: DateTimeFieldUpdateOperationsInput | Date | string
+    end_date?: DateTimeFieldUpdateOperationsInput | Date | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type CVitaeExperienceUpdateWithoutCvitaeInput = {
     id?: StringFieldUpdateOperationsInput | string
     company?: StringFieldUpdateOperationsInput | string
     position?: StringFieldUpdateOperationsInput | string
-    start?: DateTimeFieldUpdateOperationsInput | Date | string
-    end?: DateTimeFieldUpdateOperationsInput | Date | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    start_date?: DateTimeFieldUpdateOperationsInput | Date | string
+    end_date?: DateTimeFieldUpdateOperationsInput | Date | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type CVitaeExperienceUncheckedUpdateWithoutCvitaeInput = {
     id?: StringFieldUpdateOperationsInput | string
     company?: StringFieldUpdateOperationsInput | string
     position?: StringFieldUpdateOperationsInput | string
-    start?: DateTimeFieldUpdateOperationsInput | Date | string
-    end?: DateTimeFieldUpdateOperationsInput | Date | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    start_date?: DateTimeFieldUpdateOperationsInput | Date | string
+    end_date?: DateTimeFieldUpdateOperationsInput | Date | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type CVitaeExperienceUncheckedUpdateManyWithoutCvitaeInput = {
     id?: StringFieldUpdateOperationsInput | string
     company?: StringFieldUpdateOperationsInput | string
     position?: StringFieldUpdateOperationsInput | string
-    start?: DateTimeFieldUpdateOperationsInput | Date | string
-    end?: DateTimeFieldUpdateOperationsInput | Date | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    start_date?: DateTimeFieldUpdateOperationsInput | Date | string
+    end_date?: DateTimeFieldUpdateOperationsInput | Date | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type CVitaeSkillUpdateWithoutCvitaeInput = {
     id?: StringFieldUpdateOperationsInput | string
     skill?: StringFieldUpdateOperationsInput | string
     level?: IntFieldUpdateOperationsInput | number
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type CVitaeSkillUncheckedUpdateWithoutCvitaeInput = {
     id?: StringFieldUpdateOperationsInput | string
     skill?: StringFieldUpdateOperationsInput | string
     level?: IntFieldUpdateOperationsInput | number
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type CVitaeSkillUncheckedUpdateManyWithoutCvitaeInput = {
     id?: StringFieldUpdateOperationsInput | string
     skill?: StringFieldUpdateOperationsInput | string
     level?: IntFieldUpdateOperationsInput | number
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type CVitaeTemplateUpdateWithoutCVitaeInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type CVitaeTemplateUncheckedUpdateWithoutCVitaeInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type CVitaeTemplateUncheckedUpdateManyWithoutCVitaeInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type CVitaeUpdateWithoutCVitaeTemplateInput = {
@@ -10163,8 +10163,8 @@ export namespace Prisma {
     phone?: StringFieldUpdateOperationsInput | string
     address?: StringFieldUpdateOperationsInput | string
     summary?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUpdateOneRequiredWithoutCVitaeNestedInput
     CVitaeEducation?: CVitaeEducationUpdateManyWithoutCvitaeNestedInput
     CVitaeExperience?: CVitaeExperienceUpdateManyWithoutCvitaeNestedInput
@@ -10179,8 +10179,8 @@ export namespace Prisma {
     phone?: StringFieldUpdateOperationsInput | string
     address?: StringFieldUpdateOperationsInput | string
     summary?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     CVitaeEducation?: CVitaeEducationUncheckedUpdateManyWithoutCvitaeNestedInput
     CVitaeExperience?: CVitaeExperienceUncheckedUpdateManyWithoutCvitaeNestedInput
     CVitaeSkill?: CVitaeSkillUncheckedUpdateManyWithoutCvitaeNestedInput
@@ -10194,8 +10194,8 @@ export namespace Prisma {
     phone?: StringFieldUpdateOperationsInput | string
     address?: StringFieldUpdateOperationsInput | string
     summary?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
 

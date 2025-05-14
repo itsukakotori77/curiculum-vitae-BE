@@ -7,21 +7,20 @@ import {
   Param,
   Get,
   Put,
-  Delete,
 } from '@nestjs/common'
-import { CuriculumEducationService } from './curiculum-education.service'
+import { UserService } from './user.service'
 import { PaginationPayloadDto } from 'src/global/dto/pagination-payload-dto'
 import { Response } from 'express'
-import { CuriculumEducationDto } from './curiculum-education-dto'
+import { UserDto } from './user-dto'
 
-@Controller('curiculum-education')
-export class CuriculumEducationController {
-  constructor(private educationService: CuriculumEducationService) {}
+@Controller('user')
+export class UserController {
+  constructor(private user: UserService) {}
 
   @Post('get-all')
   async getAll(@Body() request: PaginationPayloadDto, @Res() res: Response) {
     try {
-      const data = await this.educationService.getAll(request)
+      const data = await this.user.getAll(request)
       return res.status(HttpStatus.OK).json({
         code: '00',
         message: 'Berhasil menampilkan data',
@@ -42,7 +41,8 @@ export class CuriculumEducationController {
   @Get('getOne/:id')
   async getById(@Param('id') id: number, @Res() res: Response) {
     try {
-      const data = await this.educationService.getById(id)
+      const data = await this.user.getById(id)
+
       if (data) {
         return res.status(HttpStatus.OK).json({
           code: '00',
@@ -65,9 +65,9 @@ export class CuriculumEducationController {
   }
 
   @Post('create')
-  async create(@Body() request: CuriculumEducationDto, @Res() res: Response) {
+  async create(@Body() request: UserDto, @Res() res: Response) {
     try {
-      const data = await this.educationService.create(request)
+      const data = await this.user.create(request)
       return res.status(HttpStatus.OK).json({
         code: '00',
         message: 'Berhasil menambahkan data',
@@ -76,54 +76,26 @@ export class CuriculumEducationController {
     } catch (error: any) {
       return res.status(HttpStatus.INTERNAL_SERVER_ERROR).json({
         code: '01',
-        success: false,
         message: error.message,
       })
     }
   }
 
   @Put('update')
-  async update(@Body() request: CuriculumEducationDto, @Res() res: Response) {
+  async update(@Body() request: UserDto, @Res() res: Response) {
     try {
-      const data = await this.educationService.update(request)
+      const data = await this.user.create(request)
       return res.status(HttpStatus.OK).json({
         code: '00',
-        message: 'Berhasil mengubah data',
+        message: 'Berhasil menambahkan data',
         data: data,
       })
     } catch (error: any) {
       return res.status(HttpStatus.INTERNAL_SERVER_ERROR).json({
         code: '01',
-        success: false,
         message: error.message,
       })
     }
   }
 
-  @Delete('delete/:id')
-  async delete(@Param() id: number, @Res() res: Response) {
-    try {
-      const data = await this.educationService.delete(id)
-
-      if(data) {
-         return res.status(HttpStatus.OK).json({
-           code: '00',
-           success: true,
-           message: 'Berhasil menghapus data',
-         })
-      }
-      
-      return res.status(HttpStatus.NOT_FOUND).json({
-         code: '01',
-         success: false,
-         message: 'Data tidak ditemukan',   
-      })
-    } catch (error: any) {
-      return res.status(HttpStatus.INTERNAL_SERVER_ERROR).json({
-        code: '01',
-        success: false,
-        message: error.message,
-      })
-    }
-  }
 }

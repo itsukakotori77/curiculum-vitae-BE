@@ -1,17 +1,17 @@
 import { Injectable } from '@nestjs/common'
 import { plainToInstance } from 'class-transformer'
 import { PaginationPayloadDto } from 'src/global/dto/pagination-payload-dto'
-import { ICurriculumEducation } from 'src/interface/cvitae'
+import { ICurriculumExperience } from 'src/interface/cvitae'
 import { PrismaService } from 'src/prisma/prisma.service'
-import { CuriculumEducationDto } from './curiculum-education-dto'
+import { CuriculumExperienceDto } from './curiculum-experience-dto'
 
 @Injectable()
-export class CuriculumEducationService {
+export class CuriculumExperienceService {
   constructor(private prisma: PrismaService) {}
 
-  async getAll(data: PaginationPayloadDto): Promise<ICurriculumEducation> {
+  async getAll(data: PaginationPayloadDto): Promise<ICurriculumExperience> {
     const skip = (data.page - 1) * data.limit
-    const res = await this.prisma.curiculumEducation.findMany({
+    const res = await this.prisma.curiculumExperience.findMany({
       skip: skip,
       take: data.limit,
       orderBy: { [data.sortBy]: data.sortSystem },
@@ -21,7 +21,7 @@ export class CuriculumEducationService {
     const totalPage = Math.ceil(totalData / data.limit)
 
     return {
-      data: plainToInstance(CuriculumEducationDto, res, {
+      data: plainToInstance(CuriculumExperienceDto, res, {
         excludeExtraneousValues: true,
       }),
       totalData,
@@ -30,13 +30,13 @@ export class CuriculumEducationService {
     }
   }
 
-  async getById(id: number): Promise<CuriculumEducationDto | null> {
-    const res = await this.prisma.curiculumEducation.findUnique({
+  async getById(id: number): Promise<CuriculumExperienceDto | null> {
+    const res = await this.prisma.curiculumExperience.findUnique({
       where: { id },
     })
 
     if (res) {
-      return plainToInstance(CuriculumEducationDto, res, {
+      return plainToInstance(CuriculumExperienceDto, res, {
         excludeExtraneousValues: true,
       })
     }
@@ -44,11 +44,11 @@ export class CuriculumEducationService {
     return null
   }
 
-  async create(data: CuriculumEducationDto): Promise<CuriculumEducationDto> {
-    const res = await this.prisma.curiculumEducation.create({
+  async create(data: CuriculumExperienceDto): Promise<CuriculumExperienceDto> {
+    const res = await this.prisma.curiculumExperience.create({
       data: {
-        name: data.name,
-        degree: data.degree,
+        position: data.position,
+        company: data.company,
         start_date: data.start_date,
         end_date: data.end_date,
         cvitae: {
@@ -57,17 +57,17 @@ export class CuriculumEducationService {
       },
     })
 
-    return plainToInstance(CuriculumEducationDto, res, {
+    return plainToInstance(CuriculumExperienceDto, res, {
       excludeExtraneousValues: true,
     })
   }
 
-  async update(data: CuriculumEducationDto): Promise<CuriculumEducationDto> {
-    const res = await this.prisma.curiculumEducation.update({
+  async update(data: CuriculumExperienceDto): Promise<CuriculumExperienceDto> {
+    const res = await this.prisma.curiculumExperience.update({
       where: { id: data.id },
       data: {
-        name: data.name,
-        degree: data.degree,
+        position: data.position,
+        company: data.company,
         start_date: data.start_date,
         end_date: data.end_date,
         cvitae: {
@@ -76,16 +76,16 @@ export class CuriculumEducationService {
       },
     })
 
-    return plainToInstance(CuriculumEducationDto, res, {
+    return plainToInstance(CuriculumExperienceDto, res, {
       excludeExtraneousValues: true,
     })
   }
 
   async delete(id: number): Promise<boolean> {
-    const res = await this.prisma.curiculumEducation.delete({
+    const res = await this.prisma.curiculumExperience.delete({
       where: { id },
     })
 
-    return !!res 
+    return !!res
   }
 }

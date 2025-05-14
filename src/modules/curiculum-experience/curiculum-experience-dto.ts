@@ -1,41 +1,30 @@
-import {
-  IsNotEmpty,
-  IsNumber,
-  IsOptional,
-  IsString,
-} from '@nestjs/class-validator'
-import { ApiProperty } from '@nestjs/swagger'
+import { IsNotEmpty, IsNumber, IsOptional, IsString } from '@nestjs/class-validator'
 import { Expose, Transform } from 'class-transformer'
 
-export class CuriculumEducationDto {
+export class CuriculumExperienceDto {
   @Expose()
   @Transform(({ value }) =>
     typeof value === 'bigint' ? +value.toString() : +value,
   )
-  @IsOptional()
-  id?: BigInt | number
+  id?: bigint | number
 
   @Expose()
   @IsNotEmpty({ message: 'harus diisi' })
   @IsString({ message: 'harus berupa string' })
-  @ApiProperty({ default: 'user' })
-  name: string
+  company: string
 
   @Expose()
   @IsNotEmpty({ message: 'harus diisi' })
   @IsString({ message: 'harus berupa string' })
-  @ApiProperty({ default: 'S1' })
-  degree: string
+  position: string
 
   @Expose()
   @IsNotEmpty({ message: 'harus diisi' })
-  @ApiProperty({ default: '2025-03-03 16:30:00' })
-  start_date: Date
+  start_date: string
 
   @Expose()
   @IsNotEmpty({ message: 'harus diisi' })
-  @ApiProperty({ default: '2025-03-03 16:30:00' })
-  end_date: Date
+  end_date: string
 
   @Expose()
   @Transform(({ value }) =>
@@ -49,7 +38,7 @@ export class CuriculumEducationDto {
     toPlainOnly: true,
   })
   @IsOptional()
-  created_at: Date
+  create_at: Date
 
   @Expose()
   @Transform(({ value }) => (value ? value.toISOString() : null), {
