@@ -9,13 +9,16 @@ import {
   Put,
   Query,
   Res,
+  UseGuards,
 } from '@nestjs/common'
 import { CuriculumTemplateService } from './curiculum-template.service'
 import { PaginationPayloadDto } from 'src/core/dto/pagination-payload-dto'
 import { Response } from 'express'
 import { CuriculumTemplateDto } from './curiculum-template-dto'
+import { JwtAuthGuard } from 'src/core/jwt/jwt-auth-guard'
 
 @Controller('curiculum-template')
+@UseGuards(JwtAuthGuard)
 export class CuriculumTemplateController {
   constructor(private curTemplateService: CuriculumTemplateService) {}
 

@@ -8,13 +8,16 @@ import {
   Get,
   Put,
   Query,
+  UseGuards,
 } from '@nestjs/common'
 import { UserService } from './user.service'
 import { PaginationPayloadDto } from 'src/core/dto/pagination-payload-dto'
 import { Response } from 'express'
 import { UserDto } from './user-dto'
+import { JwtAuthGuard } from 'src/core/jwt/jwt-auth-guard'
 
 @Controller('user')
+@UseGuards(JwtAuthGuard)
 export class UserController {
   constructor(private user: UserService) {}
 

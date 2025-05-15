@@ -1,7 +1,7 @@
-import { Injectable, Logger } from '@nestjs/common'
+import { Injectable } from '@nestjs/common'
 import { PassportStrategy } from '@nestjs/passport'
 import { PrismaService } from 'src/prisma/prisma.service'
-import { Strategy } from 'passport-jwt' 
+import { Strategy } from 'passport-jwt'
 import { ExtractJwt } from 'passport-jwt'
 import { ConstantConfig } from 'src/core/config/constant-config'
 
