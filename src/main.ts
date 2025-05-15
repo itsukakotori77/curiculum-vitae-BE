@@ -1,15 +1,16 @@
 import { NestFactory } from '@nestjs/core'
 import { AppModule } from './app.module'
-import { baseUrl, port } from './libs/constans'
 import * as morgan from 'morgan'
 import { LoggingInterceptor } from './interceptors/logging/logging.interceptor'
 import { BadRequestException, Logger, ValidationPipe } from '@nestjs/common'
 import { extractValidation } from './libs/common'
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger'
+import { ConstantConfig } from './libs/constant-config'
 
 async function bootstrap() {
   try {
     const app = await NestFactory.create(AppModule)
+    const constants = app.get(ConstantConfig)
 
     app.setGlobalPrefix('api')
     app.use(morgan('tiny'))
@@ -48,8 +49,10 @@ async function bootstrap() {
     const document = SwaggerModule.createDocument(app, config)
     SwaggerModule.setup('api/docs', app, document)
 
-    await app.listen(port ?? 5000)
-    Logger.log(`🚀 Service running at ${baseUrl}${port}`, 'Bootstrap')
+    await app.listen(constants.port ?? 5000)
+    Logger.log(`🚀 Service running at ${constants.baseUrl} ${constants.port}`, 'Bootstrap')
+
+    return constants
   } catch (error: any) {
     Logger.error(
       `❌ Fatal error during startup: ${error.message}`,
@@ -59,4 +62,4 @@ async function bootstrap() {
     process.exit(1)
   }
 }
-bootstrap().then(() => console.log(`Server running on port ${port}`))
+bootstrap().then((constants) => console.log(`Server running on port ${constants.port}`))

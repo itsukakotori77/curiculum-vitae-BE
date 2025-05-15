@@ -1,15 +1,17 @@
-import { Injectable } from '@nestjs/common'
+import { Injectable, Logger } from '@nestjs/common'
 import { PassportStrategy } from '@nestjs/passport'
 import { PrismaService } from 'src/prisma/prisma.service'
 import { Strategy } from 'passport-jwt' 
 import { ExtractJwt } from 'passport-jwt'
-import { jwtSecret } from 'src/libs/constans'
+import { ConstantConfig } from 'src/libs/constant-config'
 
 @Injectable()
 export class JwtStrategy extends PassportStrategy(Strategy) {
   constructor(
-    private prisma: PrismaService,
+    private readonly prisma: PrismaService,
+    private readonly contants: ConstantConfig,
   ) {
+    const jwtSecret = contants.jwtSecret
     super({
       jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
       ignoreElements: false,

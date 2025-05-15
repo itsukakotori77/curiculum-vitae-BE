@@ -7,10 +7,14 @@ import { UserDto } from './user-dto';
 import * as bcrypt from 'bcrypt';
 import { randomString } from 'src/libs/common';
 import { strRandom } from 'src/libs/constans';
+import { ConstantConfig } from 'src/libs/constant-config';
 
 @Injectable()
 export class UserService {
-   constructor(private prisma: PrismaService) {}
+   constructor(
+    private prisma: PrismaService,
+    private readonly contants: ConstantConfig,
+  ) {}
 
    private saltRounds = 10
 

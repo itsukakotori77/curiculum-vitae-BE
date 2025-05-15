@@ -4,14 +4,19 @@ import { AuthDto } from './auth-dto'
 import { IAuthResponse, IJwtPayload } from 'src/interface/auth'
 import * as bcrypt from 'bcrypt'
 import { JwtService } from '@nestjs/jwt'
-import { jwtSecret } from 'src/libs/constans'
+import { ConstantConfig } from 'src/libs/constant-config'
 
 @Injectable()
 export class AuthService {
+  private readonly secret: string
+
   constructor(
     private prisma: PrismaService,
     private jwtService: JwtService,
-  ) {}
+    private readonly contants: ConstantConfig,
+  ) {
+    this.secret = this.contants.jwtSecret!
+  }
 
   async login(data: AuthDto): Promise<IAuthResponse> {
     const user = await this.prisma.user.findUnique({
@@ -36,8 +41,14 @@ export class AuthService {
 
   async validateToken(token: string): Promise<any> {
     try {
+      // Use the same secret that's configured for signing
+
+      if (!this.secret) {
+        throw new UnauthorizedException('JWT secret is not configured')
+      }
+
       const payload: IJwtPayload = await this.jwtService.verify(token, {
-        secret: jwtSecret!,
+        secret: this.secret!,
       })
 
       const user = await this.prisma.user.findUnique({

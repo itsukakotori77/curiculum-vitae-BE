@@ -10,14 +10,15 @@ import { PrismaModule } from './prisma/prisma.module'
 import { CuriculumVitaeModule } from './modules/curiculum-vitae/curiculum-vitae.module'
 import { RouterModule } from '@nestjs/core'
 import { AuthModule } from './core/auth/auth.module';
+import { AppConfigModule } from './core/config/app-config.module';
 
 @Module({
   imports: [
     RouterModule.register([
-      // {
-      //   path: '/v1/auth',
-      //   module
-      // }
+      {
+        path: '/v1/auth',
+        module: AuthModule,
+      },
       {
         path: '/v1/user',
         module: UserModule,
@@ -51,6 +52,7 @@ import { AuthModule } from './core/auth/auth.module';
     CuriculumSkillModule,
     CuriculumTemplateModule,
     AuthModule,
+    AppConfigModule,
   ],
   controllers: [AppController],
   providers: [AppService],

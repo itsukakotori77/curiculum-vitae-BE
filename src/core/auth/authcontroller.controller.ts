@@ -3,7 +3,7 @@ import { AuthService } from './auth.service'
 import { AuthDto } from './auth-dto'
 import { Response } from 'express'
 
-@Controller('authcontroller')
+@Controller('auth')
 export class AuthcontrollerController {
   constructor(private authService: AuthService) {}
 
@@ -20,7 +20,9 @@ export class AuthcontrollerController {
       return res.status(HttpStatus.INTERNAL_SERVER_ERROR).json({
         code: '01',
         success: false,
-        message: error.message,
+        message: {
+          message: error.message,
+        },
       })
     }
   }
