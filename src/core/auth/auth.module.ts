@@ -5,7 +5,7 @@ import { PassportModule } from '@nestjs/passport'
 import { JwtModule } from '@nestjs/jwt'
 import { AuthcontrollerController } from './authcontroller.controller'
 import { JwtStrategy } from '../jwt/jwt-strategy'
-import { ConstantConfig } from 'src/libs/constant-config'
+import { ConstantConfig } from 'src/core/config/constant-config'
 import { AppConfigModule } from '../config/app-config.module'
 
 @Module({

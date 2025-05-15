@@ -7,7 +7,7 @@ import { UserDto } from './user-dto';
 import * as bcrypt from 'bcrypt';
 import { randomString } from 'src/libs/common';
 import { strRandom } from 'src/libs/constans';
-import { ConstantConfig } from 'src/libs/constant-config';
+import { ConstantConfig } from 'src/core/config/constant-config';
 
 @Injectable()
 export class UserService {

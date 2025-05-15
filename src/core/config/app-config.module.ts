@@ -1,6 +1,6 @@
 import { Global, Module } from '@nestjs/common'
 import { ConfigModule } from '@nestjs/config'
-import { ConstantConfig } from 'src/libs/constant-config'
+import { ConstantConfig } from './constant-config'
 
 @Global()
 @Module({

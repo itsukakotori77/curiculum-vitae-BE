@@ -5,7 +5,7 @@ import { LoggingInterceptor } from './interceptors/logging/logging.interceptor'
 import { BadRequestException, Logger, ValidationPipe } from '@nestjs/common'
 import { extractValidation } from './libs/common'
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger'
-import { ConstantConfig } from './libs/constant-config'
+import { ConstantConfig } from './core/config/constant-config'
 
 async function bootstrap() {
   try {

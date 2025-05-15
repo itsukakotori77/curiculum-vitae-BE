@@ -4,7 +4,7 @@ import { AuthDto } from './auth-dto'
 import { IAuthResponse, IJwtPayload } from 'src/interface/auth'
 import * as bcrypt from 'bcrypt'
 import { JwtService } from '@nestjs/jwt'
-import { ConstantConfig } from 'src/libs/constant-config'
+import { ConstantConfig } from 'src/core/config/constant-config'
 
 @Injectable()
 export class AuthService {
