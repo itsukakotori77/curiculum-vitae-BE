@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common'
-import { PaginationPayloadDto } from 'src/global/dto/pagination-payload-dto'
+import { PaginationPayloadDto } from 'src/core/dto/pagination-payload-dto'
 import { ICurriculumTemplate } from 'src/interface/cvitae'
 import { PrismaService } from 'src/prisma/prisma.service'
 import { plainToInstance } from 'class-transformer'
@@ -11,7 +11,7 @@ export class CuriculumTemplateService {
 
   async getAll(data: PaginationPayloadDto): Promise<ICurriculumTemplate> {
     const skip = (data.page - 1) * data.limit
-    const res = await this.prisma.curiculumSkill.findMany({
+    const res = await this.prisma.cVitaeTemplate.findMany({
       skip: skip,
       take: data.limit,
       orderBy: { [data.sortBy]: data.sortSystem },
@@ -31,7 +31,7 @@ export class CuriculumTemplateService {
   }
 
   async getById(id: number): Promise<CuriculumTemplateDto | null> {
-    const res = await this.prisma.curiculumSkill.findUnique({
+    const res = await this.prisma.cVitaeTemplate.findUnique({
       where: { id },
     })
 
@@ -45,11 +45,11 @@ export class CuriculumTemplateService {
   }
 
   async create(data: CuriculumTemplateDto): Promise<CuriculumTemplateDto> {
-    const res = await this.prisma.curiculumSkill.create({
+    const res = await this.prisma.cVitaeTemplate.create({
       data: {
         name: data.name,
         cvitae: {
-          connect: { id: data.cvitae_id },
+          connect: { id: +data.cvitae_id! },
         },
       },
     })
@@ -60,12 +60,12 @@ export class CuriculumTemplateService {
   }
 
   async update(data: CuriculumTemplateDto): Promise<CuriculumTemplateDto> {
-    const res = await this.prisma.curiculumSkill.update({
+    const res = await this.prisma.cVitaeTemplate.update({
       where: { id: data.id },
       data: {
         name: data.name,
         cvitae: {
-          connect: { id: data.cvitae_id },
+          connect: { id: +data.cvitae_id! },
         },
       },
     })
@@ -76,7 +76,7 @@ export class CuriculumTemplateService {
   }
 
   async delete(id: number): Promise<boolean> {
-    const res = await this.prisma.curiculumSkill.delete({
+    const res = await this.prisma.cVitaeTemplate.delete({
       where: { id },
     })
 

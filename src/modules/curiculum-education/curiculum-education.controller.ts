@@ -11,7 +11,7 @@ import {
   Query,
 } from '@nestjs/common'
 import { CuriculumEducationService } from './curiculum-education.service'
-import { PaginationPayloadDto } from 'src/global/dto/pagination-payload-dto'
+import { PaginationPayloadDto } from 'src/core/dto/pagination-payload-dto'
 import { Response } from 'express'
 import { CuriculumEducationDto } from './curiculum-education-dto'
 

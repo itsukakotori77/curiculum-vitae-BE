@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common'
 import { plainToInstance } from 'class-transformer'
-import { PaginationPayloadDto } from 'src/global/dto/pagination-payload-dto'
+import { PaginationPayloadDto } from 'src/core/dto/pagination-payload-dto'
 import { ICurriculumExperience } from 'src/interface/cvitae'
 import { PrismaService } from 'src/prisma/prisma.service'
 import { CuriculumExperienceDto } from './curiculum-experience-dto'
@@ -11,7 +11,7 @@ export class CuriculumExperienceService {
 
   async getAll(data: PaginationPayloadDto): Promise<ICurriculumExperience> {
     const skip = (data.page - 1) * data.limit
-    const res = await this.prisma.curiculumExperience.findMany({
+    const res = await this.prisma.cVitaeExperience.findMany({
       skip: skip,
       take: data.limit,
       orderBy: { [data.sortBy]: data.sortSystem },
@@ -31,7 +31,7 @@ export class CuriculumExperienceService {
   }
 
   async getById(id: number): Promise<CuriculumExperienceDto | null> {
-    const res = await this.prisma.curiculumExperience.findUnique({
+    const res = await this.prisma.cVitaeExperience.findUnique({
       where: { id },
     })
 
@@ -45,14 +45,14 @@ export class CuriculumExperienceService {
   }
 
   async create(data: CuriculumExperienceDto): Promise<CuriculumExperienceDto> {
-    const res = await this.prisma.curiculumExperience.create({
+    const res = await this.prisma.cVitaeExperience.create({
       data: {
         position: data.position,
         company: data.company,
         start_date: data.start_date,
         end_date: data.end_date,
         cvitae: {
-          connect: { id: data.cvitae_id },
+          connect: { id: +data.cvitae_id! },
         },
       },
     })
@@ -63,7 +63,7 @@ export class CuriculumExperienceService {
   }
 
   async update(data: CuriculumExperienceDto): Promise<CuriculumExperienceDto> {
-    const res = await this.prisma.curiculumExperience.update({
+    const res = await this.prisma.cVitaeExperience.update({
       where: { id: data.id },
       data: {
         position: data.position,
@@ -71,7 +71,7 @@ export class CuriculumExperienceService {
         start_date: data.start_date,
         end_date: data.end_date,
         cvitae: {
-          connect: { id: data.cvitae_id },
+          connect: { id: +data.cvitae_id! },
         },
       },
     })
@@ -82,7 +82,7 @@ export class CuriculumExperienceService {
   }
 
   async delete(id: number): Promise<boolean> {
-    const res = await this.prisma.curiculumExperience.delete({
+    const res = await this.prisma.cVitaeExperience.delete({
       where: { id },
     })
 

@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { plainToInstance } from 'class-transformer';
-import { PaginationPayloadDto } from 'src/global/dto/pagination-payload-dto';
+import { PaginationPayloadDto } from 'src/core/dto/pagination-payload-dto';
 import { ICurriculumSkill } from 'src/interface/cvitae';
 import { PrismaService } from 'src/prisma/prisma.service';
 import { CuriculumSkillDto } from './curiculum-skill-dto';
@@ -11,7 +11,7 @@ export class CuriculumSkillService {
 
   async getAll(data: PaginationPayloadDto): Promise<ICurriculumSkill> {
     const skip = (data.page - 1) * data.limit
-    const res = await this.prisma.curiculumSkill.findMany({
+    const res = await this.prisma.cVitaeSkill.findMany({
       skip: skip,
       take: data.limit,
       orderBy: { [data.sortBy]: data.sortSystem },
@@ -31,7 +31,7 @@ export class CuriculumSkillService {
   }
 
   async getById(id: number): Promise<CuriculumSkillDto | null> {
-    const res = await this.prisma.curiculumSkill.findUnique({
+    const res = await this.prisma.cVitaeSkill.findUnique({
       where: { id },
     })
 
@@ -45,12 +45,12 @@ export class CuriculumSkillService {
   }
 
   async create(data: CuriculumSkillDto): Promise<CuriculumSkillDto> {
-    const res = await this.prisma.curiculumSkill.create({
+    const res = await this.prisma.cVitaeSkill.create({
       data: {
         skill: data.skill,
         level: data.level,
         cvitae: {
-          connect: { id: data.cvitae_id },
+          connect: { id: +data.cvitae_id! },
         },
       },
     })
@@ -61,13 +61,13 @@ export class CuriculumSkillService {
   }
 
   async update(data: CuriculumSkillDto): Promise<CuriculumSkillDto> {
-    const res = await this.prisma.curiculumSkill.update({
-      where: { id: data.id },
+    const res = await this.prisma.cVitaeSkill.update({
+      where: { id: +data.id! },
       data: {
         skill: data.skill,
         level: data.level,
         cvitae: {
-          connect: { id: data.cvitae_id },
+          connect: { id: +data.cvitae_id! },
         },
       },
     })
@@ -78,7 +78,7 @@ export class CuriculumSkillService {
   }
 
   async delete(id: number): Promise<boolean> {
-    const res = await this.prisma.curiculumSkill.delete({
+    const res = await this.prisma.cVitaeSkill.delete({
       where: { id },
     })
 

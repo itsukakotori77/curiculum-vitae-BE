@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common'
 import { plainToInstance } from 'class-transformer'
-import { PaginationPayloadDto } from 'src/global/dto/pagination-payload-dto'
+import { PaginationPayloadDto } from 'src/core/dto/pagination-payload-dto'
 import { ICurriculumVitae } from 'src/interface/cvitae'
 import { PrismaService } from 'src/prisma/prisma.service'
 import { CuriculumVitaeDto } from './curiculum-vitae-dto'
@@ -11,7 +11,7 @@ export class CuriculumVitaeService {
 
   async getAll(data: PaginationPayloadDto): Promise<ICurriculumVitae> {
     const skip = (data.page - 1) * data.limit
-    const res = await this.prisma.curiculumSkill.findMany({
+    const res = await this.prisma.cVitae.findMany({
       skip: skip,
       take: data.limit,
       orderBy: { [data.sortBy]: data.sortSystem },
@@ -31,7 +31,7 @@ export class CuriculumVitaeService {
   }
 
   async getById(id: number): Promise<CuriculumVitaeDto | null> {
-    const res = await this.prisma.curiculumSkill.findUnique({
+    const res = await this.prisma.cVitae.findUnique({
       where: { id },
     })
 
@@ -45,13 +45,16 @@ export class CuriculumVitaeService {
   }
 
   async create(data: CuriculumVitaeDto): Promise<CuriculumVitaeDto> {
-    const res = await this.prisma.curiculumSkill.create({
+    const res = await this.prisma.cVitae.create({
       data: {
         name: data.name,
         email: data.email,
         phone: data.phone,
         address: data.address,
         summary: data.summary,
+        user: {
+          connect: { id: data.user_id },
+        },
       },
     })
 
@@ -61,7 +64,7 @@ export class CuriculumVitaeService {
   }
 
   async update(data: CuriculumVitaeDto): Promise<CuriculumVitaeDto> {
-    const res = await this.prisma.curiculumSkill.update({
+    const res = await this.prisma.cVitae.update({
       where: { id: data.id },
       data: {
         name: data.name,
@@ -69,6 +72,9 @@ export class CuriculumVitaeService {
         phone: data.phone,
         address: data.address,
         summary: data.summary,
+        user: {
+          connect: { id: data.user_id },
+        },
       },
     })
 
@@ -78,7 +84,7 @@ export class CuriculumVitaeService {
   }
 
   async delete(id: number): Promise<boolean> {
-    const res = await this.prisma.curiculumSkill.delete({
+    const res = await this.prisma.cVitae.delete({
       where: { id },
     })
 

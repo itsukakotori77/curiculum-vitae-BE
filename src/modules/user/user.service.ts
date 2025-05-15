@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { plainToInstance } from 'class-transformer';
-import { PaginationPayloadDto } from 'src/global/dto/pagination-payload-dto';
+import { PaginationPayloadDto } from 'src/core/dto/pagination-payload-dto';
 import { IResponseUser } from 'src/interface/user';
 import { PrismaService } from 'src/prisma/prisma.service';
 import { UserDto } from './user-dto';
@@ -54,9 +54,9 @@ export class UserService {
           email: data.email,
           password: hashedPassword,
           remember_token: randomString(50, strRandom),
-          role: {
-            connect: { id: data.role_id },
-          },
+          // role: {
+          //   connect: { id: data.role_id },
+          // },
         },
       })
   
@@ -72,9 +72,9 @@ export class UserService {
           username: data.username,
           email: data.email,
           password: hashedPassword,
-          role: {
-            connect: { id: data.role_id },
-          },
+          // role: {
+          //   connect: { id: data.role_id },
+          // },
         },
       })
   

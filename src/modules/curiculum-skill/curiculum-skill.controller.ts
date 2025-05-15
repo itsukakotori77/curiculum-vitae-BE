@@ -11,7 +11,7 @@ import {
   Res,
 } from '@nestjs/common'
 import { CuriculumSkillService } from './curiculum-skill.service'
-import { PaginationPayloadDto } from 'src/global/dto/pagination-payload-dto'
+import { PaginationPayloadDto } from 'src/core/dto/pagination-payload-dto'
 import { Response } from 'express'
 import { CuriculumSkillDto } from './curiculum-skill-dto'
 

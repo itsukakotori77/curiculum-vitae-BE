@@ -6,6 +6,7 @@ import {
   Max,
   Min,
 } from '@nestjs/class-validator'
+import { ApiProperty } from '@nestjs/swagger'
 import { Expose, Transform } from 'class-transformer'
 
 export class CuriculumSkillDto {
@@ -19,6 +20,7 @@ export class CuriculumSkillDto {
   @Expose()
   @IsNotEmpty({ message: 'harus diisi' })
   @IsString({ message: 'harus berupa string' })
+  @ApiProperty({ default: 'PHP' })
   skill: string
 
   @Expose()
@@ -26,6 +28,7 @@ export class CuriculumSkillDto {
   @IsNumber({ allowNaN: false }, { message: 'harus berupa number' })
   @Min(1, { message: 'minimal 1' })
   @Max(10, { message: 'maksimal 10' })
+  @ApiProperty({ default: 1 })
   level: number
 
   @Expose()
@@ -33,6 +36,7 @@ export class CuriculumSkillDto {
     typeof value === 'bigint' ? +value.toString() : +value,
   )
   @IsNumber({}, { message: 'harus berupa numeric' })
+  @ApiProperty({ default: 1 })
   cvitae_id: BigInt | number
 
   @Expose()

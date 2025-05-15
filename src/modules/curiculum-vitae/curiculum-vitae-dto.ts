@@ -1,9 +1,11 @@
 import {
   IsNotEmpty,
+  IsNumber,
   IsOptional,
   IsString,
   Matches,
 } from '@nestjs/class-validator'
+import { ApiProperty } from '@nestjs/swagger'
 import { Expose, Transform } from 'class-transformer'
 
 export class CuriculumVitaeDto {
@@ -16,6 +18,7 @@ export class CuriculumVitaeDto {
   @Expose()
   @IsString({ message: 'harus berupa string' })
   @IsNotEmpty({ message: 'harus diisi' })
+  @ApiProperty({ default: 'John Doe' })
   name: string
 
   @Expose()
@@ -24,22 +27,32 @@ export class CuriculumVitaeDto {
   @Matches(/^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/, {
     message: 'email tidak valid',
   })
+  @ApiProperty({ default: 'john.doe@example.com' })
   email: string
 
   @Expose()
   @IsString({ message: 'harus berupa string' })
   @IsNotEmpty({ message: 'harus diisi' })
+  @ApiProperty({ default: '081234567890' })
   phone: string
 
   @Expose()
   @IsString({ message: 'harus berupa string' })
   @IsNotEmpty({ message: 'harus diisi' })
+  @ApiProperty({ default: 'Jl. Contoh No. 123, Jakarta' })
   address: string
 
   @Expose()
   @IsString({ message: 'harus berupa string' })
   @IsNotEmpty({ message: 'harus diisi' })
+  @ApiProperty({ default: 'Summary' })
   summary: string
+
+  @Expose()
+  @IsNumber({allowNaN: false}, { message: 'harus berupa numeric' })
+  @IsNotEmpty({ message: 'harus diisi' })
+  @ApiProperty({ default: 1 })
+  user_id: number 
 
   @Expose()
   @Transform(({ value }) => (value ? value.toISOString() : null), {

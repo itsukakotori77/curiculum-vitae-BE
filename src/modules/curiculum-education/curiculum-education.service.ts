@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common'
 import { plainToInstance } from 'class-transformer'
-import { PaginationPayloadDto } from 'src/global/dto/pagination-payload-dto'
+import { PaginationPayloadDto } from 'src/core/dto/pagination-payload-dto'
 import { ICurriculumEducation } from 'src/interface/cvitae'
 import { PrismaService } from 'src/prisma/prisma.service'
 import { CuriculumEducationDto } from './curiculum-education-dto'
@@ -11,7 +11,7 @@ export class CuriculumEducationService {
 
   async getAll(data: PaginationPayloadDto): Promise<ICurriculumEducation> {
     const skip = (data.page - 1) * data.limit
-    const res = await this.prisma.curiculumEducation.findMany({
+    const res = await this.prisma.cVitaeEducation.findMany({
       skip: skip,
       take: data.limit,
       orderBy: { [data.sortBy]: data.sortSystem },
@@ -31,7 +31,7 @@ export class CuriculumEducationService {
   }
 
   async getById(id: number): Promise<CuriculumEducationDto | null> {
-    const res = await this.prisma.curiculumEducation.findUnique({
+    const res = await this.prisma.cVitaeEducation.findUnique({
       where: { id },
     })
 
@@ -45,14 +45,14 @@ export class CuriculumEducationService {
   }
 
   async create(data: CuriculumEducationDto): Promise<CuriculumEducationDto> {
-    const res = await this.prisma.curiculumEducation.create({
+    const res = await this.prisma.cVitaeEducation.create({
       data: {
-        name: data.name,
+        school: data.school,
         degree: data.degree,
         start_date: data.start_date,
         end_date: data.end_date,
         cvitae: {
-          connect: { id: data.cvitae_id },
+          connect: { id: +data.cvitae_id! },
         },
       },
     })
@@ -63,15 +63,15 @@ export class CuriculumEducationService {
   }
 
   async update(data: CuriculumEducationDto): Promise<CuriculumEducationDto> {
-    const res = await this.prisma.curiculumEducation.update({
-      where: { id: data.id },
+    const res = await this.prisma.cVitaeEducation.update({
+      where: { id: +data.id! },
       data: {
-        name: data.name,
+        school: data.school,
         degree: data.degree,
         start_date: data.start_date,
         end_date: data.end_date,
         cvitae: {
-          connect: { id: data.cvitae_id },
+          connect: { id: +data.cvitae_id! },
         },
       },
     })
@@ -82,7 +82,7 @@ export class CuriculumEducationService {
   }
 
   async delete(id: number): Promise<boolean> {
-    const res = await this.prisma.curiculumEducation.delete({
+    const res = await this.prisma.cVitaeEducation.delete({
       where: { id },
     })
 

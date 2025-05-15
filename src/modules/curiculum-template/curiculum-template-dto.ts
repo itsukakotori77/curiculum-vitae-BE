@@ -1,4 +1,5 @@
 import { IsNotEmpty, IsNumber, IsOptional, IsString } from '@nestjs/class-validator'
+import { ApiProperty } from '@nestjs/swagger'
 import { Expose, Transform } from 'class-transformer'
 
 export class CuriculumTemplateDto {
@@ -12,13 +13,15 @@ export class CuriculumTemplateDto {
   @Expose()
   @IsString({message: 'harus berupa string'})
   @IsNotEmpty({message: 'harus diisi'})
-  name?: string
+  @ApiProperty({ default: 'Template 1' })
+  name: string
 
   @Expose()
   @Transform(({ value }) =>
     typeof value === 'bigint' ? +value.toString() : +value,
   )
   @IsNumber({}, { message: 'harus berupa numeric' })
+  @ApiProperty({ default: 1 })
   cvitae_id: BigInt | number
 
   @Expose()

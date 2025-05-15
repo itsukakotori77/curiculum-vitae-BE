@@ -6,7 +6,6 @@
 
 generator client {
   provider = "prisma-client-js"
-  output   = "../generated/prisma"
 }
 
 datasource db {
@@ -15,12 +14,14 @@ datasource db {
 }
 
 model User {
-  id         BigInt   @id @default(autoincrement())
-  email      String   @unique
-  name       String?
-  password   String
-  created_at DateTime @default(now())
-  updated_at DateTime @updatedAt
+  id             BigInt   @id @default(autoincrement())
+  email          String   @unique
+  name           String
+  username       String   @unique
+  password       String
+  remember_token String?
+  created_at     DateTime @default(now())
+  updated_at     DateTime @updatedAt
 
   CVitae CVitae[]
 
@@ -28,7 +29,7 @@ model User {
 }
 
 model CVitae {
-  id         String   @id @default(cuid())
+  id         BigInt   @id @default(autoincrement())
   user_id    BigInt
   name       String
   email      String
@@ -48,8 +49,8 @@ model CVitae {
 }
 
 model CVitaeEducation {
-  id         String   @id @default(cuid())
-  cvitae_id  String
+  id         BigInt   @id @default(autoincrement())
+  cvitae_id  BigInt
   school     String
   degree     String
   start_date DateTime
@@ -63,8 +64,8 @@ model CVitaeEducation {
 }
 
 model CVitaeExperience {
-  id         String   @id @default(cuid())
-  cvitae_id  String
+  id         BigInt   @id @default(autoincrement())
+  cvitae_id  BigInt
   company    String
   position   String
   start_date DateTime
@@ -78,8 +79,8 @@ model CVitaeExperience {
 }
 
 model CVitaeSkill {
-  id         String   @id @default(cuid())
-  cvitae_id  String
+  id         BigInt   @id @default(autoincrement())
+  cvitae_id  BigInt
   skill      String
   level      Int
   created_at DateTime @default(now())
@@ -91,12 +92,13 @@ model CVitaeSkill {
 }
 
 model CVitaeTemplate {
-  id         String   @id @default(cuid())
+  id         BigInt   @id @default(autoincrement())
   name       String
+  cvitae_id  BigInt
   created_at DateTime @default(now())
   updated_at DateTime @updatedAt
 
-  CVitae CVitae[]
+  cvitae CVitae @relation(fields: [cvitae_id], references: [id])
 
   @@map("curiculum_vitae_template")
 }

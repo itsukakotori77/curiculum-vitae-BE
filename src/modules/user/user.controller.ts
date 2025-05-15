@@ -10,7 +10,7 @@ import {
   Query,
 } from '@nestjs/common'
 import { UserService } from './user.service'
-import { PaginationPayloadDto } from 'src/global/dto/pagination-payload-dto'
+import { PaginationPayloadDto } from 'src/core/dto/pagination-payload-dto'
 import { Response } from 'express'
 import { UserDto } from './user-dto'
 

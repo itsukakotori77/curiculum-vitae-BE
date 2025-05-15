@@ -19,7 +19,7 @@ export class CuriculumEducationDto {
   @IsNotEmpty({ message: 'harus diisi' })
   @IsString({ message: 'harus berupa string' })
   @ApiProperty({ default: 'user' })
-  name: string
+  school: string
 
   @Expose()
   @IsNotEmpty({ message: 'harus diisi' })
