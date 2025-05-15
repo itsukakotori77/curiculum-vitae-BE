@@ -8,6 +8,7 @@ import {
   Get,
   Put,
   Delete,
+  Query,
 } from '@nestjs/common'
 import { CuriculumEducationService } from './curiculum-education.service'
 import { PaginationPayloadDto } from 'src/global/dto/pagination-payload-dto'
@@ -18,8 +19,8 @@ import { CuriculumEducationDto } from './curiculum-education-dto'
 export class CuriculumEducationController {
   constructor(private educationService: CuriculumEducationService) {}
 
-  @Post('get-all')
-  async getAll(@Body() request: PaginationPayloadDto, @Res() res: Response) {
+  @Get('getAll')
+  async getAll(@Query() request: PaginationPayloadDto, @Res() res: Response) {
     try {
       const data = await this.educationService.getAll(request)
       return res.status(HttpStatus.OK).json({

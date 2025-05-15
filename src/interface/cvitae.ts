@@ -2,11 +2,16 @@ import { CuriculumEducationDto } from "src/modules/curiculum-education/curiculum
 import { CuriculumExperienceDto } from "src/modules/curiculum-experience/curiculum-experience-dto";
 import { CuriculumSkillDto } from "src/modules/curiculum-skill/curiculum-skill-dto";
 import { CuriculumTemplateDto } from "src/modules/curiculum-template/curiculum-template-dto";
+import { CuriculumVitaeDto } from "src/modules/curiculum-vitae/curiculum-vitae-dto";
 
 export interface IBaseResponse {
    totalData: number 
    totalPage: number 
    currentPage: number
+}
+
+export interface ICurriculumVitae extends IBaseResponse {
+   data: CuriculumVitaeDto[] | CuriculumVitaeDto
 }
 
 export interface ICurriculumEducation extends IBaseResponse {

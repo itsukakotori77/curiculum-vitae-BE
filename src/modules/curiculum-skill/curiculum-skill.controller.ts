@@ -1,11 +1,13 @@
 import {
   Body,
   Controller,
+  Delete,
   Get,
   HttpStatus,
   Param,
   Post,
   Put,
+  Query,
   Res,
 } from '@nestjs/common'
 import { CuriculumSkillService } from './curiculum-skill.service'
@@ -17,7 +19,8 @@ import { CuriculumSkillDto } from './curiculum-skill-dto'
 export class CuriculumSkillController {
   constructor(private curSkillService: CuriculumSkillService) {}
 
-  async getAll(@Body() request: PaginationPayloadDto, @Res() res: Response) {
+  @Get('getAll')
+  async getAll(@Query() request: PaginationPayloadDto, @Res() res: Response) {
     try {
       const data = await this.curSkillService.getAll(request)
       return res.status(HttpStatus.OK).json({
@@ -98,6 +101,7 @@ export class CuriculumSkillController {
     }
   }
 
+  @Delete('delete/:id')
   async delete(@Param('id') id: number, @Res() res: Response) {
     try {
       const data = await this.curSkillService.delete(id)

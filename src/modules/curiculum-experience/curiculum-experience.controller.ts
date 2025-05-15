@@ -1,11 +1,13 @@
 import {
   Body,
   Controller,
+  Delete,
   Get,
   HttpStatus,
   Param,
   Post,
   Put,
+  Query,
   Res,
 } from '@nestjs/common'
 import { CuriculumExperienceService } from './curiculum-experience.service'
@@ -17,7 +19,8 @@ import { CuriculumExperienceDto } from './curiculum-experience-dto'
 export class CuriculumExperienceController {
   constructor(private curExpService: CuriculumExperienceService) {}
 
-  async getAll(@Body() request: PaginationPayloadDto, @Res() res: Response) {
+  @Get('getAll')
+  async getAll(@Query() request: PaginationPayloadDto, @Res() res: Response) {
     try {
       const data = await this.curExpService.getAll(request)
       return res.status(HttpStatus.OK).json({
@@ -98,6 +101,7 @@ export class CuriculumExperienceController {
     }
   }
 
+  @Delete('delete/:id')
   async delete(@Param('id') id: number, @Res() res: Response) {
     try {
       const data = await this.curExpService.delete(id)

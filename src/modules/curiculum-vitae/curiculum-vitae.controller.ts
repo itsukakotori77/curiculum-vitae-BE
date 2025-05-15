@@ -10,19 +10,19 @@ import {
   Query,
   Res,
 } from '@nestjs/common'
-import { CuriculumTemplateService } from './curiculum-template.service'
+import { CuriculumVitaeService } from './curiculum-vitae.service'
 import { PaginationPayloadDto } from 'src/global/dto/pagination-payload-dto'
 import { Response } from 'express'
-import { CuriculumTemplateDto } from './curiculum-template-dto'
+import { CuriculumVitaeDto } from './curiculum-vitae-dto'
 
-@Controller('curiculum-template')
-export class CuriculumTemplateController {
-  constructor(private curTemplateService: CuriculumTemplateService) {}
+@Controller('curiculum-vitae')
+export class CuriculumVitaeController {
+  constructor(private curVitaeService: CuriculumVitaeService) {}
 
   @Get('getAll')
   async getAll(@Query() request: PaginationPayloadDto, @Res() res: Response) {
     try {
-      const data = await this.curTemplateService.getAll(request)
+      const data = await this.curVitaeService.getAll(request)
       return res.status(HttpStatus.OK).json({
         code: '00',
         message: 'Berhasil menampilkan data',
@@ -43,7 +43,7 @@ export class CuriculumTemplateController {
   @Get('getOne/:id')
   async getById(@Param('id') id: number, @Res() res: Response) {
     try {
-      const data = await this.curTemplateService.getById(id)
+      const data = await this.curVitaeService.getById(id)
       if (data) {
         return res.status(HttpStatus.OK).json({
           code: '00',
@@ -66,9 +66,9 @@ export class CuriculumTemplateController {
   }
 
   @Post('create')
-  async create(@Body() request: CuriculumTemplateDto, @Res() res: Response) {
+  async create(@Body() request: CuriculumVitaeDto, @Res() res: Response) {
     try {
-      const data = await this.curTemplateService.create(request)
+      const data = await this.curVitaeService.create(request)
       return res.status(HttpStatus.OK).json({
         code: '00',
         message: 'Berhasil menambahkan data',
@@ -84,9 +84,9 @@ export class CuriculumTemplateController {
   }
 
   @Put('update')
-  async update(@Body() request: CuriculumTemplateDto, @Res() res: Response) {
+  async update(@Body() request: CuriculumVitaeDto, @Res() res: Response) {
     try {
-      const data = await this.curTemplateService.update(request)
+      const data = await this.curVitaeService.update(request)
       return res.status(HttpStatus.OK).json({
         code: '00',
         message: 'Berhasil mengubah data',
@@ -104,7 +104,7 @@ export class CuriculumTemplateController {
   @Delete('delete/:id')
   async delete(@Param('id') id: number, @Res() res: Response) {
     try {
-      const data = await this.curTemplateService.delete(id)
+      const data = await this.curVitaeService.delete(id)
 
       if (data) {
         return res.status(HttpStatus.OK).json({

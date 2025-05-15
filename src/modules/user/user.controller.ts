@@ -7,6 +7,7 @@ import {
   Param,
   Get,
   Put,
+  Query,
 } from '@nestjs/common'
 import { UserService } from './user.service'
 import { PaginationPayloadDto } from 'src/global/dto/pagination-payload-dto'
@@ -17,8 +18,8 @@ import { UserDto } from './user-dto'
 export class UserController {
   constructor(private user: UserService) {}
 
-  @Post('get-all')
-  async getAll(@Body() request: PaginationPayloadDto, @Res() res: Response) {
+  @Get('getAll')
+  async getAll(@Query() request: PaginationPayloadDto, @Res() res: Response) {
     try {
       const data = await this.user.getAll(request)
       return res.status(HttpStatus.OK).json({
