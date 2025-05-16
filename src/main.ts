@@ -32,7 +32,7 @@ async function bootstrap() {
     )
 
     const config = new DocumentBuilder()
-      .setTitle('API Presence')
+      .setTitle('API CV Generator')
       .setDescription('API description here')
       .setVersion('1.0')
       .addBearerAuth(

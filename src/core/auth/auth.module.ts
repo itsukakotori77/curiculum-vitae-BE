@@ -3,10 +3,10 @@ import { AuthService } from './auth.service'
 import { PrismaModule } from 'src/prisma/prisma.module'
 import { PassportModule } from '@nestjs/passport'
 import { JwtModule } from '@nestjs/jwt'
-import { AuthcontrollerController } from './authcontroller.controller'
 import { JwtStrategy } from '../jwt/jwt-strategy'
 import { ConstantConfig } from 'src/core/config/constant-config'
 import { AppConfigModule } from '../config/app-config.module'
+import { AuthController } from './auth.controller';
 
 @Module({
   imports: [
@@ -36,7 +36,7 @@ import { AppConfigModule } from '../config/app-config.module'
     PassportModule,
   ],
   providers: [AuthService, JwtStrategy],
-  controllers: [AuthcontrollerController],
+  controllers: [AuthController],
   exports: [JwtModule, PassportModule, AuthService],
 })
 export class AuthModule {}
