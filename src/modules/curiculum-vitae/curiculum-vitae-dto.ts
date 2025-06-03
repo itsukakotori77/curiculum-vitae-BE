@@ -1,4 +1,7 @@
 import {
+  ArrayMaxSize,
+  ArrayMinSize,
+  IsArray,
   IsNotEmpty,
   IsNumber,
   IsOptional,
@@ -7,6 +10,10 @@ import {
 } from '@nestjs/class-validator'
 import { ApiProperty } from '@nestjs/swagger'
 import { Expose, Transform } from 'class-transformer'
+import { CuriculumEducationDto } from '../curiculum-education/curiculum-education-dto'
+import { CuriculumExperienceDto } from '../curiculum-experience/curiculum-experience-dto'
+import { CuriculumSkillDto } from '../curiculum-skill/curiculum-skill-dto'
+import { CuriculumTemplateDto } from '../curiculum-template/curiculum-template-dto'
 
 export class CuriculumVitaeDto {
   @Expose()
@@ -49,10 +56,77 @@ export class CuriculumVitaeDto {
   summary: string
 
   @Expose()
-  @IsNumber({allowNaN: false}, { message: 'harus berupa numeric' })
+  @IsNumber({ allowNaN: false }, { message: 'harus berupa numeric' })
   @IsNotEmpty({ message: 'harus diisi' })
   @ApiProperty({ default: 1 })
-  user_id: number 
+  user_id: number
+
+  @Expose()
+  @IsOptional()
+  @ApiProperty({
+    type: [CuriculumEducationDto],
+    default: [
+      {
+        school: 'SMKN 1 Cimahi',
+        degree: 'SMK',
+        start_date: '2025-03-03 16:30:00',
+        end_date: '2025-03-03 16:30:00',
+        cvitae_id: 1,
+      },
+    ],
+  })
+  
+  @ArrayMinSize(1, { message: 'minimal harus memiliki 1 pendidikan' })
+  curEducation?: CuriculumEducationDto[]
+
+  @Expose()
+  @IsOptional()
+  @ApiProperty({
+    type: [CuriculumExperienceDto],
+    default: [
+      {
+        company: 'PT. Contoh',
+        position: 'Software Engineer',
+        start_date: '2025-03-03 16:30:00',
+        end_date: '2025-03-03 16:30:00',
+        cvitae_id: 1,
+      },
+    ],
+  })
+  
+  @ArrayMinSize(1, { message: 'minimal harus memiliki 1 pengalaman' })
+  curExperience?: CuriculumExperienceDto[]
+
+  @Expose()
+  @IsOptional()
+  @ApiProperty({
+    type: [CuriculumSkillDto],
+    default: [
+      {
+        skill: 'PHP',
+        level: 'Expert',
+        cvitae_id: 1,
+      },
+    ],
+  })
+  
+  @IsArray()
+  @ArrayMinSize(1, { message: 'minimal harus memiliki 1 skill' })
+  curSkill?: CuriculumSkillDto[]
+
+  @Expose()
+  @IsOptional()
+  @ApiProperty({
+    type: [CuriculumTemplateDto],
+    default: [
+      {
+        template: 'Template 1',
+        cvitae_id: 1,
+      },
+    ],
+  })
+  @IsArray()
+  curTemplate?: CuriculumTemplateDto[]
 
   @Expose()
   @Transform(({ value }) => (value ? value.toISOString() : null), {

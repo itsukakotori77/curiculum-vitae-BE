@@ -30,3 +30,4 @@ export interface ICurriculumTemplate extends IBaseResponse {
    data: CuriculumTemplateDto[] | CuriculumTemplateDto
 }
 
+
