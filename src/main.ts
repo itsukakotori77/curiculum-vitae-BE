@@ -86,7 +86,10 @@ async function bootstrap() {
     })
 
     await app.listen(constants.port ?? 5000)
-    Logger.log(`🚀 Service running at ${constants.baseUrl} ${constants.port}`, 'Bootstrap')
+    Logger.log(
+      `🚀 Service running at ${constants.baseUrl} ${constants.port}`,
+      'Bootstrap',
+    )
 
     return constants
   } catch (error: any) {
@@ -98,4 +101,6 @@ async function bootstrap() {
     process.exit(1)
   }
 }
-bootstrap().then((constants) => console.log(`Server running on port ${constants.port}`))
+bootstrap().then((constants) =>
+  console.log(`Server running on port ${constants.port}`),
+)

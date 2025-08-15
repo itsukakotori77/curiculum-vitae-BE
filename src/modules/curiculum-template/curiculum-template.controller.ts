@@ -17,7 +17,7 @@ import { Response } from 'express'
 import { CuriculumTemplateDto } from './curiculum-template-dto'
 import { JwtAuthGuard } from 'src/core/jwt/jwt-auth-guard'
 
-@Controller('curiculum-template')
+@Controller()
 @UseGuards(JwtAuthGuard)
 export class CuriculumTemplateController {
   constructor(private curTemplateService: CuriculumTemplateService) {}

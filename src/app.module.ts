@@ -11,6 +11,7 @@ import { CuriculumVitaeModule } from './modules/curiculum-vitae/curiculum-vitae.
 import { RouterModule } from '@nestjs/core'
 import { AuthModule } from './core/auth/auth.module';
 import { AppConfigModule } from './core/config/app-config.module';
+import { CuriculumSettingModule } from './modules/curiculum-setting/curiculum-setting.module';
 
 @Module({
   imports: [
@@ -53,6 +54,7 @@ import { AppConfigModule } from './core/config/app-config.module';
     CuriculumTemplateModule,
     AuthModule,
     AppConfigModule,
+    CuriculumSettingModule,
   ],
   controllers: [AppController],
   providers: [AppService],

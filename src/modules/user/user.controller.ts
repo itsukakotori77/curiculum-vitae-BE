@@ -16,8 +16,8 @@ import { Response } from 'express'
 import { UserDto } from './user-dto'
 import { JwtAuthGuard } from 'src/core/jwt/jwt-auth-guard'
 
-@Controller('user')
-@UseGuards(JwtAuthGuard)
+@Controller()
+// @UseGuards(JwtAuthGuard)
 export class UserController {
   constructor(private user: UserService) {}
 

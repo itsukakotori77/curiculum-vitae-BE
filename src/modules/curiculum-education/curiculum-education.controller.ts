@@ -17,7 +17,7 @@ import { Response } from 'express'
 import { CuriculumEducationDto } from './curiculum-education-dto'
 import { JwtAuthGuard } from 'src/core/jwt/jwt-auth-guard'
 
-@Controller('curiculum-education')
+@Controller()
 @UseGuards(JwtAuthGuard)
 export class CuriculumEducationController {
   constructor(private educationService: CuriculumEducationService) {}
