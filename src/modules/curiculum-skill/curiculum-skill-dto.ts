@@ -11,9 +11,10 @@ import { Expose, Transform } from 'class-transformer'
 
 export class CuriculumSkillDto {
   @Expose()
-  @Transform(({ value }) =>
-    typeof value === 'string' ? +value.toString() : +value,
-  )
+  @Transform(({ value }) => {
+    if (value === undefined || value === null) return undefined;
+    return typeof value === 'bigint' ? +value.toString() : +value;
+  })
   @IsOptional()
   id?: BigInt | number
 
@@ -32,12 +33,14 @@ export class CuriculumSkillDto {
   level: number
 
   @Expose()
-  @Transform(({ value }) =>
-    typeof value === 'bigint' ? +value.toString() : +value,
-  )
+  @Transform(({ value }) => {
+    if (value === undefined || value === null) return undefined;
+    return typeof value === 'bigint' ? +value.toString() : +value;
+  })
+  @IsOptional()
   @IsNumber({}, { message: 'harus berupa numeric' })
   @ApiProperty({ default: 1 })
-  cvitae_id: BigInt | number
+  cvitae_id?: BigInt | number
 
   @Expose()
   @Transform(({ value }) => (value ? value.toISOString() : null), {

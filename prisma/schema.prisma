@@ -29,21 +29,23 @@ model User {
 }
 
 model CVitae {
-  id         BigInt   @id @default(autoincrement())
-  user_id    BigInt
-  name       String
-  email      String
-  phone      String
-  address    String
-  summary    String
-  created_at DateTime @default(now())
-  updated_at DateTime @updatedAt
+  id                BigInt   @id @default(autoincrement())
+  user_id           BigInt
+  cvitae_setting_id BigInt
+  name              String
+  email             String
+  phone             String
+  address           String
+  summary           String
+  created_at        DateTime @default(now())
+  updated_at        DateTime @updatedAt
 
   user             User               @relation(fields: [user_id], references: [id])
   CVitaeEducation  CVitaeEducation[]
   CVitaeExperience CVitaeExperience[]
   CVitaeSkill      CVitaeSkill[]
   CVitaeTemplate   CVitaeTemplate[]
+  CVSetting        CVSetting?         @relation(fields: [cvitae_setting_id], references: [id])
 
   @@map("curiculum_vitae")
 }
@@ -101,4 +103,17 @@ model CVitaeTemplate {
   cvitae CVitae @relation(fields: [cvitae_id], references: [id])
 
   @@map("curiculum_vitae_template")
+}
+
+model CVSetting {
+  id            BigInt   @id @default(autoincrement())
+  primary_color String?
+  sidebar_color String?
+  skill_color   String?
+  created_at    DateTime @default(now())
+  updated_at    DateTime @updatedAt
+
+  CVitae CVitae[]
+
+  @@map("curiculum_vitae_setting")
 }

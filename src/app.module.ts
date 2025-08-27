@@ -9,9 +9,9 @@ import { CuriculumEducationModule } from './modules/curiculum-education/curiculu
 import { PrismaModule } from './prisma/prisma.module'
 import { CuriculumVitaeModule } from './modules/curiculum-vitae/curiculum-vitae.module'
 import { RouterModule } from '@nestjs/core'
-import { AuthModule } from './core/auth/auth.module';
-import { AppConfigModule } from './core/config/app-config.module';
-import { CuriculumSettingModule } from './modules/curiculum-setting/curiculum-setting.module';
+import { AuthModule } from './core/auth/auth.module'
+import { AppConfigModule } from './core/config/app-config.module'
+import { CuriculumSettingModule } from './modules/curiculum-setting/curiculum-setting.module'
 
 @Module({
   imports: [
@@ -43,6 +43,10 @@ import { CuriculumSettingModule } from './modules/curiculum-setting/curiculum-se
       {
         path: 'v1/curiculum-template',
         module: CuriculumTemplateModule,
+      },
+      {
+        path: 'v1/curiculum-setting',
+        module: CuriculumSettingModule,
       },
     ]),
     UserModule,

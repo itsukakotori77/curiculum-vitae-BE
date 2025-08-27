@@ -7,6 +7,7 @@ import { AuthModule } from 'src/core/auth/auth.module';
 @Module({
   providers: [CuriculumTemplateService],
   controllers: [CuriculumTemplateController],
-  imports: [PrismaModule, AuthModule]
+  imports: [PrismaModule, AuthModule],
+  exports: [CuriculumTemplateService]
 })
 export class CuriculumTemplateModule {}

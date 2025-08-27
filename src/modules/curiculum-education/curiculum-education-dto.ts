@@ -9,9 +9,10 @@ import { Expose, Transform } from 'class-transformer'
 
 export class CuriculumEducationDto {
   @Expose()
-  @Transform(({ value }) =>
-    typeof value === 'bigint' ? +value.toString() : +value,
-  )
+  @Transform(({ value }) => {
+    if (value === undefined || value === null) return undefined;
+    return typeof value === 'bigint' ? +value.toString() : +value;
+  })
   @IsOptional()
   id?: BigInt | number
 
@@ -38,11 +39,14 @@ export class CuriculumEducationDto {
   end_date: Date
 
   @Expose()
-  @Transform(({ value }) =>
-    typeof value === 'bigint' ? +value.toString() : +value,
-  )
+  @Transform(({ value }) => {
+    if (value === undefined || value === null) return undefined;
+    return typeof value === 'bigint' ? +value.toString() : +value;
+  })
+  @IsOptional()
   @IsNumber({}, { message: 'harus berupa numeric' })
-  cvitae_id: BigInt | number
+  @ApiProperty({ default: 1 })
+  cvitae_id?: BigInt | number
 
   @Expose()
   @Transform(({ value }) => (value ? value.toISOString() : null), {

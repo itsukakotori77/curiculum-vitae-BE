@@ -71,6 +71,23 @@ export class UserController {
   @Post('create')
   async create(@Body() request: UserDto, @Res() res: Response) {
     try {
+
+      const isUsernameExist = await this.user.isUsernameTaken(request.username)
+      if(isUsernameExist){
+        return res.status(HttpStatus.BAD_REQUEST).json({
+          code: '01',
+          message: 'Username telah terdaftar',
+        })
+      } 
+
+      const isUserExist = await this.user.isEmailTaken(request.email)
+      if(isUserExist){
+        return res.status(HttpStatus.BAD_REQUEST).json({
+          code: '01',
+          message: 'Email telah terdaftar',
+        })
+      }
+
       const data = await this.user.create(request)
       return res.status(HttpStatus.OK).json({
         code: '00',

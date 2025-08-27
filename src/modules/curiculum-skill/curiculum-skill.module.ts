@@ -8,5 +8,6 @@ import { AuthModule } from 'src/core/auth/auth.module';
   providers: [CuriculumSkillService],
   controllers: [CuriculumSkillController],
   imports: [PrismaModule, AuthModule],
+  exports: [CuriculumSkillService]
 })
 export class CuriculumSkillModule {}

@@ -6,20 +6,36 @@ export const randomString = (length: number, chars: string) => {
 }
 
 export const extractValidation = (arr: any | string[]) => {
-  const data = arr.reduce((result: any, item: any) => {
-    if (item.constraints && typeof item.constraints === 'object') {
-      Object.entries(item.constraints).map(([key, val]) => {
-        result.push({ [item.property]: val })
-      })
-    } else if (item.constraints && typeof item.constraints === 'string') {
-      result.push({ [item.property]: item.constraints })
-    }
-    return result
-  }, [])
-
+  const extractErrors = (errors: any[], parentProperty = ''): any[] => {
+    const result: any[] = [];
+    
+    errors.forEach((error: any) => {
+      const propertyPath = parentProperty ? `${parentProperty}.${error.property}` : error.property;
+      
+      // If this error has direct constraints, add them
+      if (error.constraints && typeof error.constraints === 'object') {
+        Object.entries(error.constraints).forEach(([key, val]) => {
+          result.push({ [propertyPath]: val });
+        });
+      } else if (error.constraints && typeof error.constraints === 'string') {
+        result.push({ [propertyPath]: error.constraints });
+      }
+      
+      // If this error has children (nested validation errors), recursively extract them
+      if (error.children && error.children.length > 0) {
+        const childErrors = extractErrors(error.children, propertyPath);
+        result.push(...childErrors);
+      }
+    });
+    
+    return result;
+  };
+  
+  const data = extractErrors(arr);
+  
   return [
     data.reduce((acc: any, obj: any) => {
-      return { ...acc, ...obj }
-    }, {}),
+      return { ...acc, ...obj };
+    }, {})
   ]
 }

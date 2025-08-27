@@ -26,6 +26,7 @@ async function bootstrap() {
         exceptionFactory: (errors: any) => {
           const errorMessages = extractValidation(errors)
           console.log('validation', errorMessages)
+          Logger.debug(errors)
           return new BadRequestException(errorMessages)
         },
       }),
