@@ -18,9 +18,10 @@ import { CuriculumTemplateDto } from '../curiculum-template/curiculum-template-d
 
 export class CuriculumVitaeDto {
   @Expose()
-  @Transform(({ value }) =>
-    typeof value === 'bigint' ? value.toString() : value,
-  )
+  @Transform(({ value }) => {
+    if (value === undefined || value === null) return undefined;
+    return typeof value === 'bigint' ? +value.toString() : +value;
+  })
   @IsOptional()
   id?: bigint | number
 
