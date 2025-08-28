@@ -18,7 +18,7 @@ import { CuriculumVitaeDto } from './curiculum-vitae-dto'
 import { JwtAuthGuard } from 'src/core/jwt/jwt-auth-guard'
 
 @Controller()
-// @UseGuards(JwtAuthGuard)
+@UseGuards(JwtAuthGuard)
 export class CuriculumVitaeController {
   constructor(private curVitaeService: CuriculumVitaeService) {}
 
