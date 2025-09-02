@@ -13,10 +13,7 @@ export class AuthService {
   constructor(
     private prisma: PrismaService,
     private jwtService: JwtService,
-    private readonly contants: ConstantConfig,
-  ) {
-    this.secret = this.contants.jwtSecret!
-  }
+  ) {}
 
   async login(data: AuthDto): Promise<IAuthResponse> {
     const user = await this.prisma.user.findUnique({
@@ -34,6 +31,8 @@ export class AuthService {
     }
 
     return {
+      id: +user.id.toString(),
+      email: user.email,
       username: data.username,
       token: this.jwtService.sign(payload),
     }
@@ -41,15 +40,8 @@ export class AuthService {
 
   async validateToken(token: string): Promise<any> {
     try {
-      // Use the same secret that's configured for signing
-
-      if (!this.secret) {
-        throw new UnauthorizedException('JWT secret is not configured')
-      }
-
-      const payload: IJwtPayload = await this.jwtService.verify(token, {
-        secret: this.secret!,
-      })
+      // Remove the manual secret - let JwtService use the global config
+      const payload: IJwtPayload = await this.jwtService.verify(token)
 
       const user = await this.prisma.user.findUnique({
         where: { id: +payload.id },

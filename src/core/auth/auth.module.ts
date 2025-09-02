@@ -6,7 +6,7 @@ import { JwtModule } from '@nestjs/jwt'
 import { JwtStrategy } from '../jwt/jwt-strategy'
 import { ConstantConfig } from 'src/core/config/constant-config'
 import { AppConfigModule } from '../config/app-config.module'
-import { AuthController } from './auth.controller';
+import { AuthController } from './auth.controller'
 
 @Module({
   imports: [
@@ -14,23 +14,23 @@ import { AuthController } from './auth.controller';
     AppConfigModule,
     PassportModule.register({ defaultStrategy: 'jwt' }),
     JwtModule.registerAsync({
-      imports: [JwtModule, AppConfigModule],
+      imports: [AppConfigModule],
       inject: [ConstantConfig],
       useFactory: async (constants: ConstantConfig) => {
-        const secret = constants.jwtSecret!;
+        const secret = constants.jwtSecret!
+        console.log('secret jwt auth module', secret)
         
         if (!secret) {
-          console.error('JWT SECRET IS NOT DEFINED! Set NEST_JWT_SECRET environment variable.');
-          return {
-            secret: 'fallback-development-secret-do-not-use-in-production',
-            signOptions: { expiresIn: '1d' },
-          };
+          throw new Error('JWT_SECRET environment variable is required!')
         }
-        
+
         return {
           secret: secret,
-          signOptions: { expiresIn: '1d' },
-        };
+          signOptions: {
+            expiresIn: '1d',
+            algorithm: 'HS256',
+          },
+        }
       },
     }),
     PassportModule,
