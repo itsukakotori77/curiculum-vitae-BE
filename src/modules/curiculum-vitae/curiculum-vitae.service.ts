@@ -71,8 +71,8 @@ export class CuriculumVitaeService {
           create: data.curEducation?.map(edu => ({
             school: edu.school,
             degree: edu.degree,
-            start_date: new Date(edu.start_date),
-            end_date: new Date(edu.end_date),
+            start_date: new Date(edu.start_date!),
+            end_date: new Date(edu.end_date!),
           })) || []
         },
         CVitaeSkill: {
@@ -85,8 +85,8 @@ export class CuriculumVitaeService {
           create: data.curExperience?.map(exp => ({
             company: exp.company,
             position: exp.position,
-            start_date: new Date(exp.start_date),
-            end_date: new Date(exp.end_date),
+            start_date: new Date(exp.start_date!),
+            end_date: new Date(exp.end_date!),
           })) || []
         }
       },

@@ -31,12 +31,14 @@ export class CuriculumEducationDto {
   @Expose()
   @IsNotEmpty({ message: 'harus diisi' })
   @ApiProperty({ default: '2025-03-03 16:30:00' })
-  start_date: Date
+  @IsOptional()
+  start_date?: Date
 
   @Expose()
   @IsNotEmpty({ message: 'harus diisi' })
   @ApiProperty({ default: '2025-03-03 16:30:00' })
-  end_date: Date
+  @IsOptional()
+  end_date?: Date
 
   @Expose()
   @Transform(({ value }) => {

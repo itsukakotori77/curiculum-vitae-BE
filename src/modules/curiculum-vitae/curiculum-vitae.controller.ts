@@ -16,6 +16,7 @@ import { PaginationPayloadDto } from 'src/core/dto/pagination-payload-dto'
 import { Response } from 'express'
 import { CuriculumVitaeDto } from './curiculum-vitae-dto'
 import { JwtAuthGuard } from 'src/core/jwt/jwt-auth-guard'
+import { Logger } from '@nestjs/common'
 
 @Controller()
 @UseGuards(JwtAuthGuard)

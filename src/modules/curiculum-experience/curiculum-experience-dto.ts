@@ -26,12 +26,14 @@ export class CuriculumExperienceDto {
   @Expose()
   @IsNotEmpty({ message: 'harus diisi' })
   @ApiProperty({ default: '2025-03-03 16:30:00' })
-  start_date: string
+  @IsOptional()
+  start_date?: string
   
   @Expose()
   @IsNotEmpty({ message: 'harus diisi' })
   @ApiProperty({ default: '2025-03-03 16:30:00' })
-  end_date: string
+  @IsOptional()
+  end_date?: string
 
   @Expose()
   @Transform(({ value }) => {

@@ -35,7 +35,7 @@ model CVitae {
   name              String
   email             String
   phone             String
-  address           String
+  address           String   @db.VarChar(255)
   summary           String
   created_at        DateTime @default(now())
   updated_at        DateTime @updatedAt
@@ -51,14 +51,14 @@ model CVitae {
 }
 
 model CVitaeEducation {
-  id         BigInt   @id @default(autoincrement())
+  id         BigInt    @id @default(autoincrement())
   cvitae_id  BigInt
   school     String
   degree     String
-  start_date DateTime
-  end_date   DateTime
-  created_at DateTime @default(now())
-  updated_at DateTime @updatedAt
+  start_date DateTime? @default(now())
+  end_date   DateTime? @default(now())
+  created_at DateTime  @default(now())
+  updated_at DateTime  @updatedAt
 
   cvitae CVitae @relation(fields: [cvitae_id], references: [id])
 
@@ -66,14 +66,14 @@ model CVitaeEducation {
 }
 
 model CVitaeExperience {
-  id         BigInt   @id @default(autoincrement())
+  id         BigInt    @id @default(autoincrement())
   cvitae_id  BigInt
   company    String
   position   String
-  start_date DateTime
-  end_date   DateTime
-  created_at DateTime @default(now())
-  updated_at DateTime @updatedAt
+  start_date DateTime? @default(now())
+  end_date   DateTime? @default(now())
+  created_at DateTime  @default(now())
+  updated_at DateTime  @updatedAt
 
   cvitae CVitae @relation(fields: [cvitae_id], references: [id])
 

@@ -18,7 +18,6 @@ import { AuthController } from './auth.controller'
       inject: [ConstantConfig],
       useFactory: async (constants: ConstantConfig) => {
         const secret = constants.jwtSecret!
-        console.log('secret jwt auth module', secret)
         
         if (!secret) {
           throw new Error('JWT_SECRET environment variable is required!')

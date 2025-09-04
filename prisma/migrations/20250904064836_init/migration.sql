@@ -1,0 +1,7 @@
+-- AlterTable
+ALTER TABLE `curiculum_vitae_education` MODIFY `start_date` DATETIME(3) NULL DEFAULT CURRENT_TIMESTAMP(3),
+    MODIFY `end_date` DATETIME(3) NULL DEFAULT CURRENT_TIMESTAMP(3);
+
+-- AlterTable
+ALTER TABLE `curiculum_vitae_experience` MODIFY `start_date` DATETIME(3) NULL DEFAULT CURRENT_TIMESTAMP(3),
+    MODIFY `end_date` DATETIME(3) NULL DEFAULT CURRENT_TIMESTAMP(3);
