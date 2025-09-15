@@ -10,8 +10,10 @@ import { PrismaModule } from './prisma/prisma.module'
 import { CuriculumVitaeModule } from './modules/curiculum-vitae/curiculum-vitae.module'
 import { RouterModule } from '@nestjs/core'
 import { AuthModule } from './core/auth/auth.module'
-import { AppConfigModule } from './core/config/app-config.module'
+import { AppConfigModule } from './shared/infrastructure/config/app-config.module'
 import { CuriculumSettingModule } from './modules/curiculum-setting/curiculum-setting.module'
+import { CloudinaryService } from './shared/infrastructure/services/cloudinary.service'
+import { SharedModule } from './shared/infrastructure/shared.module';
 
 @Module({
   imports: [
@@ -59,8 +61,9 @@ import { CuriculumSettingModule } from './modules/curiculum-setting/curiculum-se
     AuthModule,
     AppConfigModule,
     CuriculumSettingModule,
+    SharedModule,
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [AppService, CloudinaryService]
 })
 export class AppModule {}

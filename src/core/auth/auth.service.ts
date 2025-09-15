@@ -4,7 +4,7 @@ import { AuthDto } from './auth-dto'
 import { IAuthResponse, IJwtPayload } from 'src/interface/auth'
 import * as bcrypt from 'bcrypt'
 import { JwtService } from '@nestjs/jwt'
-import { ConstantConfig } from 'src/core/config/constant-config'
+import { ConstantConfig } from 'src/shared/infrastructure/config/constant-config'
 
 @Injectable()
 export class AuthService {
@@ -40,9 +40,7 @@ export class AuthService {
 
   async validateToken(token: string): Promise<any> {
     try {
-      // Remove the manual secret - let JwtService use the global config
       const payload: IJwtPayload = await this.jwtService.verify(token)
-
       const user = await this.prisma.user.findUnique({
         where: { id: +payload.id },
       })

@@ -7,7 +7,7 @@ import { UserDto } from './user-dto'
 import * as bcrypt from 'bcrypt'
 import { randomString } from 'src/libs/common'
 import { strRandom } from 'src/libs/constans'
-import { ConstantConfig } from 'src/core/config/constant-config'
+import { ConstantConfig } from 'src/shared/infrastructure/config/constant-config'
 
 @Injectable()
 export class UserService {
@@ -50,7 +50,6 @@ export class UserService {
   }
 
   async create(data: UserDto): Promise<UserDto> {
-
     const hashedPassword = await bcrypt.hash(data.password, this.saltRounds)
     const res = await this.prisma.user.create({
       data: {

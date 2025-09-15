@@ -7,6 +7,7 @@ import { CuriculumEducationModule } from '../curiculum-education/curiculum-educa
 import { CuriculumExperienceModule } from '../curiculum-experience/curiculum-experience.module'
 import { CuriculumSkillModule } from '../curiculum-skill/curiculum-skill.module'
 import { CuriculumTemplateModule } from '../curiculum-template/curiculum-template.module'
+import { SharedModule } from 'src/shared/infrastructure/shared.module'
 
 @Module({
   providers: [CuriculumVitaeService],
@@ -18,6 +19,8 @@ import { CuriculumTemplateModule } from '../curiculum-template/curiculum-templat
     CuriculumExperienceModule,
     CuriculumSkillModule,
     CuriculumTemplateModule,
+    SharedModule
   ],
 })
 export class CuriculumVitaeModule {}
+``

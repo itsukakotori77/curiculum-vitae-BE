@@ -4,8 +4,8 @@ import { PrismaModule } from 'src/prisma/prisma.module'
 import { PassportModule } from '@nestjs/passport'
 import { JwtModule } from '@nestjs/jwt'
 import { JwtStrategy } from '../jwt/jwt-strategy'
-import { ConstantConfig } from 'src/core/config/constant-config'
-import { AppConfigModule } from '../config/app-config.module'
+import { ConstantConfig } from 'src/shared/infrastructure/config/constant-config'
+import { AppConfigModule } from '../../shared/infrastructure/config/app-config.module'
 import { AuthController } from './auth.controller'
 
 @Module({
@@ -18,7 +18,7 @@ import { AuthController } from './auth.controller'
       inject: [ConstantConfig],
       useFactory: async (constants: ConstantConfig) => {
         const secret = constants.jwtSecret!
-        
+
         if (!secret) {
           throw new Error('JWT_SECRET environment variable is required!')
         }

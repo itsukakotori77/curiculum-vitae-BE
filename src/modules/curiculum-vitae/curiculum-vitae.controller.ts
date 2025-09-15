@@ -1,4 +1,5 @@
 import {
+  BadRequestException,
   Body,
   Controller,
   Delete,
@@ -9,7 +10,9 @@ import {
   Put,
   Query,
   Res,
+  UploadedFile,
   UseGuards,
+  UseInterceptors,
 } from '@nestjs/common'
 import { CuriculumVitaeService } from './curiculum-vitae.service'
 import { PaginationPayloadDto } from 'src/core/dto/pagination-payload-dto'
@@ -17,11 +20,18 @@ import { Response } from 'express'
 import { CuriculumVitaeDto } from './curiculum-vitae-dto'
 import { JwtAuthGuard } from 'src/core/jwt/jwt-auth-guard'
 import { Logger } from '@nestjs/common'
+import { FileInterceptor } from '@nestjs/platform-express'
+import { CloudinaryService } from 'src/shared/infrastructure/services/cloudinary.service'
+import { ApiBody, ApiConsumes } from '@nestjs/swagger'
+import { FileDto } from 'src/shared/infrastructure/dto/file-dto'
 
 @Controller()
 @UseGuards(JwtAuthGuard)
 export class CuriculumVitaeController {
-  constructor(private curVitaeService: CuriculumVitaeService) {}
+  constructor(
+    private curVitaeService: CuriculumVitaeService,
+    private cloudDinary: CloudinaryService,
+  ) {}
 
   @Get('getAll')
   async getAll(@Query() request: PaginationPayloadDto, @Res() res: Response) {
@@ -97,6 +107,50 @@ export class CuriculumVitaeController {
         data: data,
       })
     } catch (error: any) {
+      return res.status(HttpStatus.INTERNAL_SERVER_ERROR).json({
+        code: '01',
+        success: false,
+        message: error.message,
+      })
+    }
+  }
+
+  @Post('upload')
+  @ApiConsumes('multipart/form-data')
+  @ApiBody({
+    description: 'Image file upload',
+    type: FileDto
+  })
+  @UseInterceptors(
+    FileInterceptor('file', {
+      limits: { fileSize: 5 * 1024 * 1024 },
+      fileFilter: (req, file, cb) => {
+        if (!file.mimetype.match(/\/(jpg|jpeg|png|gif)$/)) {
+          return cb(new Error('Only image files allowed'), false)
+        }
+        cb(null, true)
+      },
+    }),
+  )
+  async uploadImage(
+    @UploadedFile() file: Express.Multer.File,
+    @Res() res: Response,
+  ) {
+    if (!file) {
+      throw new BadRequestException('No file uploaded')
+    }
+
+    try {
+      const result = await this.cloudDinary.uploadImage(file)
+      return res.status(HttpStatus.OK).json({
+        code: '00',
+        message: 'Upload berhasil',
+        data: {
+          url: result.secure_url,
+          public_id: result.public_id,
+        },
+      })
+    } catch (error) {
       return res.status(HttpStatus.INTERNAL_SERVER_ERROR).json({
         code: '01',
         success: false,

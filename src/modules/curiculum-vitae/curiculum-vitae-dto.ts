@@ -58,6 +58,9 @@ export class CuriculumVitaeDto {
   summary: string
 
   @Expose()
+  @Transform(({ value }) =>
+    typeof value === 'bigint' ? +value.toString() : +value,
+  )
   @IsNumber({ allowNaN: false }, { message: 'harus berupa numeric' })
   @IsNotEmpty({ message: 'harus diisi' })
   @ApiProperty({ default: 1 })
