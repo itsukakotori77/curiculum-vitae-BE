@@ -1,4 +1,5 @@
 import {
+  BadRequestException,
   Body,
   Controller,
   Delete,
@@ -6,43 +7,43 @@ import {
   HttpStatus,
   Param,
   Post,
-  Put,
   Query,
   Res,
+  UploadedFile,
   UseGuards,
+  UseInterceptors,
 } from '@nestjs/common'
-import { CuriculumVitaeService } from './curiculum-vitae.service'
+import { JwtAuthGuard } from 'src/core/jwt/jwt-auth-guard'
+import { FileManagerService } from './file-manager.service'
 import { PaginationPayloadDto } from 'src/core/dto/pagination-payload-dto'
 import { Response } from 'express'
-import { CuriculumVitaeDto } from './curiculum-vitae-dto'
-import { JwtAuthGuard } from 'src/core/jwt/jwt-auth-guard'
-import { CloudinaryService } from 'src/shared/infrastructure/services/cloudinary.service'
+import { IFile } from 'src/interface/file'
+import { ApiBody, ApiConsumes } from '@nestjs/swagger'
+import { FileInterceptor } from 'src/interceptors/file/file.interceptor'
+import { FileDto, FileBodyDto } from 'src/shared/infrastructure/dto/file-dto'
 
 @Controller()
 @UseGuards(JwtAuthGuard)
-export class CuriculumVitaeController {
-  constructor(
-    private curVitaeService: CuriculumVitaeService,
-    private cloudDinary: CloudinaryService,
-  ) {}
+export class FileManagerController {
+  constructor(private service: FileManagerService) {}
 
   @Get('getAll')
   async getAll(@Query() request: PaginationPayloadDto, @Res() res: Response) {
     try {
-      const data = await this.curVitaeService.getAll(request)
+      const data = await this.service.getAll(request)
       return res.status(HttpStatus.OK).json({
         code: '00',
         message: 'Berhasil menampilkan data',
-        data: data.data,
+        data: data,
         total_data: data.totalData,
-        total_page: data.totalPage,
+        total_pege: data.totalPage,
         current_page: data.currentPage,
       })
     } catch (error: any) {
       return res.status(HttpStatus.INTERNAL_SERVER_ERROR).json({
         code: '01',
-        success: false,
-        message: error.message,
+        message: 'internal server error',
+        data: error.message,
       })
     }
   }
@@ -50,32 +51,54 @@ export class CuriculumVitaeController {
   @Get('getOne/:id')
   async getById(@Param('id') id: number, @Res() res: Response) {
     try {
-      const data = await this.curVitaeService.getById(id)
+      const data = await this.service.getById(id)
       if (data) {
         return res.status(HttpStatus.OK).json({
           code: '00',
-          message: 'Berhasil menampilkan data',
+          message: 'Data berhasil ditampilkan',
           data: data,
         })
       }
 
-      return res.status(HttpStatus.NOT_FOUND).json({
+      return res.status(HttpStatus.BAD_REQUEST).json({
         code: '01',
         message: 'Data tidak ditemukan',
       })
     } catch (error: any) {
       return res.status(HttpStatus.INTERNAL_SERVER_ERROR).json({
         code: '01',
-        success: false,
-        message: error.message,
+        message: 'internal server error',
+        data: error.message,
       })
     }
   }
 
   @Post('create')
-  async create(@Body() request: CuriculumVitaeDto, @Res() res: Response) {
+  @ApiConsumes('multipart/form-data')
+  @ApiBody({ type: FileDto })
+  @UseInterceptors(new FileInterceptor())
+  async create(
+    @UploadedFile() file: Express.Multer.File,
+    @Body() body: FileBodyDto,
+    @Res() res: Response,
+  ) {
     try {
-      const data = await this.curVitaeService.create(request)
+      if (!file) {
+        return res.status(HttpStatus.BAD_REQUEST).json({
+          code: '02',
+          message: 'File is required',
+          data: null,
+        })
+      }
+
+      const fileData: IFile = {
+        file: file,
+        folder: body?.folder || 'default',
+        url: '',
+        public_id: '',
+      }
+
+      const data = await this.service.store(fileData)
       return res.status(HttpStatus.OK).json({
         code: '00',
         message: 'Berhasil menambahkan data',
@@ -84,26 +107,8 @@ export class CuriculumVitaeController {
     } catch (error: any) {
       return res.status(HttpStatus.INTERNAL_SERVER_ERROR).json({
         code: '01',
-        success: false,
-        message: error.message,
-      })
-    }
-  }
-
-  @Put('update')
-  async update(@Body() request: CuriculumVitaeDto, @Res() res: Response) {
-    try {
-      const data = await this.curVitaeService.update(request)
-      return res.status(HttpStatus.OK).json({
-        code: '00',
-        message: 'Berhasil mengubah data',
-        data: data,
-      })
-    } catch (error: any) {
-      return res.status(HttpStatus.INTERNAL_SERVER_ERROR).json({
-        code: '01',
-        success: false,
-        message: error.message,
+        message: 'Internal server error',
+        data: error.message,
       })
     }
   }
@@ -111,12 +116,12 @@ export class CuriculumVitaeController {
   @Delete('delete/:id')
   async delete(@Param('id') id: number, @Res() res: Response) {
     try {
-      const data = await this.curVitaeService.delete(id)
+      const data = await this.service.delete(id)
 
       if (data) {
         return res.status(HttpStatus.OK).json({
           code: '00',
-          message: 'Berhasil menghapus data',
+          message: 'Data berhasil dihapus',
         })
       }
 
@@ -127,7 +132,6 @@ export class CuriculumVitaeController {
     } catch (error: any) {
       return res.status(HttpStatus.INTERNAL_SERVER_ERROR).json({
         code: '01',
-        success: false,
         message: error.message,
       })
     }

@@ -25,7 +25,7 @@ export class CuriculumVitaeService {
       orderBy: { [data.sortBy]: data.sortSystem },
     })
 
-    const totalData = res.length
+    const totalData = await this.prisma.cVitae.count();
     const totalPage = Math.ceil(totalData / data.limit)
 
     return {

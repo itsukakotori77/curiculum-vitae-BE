@@ -117,3 +117,13 @@ model CVSetting {
 
   @@map("curiculum_vitae_setting")
 }
+
+model FileItem {
+  id         BigInt   @id @default(autoincrement())
+  url        String
+  public_id  String
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  @@map("file_item")
+}

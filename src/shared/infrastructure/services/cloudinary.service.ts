@@ -6,9 +6,9 @@ import { ConstantConfig } from '../config/constant-config'
 
 @Injectable()
 export class CloudinaryService {
-  constructor(private constantConfig: ConstantConfig) {
+  constructor(private constant: ConstantConfig) {
     cloudinary.config({
-      cloudinary_url: this.constantConfig.apiImage,
+      cloudinary_url: this.constant.apiImage,
     })
   }
 

@@ -12,8 +12,9 @@ import { RouterModule } from '@nestjs/core'
 import { AuthModule } from './core/auth/auth.module'
 import { AppConfigModule } from './shared/infrastructure/config/app-config.module'
 import { CuriculumSettingModule } from './modules/curiculum-setting/curiculum-setting.module'
-import { CloudinaryService } from './shared/infrastructure/services/cloudinary.service'
-import { SharedModule } from './shared/infrastructure/shared.module';
+import { SharedModule } from './shared/infrastructure/shared.module'
+import { FileManagerModule } from './modules/file-manager/file-manager.module'
+import { ConfigModule } from '@nestjs/config'
 
 @Module({
   imports: [
@@ -50,7 +51,14 @@ import { SharedModule } from './shared/infrastructure/shared.module';
         path: 'v1/curiculum-setting',
         module: CuriculumSettingModule,
       },
+      {
+        path: 'v1/file-manager',
+        module: FileManagerModule,
+      },
     ]),
+    ConfigModule.forRoot({
+      isGlobal: true, 
+    }),
     UserModule,
     CuriculumVitaeModule,
     PrismaModule,
@@ -62,8 +70,9 @@ import { SharedModule } from './shared/infrastructure/shared.module';
     AppConfigModule,
     CuriculumSettingModule,
     SharedModule,
+    FileManagerModule,
   ],
   controllers: [AppController],
-  providers: [AppService, CloudinaryService]
+  providers: [AppService],
 })
 export class AppModule {}
