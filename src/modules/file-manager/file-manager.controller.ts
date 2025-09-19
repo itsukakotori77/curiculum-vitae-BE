@@ -21,6 +21,7 @@ import { IFile } from 'src/interface/file'
 import { ApiBody, ApiConsumes } from '@nestjs/swagger'
 import { FileInterceptor } from 'src/interceptors/file/file.interceptor'
 import { FileDto, FileBodyDto } from 'src/shared/infrastructure/dto/file-dto'
+import { FileManagerDeleteDto } from './file-manager-dto'
 
 @Controller()
 @UseGuards(JwtAuthGuard)
@@ -113,21 +114,21 @@ export class FileManagerController {
     }
   }
 
-  @Delete('delete/:id')
-  async delete(@Param('id') id: number, @Res() res: Response) {
+  @Delete('delete')
+  async delete(@Body() body: FileManagerDeleteDto, @Res() res: Response) {
     try {
-      const data = await this.service.delete(id)
+      const data = await this.service.delete(body)
 
       if (data) {
         return res.status(HttpStatus.OK).json({
           code: '00',
-          message: 'Data berhasil dihapus',
+          message: data,
         })
       }
 
       return res.status(HttpStatus.NOT_FOUND).json({
         code: '01',
-        message: 'Data tidak ditemukan',
+        message: data.message,
       })
     } catch (error: any) {
       return res.status(HttpStatus.INTERNAL_SERVER_ERROR).json({

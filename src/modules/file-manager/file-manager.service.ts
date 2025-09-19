@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common'
 import { PaginationPayloadDto } from 'src/core/dto/pagination-payload-dto'
 import { PrismaService } from 'src/prisma/prisma.service'
-import { FileManagerDto } from './file-manager-dto'
+import { FileManagerDeleteDto, FileManagerDto } from './file-manager-dto'
 import { plainToInstance } from 'class-transformer'
 import { IFile, IFileItem } from 'src/interface/file'
 import { CloudinaryService } from 'src/shared/infrastructure/services/cloudinary.service'
@@ -52,16 +52,11 @@ export class FileManagerService {
 
   async store(data: IFile): Promise<FileManagerDto | any> {
     try {
-      const uploadResult = await this.cloud.uploadImage(
-        data.file,
-        data.folder,
-      )
+      const uploadResult = await this.cloud.uploadImage(data.file, data.folder)
 
       if (!uploadResult) {
         throw new Error('File upload failed')
       }
-
-      // return uploadResult
 
       const fileItem = await this.prisma.fileItem.create({
         data: {
@@ -79,11 +74,34 @@ export class FileManagerService {
     }
   }
 
-  async delete(id: number): Promise<boolean> {
-    const res = await this.prisma.fileItem.delete({
-      where: { id },
-    })
+  async delete(
+    data: FileManagerDeleteDto,
+  ): Promise<{ message: string; data: any } | any> {
+    try {
+      const deleteResult = await this.cloud.deleteFile(
+        data.public_id,
+        data.resourceType || 'image',
+      )
 
-    return !!res
+      if (!deleteResult) {
+        throw new Error('File delete failed')
+      }
+
+      const res = await this.prisma.fileItem.delete({
+        where: { id: data.id! },
+      })
+
+      return {
+        message: deleteResult.message,
+        data: plainToInstance(FileManagerDto, res, {
+          excludeExtraneousValues: true,
+        }),
+      }
+    } catch (error) {
+      return {
+        message: error.message,
+        data: null,
+      }
+    }
   }
 }
