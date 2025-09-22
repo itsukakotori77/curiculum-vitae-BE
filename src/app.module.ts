@@ -15,6 +15,7 @@ import { CuriculumSettingModule } from './modules/curiculum-setting/curiculum-se
 import { SharedModule } from './shared/infrastructure/shared.module'
 import { FileManagerModule } from './modules/file-manager/file-manager.module'
 import { ConfigModule } from '@nestjs/config'
+import { FileCurrModule } from './modules/file-curr/file-curr.module';
 
 @Module({
   imports: [
@@ -71,6 +72,7 @@ import { ConfigModule } from '@nestjs/config'
     CuriculumSettingModule,
     SharedModule,
     FileManagerModule,
+    FileCurrModule,
   ],
   controllers: [AppController],
   providers: [AppService],

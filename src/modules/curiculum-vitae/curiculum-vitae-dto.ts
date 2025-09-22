@@ -74,6 +74,15 @@ export class CuriculumVitaeDto {
   @IsNumber({ allowNaN: false }, { message: 'harus berupa numeric' })
   @ApiProperty({ default: 1, required: false })
   cvitae_setting_id?: bigint | number
+  
+  @Expose()
+  @Transform(({ value }) =>
+    typeof value === 'bigint' ? +value.toString() : +value,
+  )
+  @IsOptional()
+  @IsNumber({ allowNaN: false }, { message: 'harus berupa numeric' })
+  @ApiProperty({ default: 1, required: false })
+  file_id?: bigint | number 
 
   @Expose()
   @IsOptional()
