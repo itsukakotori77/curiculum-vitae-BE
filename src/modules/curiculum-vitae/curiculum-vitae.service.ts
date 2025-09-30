@@ -4,17 +4,14 @@ import { PaginationPayloadDto } from 'src/core/dto/pagination-payload-dto'
 import { ICurriculumVitae } from 'src/interface/cvitae'
 import { PrismaService } from 'src/prisma/prisma.service'
 import { CuriculumVitaeDto } from './curiculum-vitae-dto'
-import { CuriculumExperienceService } from '../curiculum-experience/curiculum-experience.service'
-import { CuriculumEducationService } from '../curiculum-education/curiculum-education.service'
-import { CuriculumSkillService } from '../curiculum-skill/curiculum-skill.service'
+import { FileCurrService } from '../file-curr/file-curr.service'
+import { FileCurrDto } from '../file-curr/file-curr-dto'
 
 @Injectable()
 export class CuriculumVitaeService {
   constructor(
-    private skills: CuriculumSkillService,
-    private exp: CuriculumExperienceService,
-    private education: CuriculumEducationService,
     private prisma: PrismaService,
+    private fileCur: FileCurrService,
   ) {}
 
   async getAll(data: PaginationPayloadDto): Promise<ICurriculumVitae> {
@@ -25,7 +22,7 @@ export class CuriculumVitaeService {
       orderBy: { [data.sortBy]: data.sortSystem },
     })
 
-    const totalData = await this.prisma.cVitae.count();
+    const totalData = await this.prisma.cVitae.count()
     const totalPage = Math.ceil(totalData / data.limit)
 
     return {
@@ -52,55 +49,76 @@ export class CuriculumVitaeService {
     return null
   }
 
-  async create(data: CuriculumVitaeDto): Promise<CuriculumVitaeDto> {
-    
-    const res = await this.prisma.cVitae.create({
-      data: {
-        name: data.name,
-        email: data.email,
-        phone: data.phone,
-        address: data.address,
-        summary: data.summary,
-        user: {
-          connect: { id: data.user_id },
+  async create(
+    data: CuriculumVitaeDto,
+  ): Promise<
+    | (CuriculumVitaeDto &
+        Omit<FileCurrDto, 'id' | 'created_at' | 'updated_at'>)
+    | any
+  > {
+    try {
+      const res = await this.prisma.cVitae.create({
+        data: {
+          name: data.name,
+          email: data.email,
+          phone: data.phone,
+          address: data.address,
+          summary: data.summary,
+          user: {
+            connect: { id: data.user_id },
+          },
+          CVSetting: data.cvitae_setting_id
+            ? {
+                connect: { id: data.cvitae_setting_id },
+              }
+            : undefined,
+          CVitaeEducation: {
+            create:
+              data.curEducation?.map((edu) => ({
+                school: edu.school,
+                degree: edu.degree,
+                start_date: new Date(edu.start_date!),
+                end_date: new Date(edu.end_date!),
+              })) || [],
+          },
+          CVitaeSkill: {
+            create:
+              data.curSkill?.map((skill) => ({
+                skill: skill.skill,
+                level: skill.level,
+              })) || [],
+          },
+          CVitaeExperience: {
+            create:
+              data.curExperience?.map((exp) => ({
+                company: exp.company,
+                position: exp.position,
+                start_date: new Date(exp.start_date!),
+                end_date: new Date(exp.end_date!),
+              })) || [],
+          },
         },
-        CVSetting: data.cvitae_setting_id ? {
-          connect: { id: data.cvitae_setting_id },
-        } : undefined,
-        CVitaeEducation: {
-          create: data.curEducation?.map(edu => ({
-            school: edu.school,
-            degree: edu.degree,
-            start_date: new Date(edu.start_date!),
-            end_date: new Date(edu.end_date!),
-          })) || []
+        include: {
+          CVitaeEducation: true,
+          CVitaeSkill: true,
+          CVitaeExperience: true,
+          CVSetting: true,
         },
-        CVitaeSkill: {
-          create: data.curSkill?.map(skill => ({
-            skill: skill.skill,
-            level: skill.level,
-          })) || []
-        },
-        CVitaeExperience: {
-          create: data.curExperience?.map(exp => ({
-            company: exp.company,
-            position: exp.position,
-            start_date: new Date(exp.start_date!),
-            end_date: new Date(exp.end_date!),
-          })) || []
-        }
-      },
-      include: {
-        CVitaeEducation: true,
-        CVitaeSkill: true,
-        CVitaeExperience: true,
-        CVSetting: true,
-      }
-    })
+      })
 
-    return plainToInstance(CuriculumVitaeDto, res, {
-      excludeExtraneousValues: true,
-    })
+      const params = {
+        cvtae_id: +res.id.toString(),
+        file_id: +data.file_id?.toString()!,
+      }
+
+      await this.fileCur.store(params)
+
+      return plainToInstance(CuriculumVitaeDto, res, {
+        excludeExtraneousValues: true,
+      })
+    } catch (error) {
+      return error
+    }
   }
 
   async update(data: CuriculumVitaeDto): Promise<CuriculumVitaeDto> {

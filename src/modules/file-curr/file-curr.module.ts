@@ -4,6 +4,7 @@ import { PrismaModule } from 'src/prisma/prisma.module';
 
 @Module({
   imports: [PrismaModule],
-  providers: [FileCurrService]
+  providers: [FileCurrService],
+  exports: [FileCurrService]
 })
 export class FileCurrModule {}
