@@ -92,7 +92,7 @@ export class FileManagerService {
       })
 
       return {
-        message: deleteResult.message,
+        message: 'file berhasil dihapus',
         data: plainToInstance(FileManagerDto, res, {
           excludeExtraneousValues: true,
         }),

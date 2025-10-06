@@ -122,13 +122,15 @@ export class FileManagerController {
       if (data) {
         return res.status(HttpStatus.OK).json({
           code: '00',
-          message: data,
+          message: data.message,
+          data: data.data
         })
       }
 
       return res.status(HttpStatus.NOT_FOUND).json({
         code: '01',
         message: data.message,
+        data: data.data
       })
     } catch (error: any) {
       return res.status(HttpStatus.INTERNAL_SERVER_ERROR).json({
