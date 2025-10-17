@@ -25,6 +25,12 @@ export class FileManagerDto {
 
   @Expose()
   @IsString({ message: 'harus berupa string' })
+  @IsOptional()
+  @ApiProperty({ default: 'filename.jpg' })
+  filename?: string
+
+  @Expose()
+  @IsString({ message: 'harus berupa string' })
   @IsNotEmpty({ message: 'harus diisi' })
   @ApiProperty({ default: '9999999999' })
   folder?: string

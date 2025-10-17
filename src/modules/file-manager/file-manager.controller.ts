@@ -18,7 +18,7 @@ import { FileManagerService } from './file-manager.service'
 import { PaginationPayloadDto } from 'src/core/dto/pagination-payload-dto'
 import { Response } from 'express'
 import { IFile } from 'src/interface/file'
-import { ApiBody, ApiConsumes } from '@nestjs/swagger'
+import { ApiBody, ApiConsumes, ApiProperty, ApiQuery } from '@nestjs/swagger'
 import { FileInterceptor } from 'src/interceptors/file/file.interceptor'
 import { FileDto, FileBodyDto } from 'src/shared/infrastructure/dto/file-dto'
 import { FileManagerDeleteDto } from './file-manager-dto'
@@ -123,14 +123,49 @@ export class FileManagerController {
         return res.status(HttpStatus.OK).json({
           code: '00',
           message: data.message,
-          data: data.data
+          data: data.data,
         })
       }
 
       return res.status(HttpStatus.NOT_FOUND).json({
         code: '01',
         message: data.message,
-        data: data.data
+        data: data.data,
+      })
+    } catch (error: any) {
+      return res.status(HttpStatus.INTERNAL_SERVER_ERROR).json({
+        code: '01',
+        message: error.message,
+      })
+    }
+  }
+
+  @Get('getFilename')
+  @ApiQuery({
+    name: 'filename',
+    required: true,
+    type: String,
+    description: 'Filename to search',
+    example: 'q5px8cwhzraxewpusxcf.jpg',
+  })
+  async getByUsername(
+    @Param() param: { filename: string },
+    @Res() res: Response,
+  ) {
+    try {
+      const data = await this.service.getByFilename(param)
+
+      if (data) {
+        return res.status(HttpStatus.OK).json({
+          code: '00',
+          message: 'data berhasil ditemukan',
+          data: data,
+        })
+      }
+
+      return res.status(HttpStatus.NOT_FOUND).json({
+        code: '01',
+        message: 'data tidak ditemukan',
       })
     } catch (error: any) {
       return res.status(HttpStatus.INTERNAL_SERVER_ERROR).json({

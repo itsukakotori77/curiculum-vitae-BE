@@ -6,6 +6,7 @@ import { plainToInstance } from 'class-transformer'
 import { IFile, IFileItem } from 'src/interface/file'
 import { CloudinaryService } from 'src/shared/infrastructure/services/cloudinary.service'
 import { ImagetKitService } from 'src/shared/infrastructure/services/imaget-kit.service'
+import { getFilenameFromUrl } from 'src/libs/common'
 
 @Injectable()
 export class FileManagerService {
@@ -62,6 +63,7 @@ export class FileManagerService {
         data: {
           public_id: uploadResult.public_id,
           url: uploadResult.url,
+          filename: getFilenameFromUrl(uploadResult.url),
         },
       })
 
@@ -103,5 +105,23 @@ export class FileManagerService {
         data: null,
       }
     }
+  }
+
+  async getByFilename({
+    filename,
+  }: {
+    filename: string
+  }): Promise<FileManagerDto | null> {
+    const res = await this.prisma.fileItem.findFirst({
+      where: { filename },
+    })
+
+    if (res) {
+      return plainToInstance(FileManagerDto, res, {
+        excludeExtraneousValues: true,
+      })
+    }
+
+    return null
   }
 }
