@@ -11,7 +11,6 @@ import { FileCurrDto } from '../file-curr/file-curr-dto'
 export class CuriculumVitaeService {
   constructor(
     private prisma: PrismaService,
-    private fileCur: FileCurrService,
   ) {}
 
   async getAll(data: PaginationPayloadDto): Promise<ICurriculumVitae> {
@@ -57,6 +56,19 @@ export class CuriculumVitaeService {
     | any
   > {
     try {
+      // Check if file_id exists if provided
+      if (data.file_id) {
+        const fileExists = await this.prisma.fileItem.findUnique({
+          where: { id: BigInt(data.file_id) },
+        })
+
+        if (!fileExists) {
+          throw new Error(
+            `File with ID ${data.file_id} does not exist. Please upload a file first or remove the file_id from your request.`,
+          )
+        }
+      }
+
       const res = await this.prisma.cVitae.create({
         data: {
           name: data.name,
@@ -64,14 +76,10 @@ export class CuriculumVitaeService {
           phone: data.phone,
           address: data.address,
           summary: data.summary,
-          user: {
-            connect: { id: data.user_id },
-          },
-          CVSetting: data.cvitae_setting_id
-            ? {
-                connect: { id: data.cvitae_setting_id },
-              }
-            : undefined,
+          user_id: BigInt(data.user_id),
+          cvitae_setting_id: data.cvitae_setting_id
+            ? BigInt(data.cvitae_setting_id)
+            : BigInt(1),
           CVitaeEducation: {
             create:
               data.curEducation?.map((edu) => ({
@@ -97,27 +105,35 @@ export class CuriculumVitaeService {
                 end_date: new Date(exp.end_date!),
               })) || [],
           },
+          CVitaeTemplate: {
+            create:
+              data.curTemplate?.map((template) => ({
+                name: template.name,
+              })) || [],
+          },
+          fileCurs: data.file_id
+            ? {
+                create: {
+                  file_id: BigInt(data.file_id),
+                },
+              }
+            : undefined,
         },
         include: {
           CVitaeEducation: true,
           CVitaeSkill: true,
           CVitaeExperience: true,
+          CVitaeTemplate: true,
           CVSetting: true,
         },
       })
-
-      const params = {
-        cvtae_id: +res.id.toString(),
-        file_id: +data.file_id?.toString()!,
-      }
-
-      await this.fileCur.store(params)
 
       return plainToInstance(CuriculumVitaeDto, res, {
         excludeExtraneousValues: true,
       })
     } catch (error) {
-      return error
+      console.error('Error creating CVitae:', error)
+      throw error
     }
   }
 
