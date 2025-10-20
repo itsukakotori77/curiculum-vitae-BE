@@ -36,7 +36,7 @@ model CVitae {
   email             String
   phone             String
   address           String   @db.VarChar(255)
-  summary           String
+  summary           String   @db.LongText
   created_at        DateTime @default(now())
   updated_at        DateTime @updatedAt
 
