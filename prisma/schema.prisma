@@ -44,7 +44,7 @@ model CVitae {
   CVitaeEducation  CVitaeEducation[]
   CVitaeExperience CVitaeExperience[]
   CVitaeSkill      CVitaeSkill[]
-  CVitaeTemplate   CVitaeTemplate[]
+  templates        CVitaeOnTemplate[]
   CVSetting        CVSetting?         @relation(fields: [cvitae_setting_id], references: [id])
   fileCurs         FileCurr[]
 
@@ -97,13 +97,25 @@ model CVitaeSkill {
 model CVitaeTemplate {
   id         BigInt   @id @default(autoincrement())
   name       String
-  cvitae_id  BigInt
+  type       CVitaeTemplateType? @default(MODERN)
   created_at DateTime @default(now())
   updated_at DateTime @updatedAt
 
-  cvitae CVitae @relation(fields: [cvitae_id], references: [id])
+  cvitaes CVitaeOnTemplate[]
 
   @@map("curiculum_vitae_template")
+}
+
+model CVitaeOnTemplate {
+  cvitae_id          BigInt
+  cvitae_template_id BigInt
+  assigned_at        DateTime @default(now())
+
+  cvitae   CVitae         @relation(fields: [cvitae_id], references: [id], onDelete: Cascade)
+  template CVitaeTemplate @relation(fields: [cvitae_template_id], references: [id], onDelete: Cascade)
+
+  @@id([cvitae_id, cvitae_template_id])
+  @@map("curiculum_vitae_on_template")
 }
 
 model CVSetting {
@@ -145,4 +157,9 @@ model FileCurr {
 
   @@unique([cvtae_id, file_id])
   @@map("file_curr")
+}
+
+enum CVitaeTemplateType {
+  ATS
+  MODERN
 }

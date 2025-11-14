@@ -152,7 +152,7 @@ export class CuriculumVitaeDto {
       },
     ],
   })
-  curTemplate?: Omit<CuriculumTemplateDto, 'cvitae_id' | 'id' | 'created_at' | 'updated_at'>[]
+  curTemplate?: Omit<CuriculumTemplateDto, 'cvitae_id' | 'created_at' | 'updated_at'>[]
 
 
   @Expose()

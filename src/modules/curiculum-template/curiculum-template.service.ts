@@ -48,28 +48,46 @@ export class CuriculumTemplateService {
     const res = await this.prisma.cVitaeTemplate.create({
       data: {
         name: data.name,
-        cvitae: {
-          connect: { id: +data.cvitae_id! },
+        type: data.type,
+        cvitaes: data.cvitae_id
+          ? {
+              create: {
+                cvitae: {
+                  connect: { id: BigInt(+data.cvitae_id) },
+                },
+              },
+            }
+          : undefined,
+      },
+      include: {
+        cvitaes: {
+          include: {
+            cvitae: true,
+          },
         },
       },
     })
-
+  
     return plainToInstance(CuriculumTemplateDto, res, {
       excludeExtraneousValues: true,
     })
   }
-
+  
   async update(data: CuriculumTemplateDto): Promise<CuriculumTemplateDto> {
     const res = await this.prisma.cVitaeTemplate.update({
       where: { id: data.id },
       data: {
         name: data.name,
-        cvitae: {
-          connect: { id: +data.cvitae_id! },
+      },
+      include: {
+        cvitaes: {
+          include: {
+            cvitae: true,
+          },
         },
       },
     })
-
+  
     return plainToInstance(CuriculumTemplateDto, res, {
       excludeExtraneousValues: true,
     })
