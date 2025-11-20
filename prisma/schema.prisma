@@ -10,7 +10,6 @@ generator client {
 
 datasource db {
   provider = "mysql"
-  url      = env("NEST_DATABASE_URL")
 }
 
 model User {
@@ -95,11 +94,14 @@ model CVitaeSkill {
 }
 
 model CVitaeTemplate {
-  id         BigInt   @id @default(autoincrement())
-  name       String
-  type       CVitaeTemplateType? @default(MODERN)
-  created_at DateTime @default(now())
-  updated_at DateTime @updatedAt
+  id               BigInt              @id @default(autoincrement())
+  name             String
+  type             CVitaeTemplateType? @default(MODERN)
+  is_photo         Boolean?
+  template_photo   String?
+  template_nophoto String?
+  created_at       DateTime            @default(now())
+  updated_at       DateTime            @updatedAt
 
   cvitaes CVitaeOnTemplate[]
 

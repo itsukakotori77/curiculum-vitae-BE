@@ -20,7 +20,7 @@ import { Response } from 'express'
 import { IFile } from 'src/interface/file'
 import { ApiBody, ApiConsumes, ApiProperty, ApiQuery } from '@nestjs/swagger'
 import { FileInterceptor } from 'src/interceptors/file/file.interceptor'
-import { FileDto, FileBodyDto } from 'src/shared/infrastructure/dto/file-dto'
+import { FileDto, FileBodyDto, FileUploadDto } from 'src/shared/infrastructure/dto/file-dto'
 import { FileManagerDeleteDto } from './file-manager-dto'
 
 @Controller()
@@ -76,11 +76,11 @@ export class FileManagerController {
 
   @Post('create')
   @ApiConsumes('multipart/form-data')
-  @ApiBody({ type: FileDto })
+  @ApiBody({ type: FileUploadDto })
   @UseInterceptors(new FileInterceptor())
   async create(
     @UploadedFile() file: Express.Multer.File,
-    @Body() body: FileBodyDto,
+    @Body() body: FileUploadDto, 
     @Res() res: Response,
   ) {
     try {

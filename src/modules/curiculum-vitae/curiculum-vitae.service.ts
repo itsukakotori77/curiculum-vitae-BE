@@ -124,7 +124,13 @@ export class CuriculumVitaeService {
               data.curTemplate?.map((template) => ({
                 template: template.id
                   ? { connect: { id: BigInt(template.id) } }
-                  : { create: { name: template.name, type: template.type } },
+                  : {
+                      create: {
+                        name: template.name,
+                        type: template.type,
+                        is_photo: template.is_photo!,
+                      },
+                    },
               })) || [],
           },
           fileCurs: data.file_id

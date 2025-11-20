@@ -28,7 +28,25 @@ export class CuriculumTemplateDto {
   @IsEnum(CVitaeEnum, { message: 'tipe harus ATS atau MODERN' })
   @ApiProperty({ enum: CVitaeEnum, default: CVitaeEnum.ATS })
   type?: CVitaeEnum
-  
+
+  @Expose()
+  @Transform(({ value }) => {
+    if (value === undefined || value === null) return undefined
+    if (value === 1 || value === '1') return true
+    if (value === 0 || value === '0') return false
+
+    return Boolean(value)
+  })
+  @IsNumber()
+  @ApiProperty({ default: 1 })
+  is_photo?: boolean
+
+  @Expose()
+  @IsString()
+  @IsOptional()
+  @ApiProperty({ default: '/path/name.png' })
+  template_path?: string
+
   @Expose()
   @Transform(({ value }) => {
     if (value === undefined || value === null) return undefined
@@ -38,7 +56,6 @@ export class CuriculumTemplateDto {
   @IsNumber({}, { message: 'harus berupa numeric' })
   @ApiProperty({ default: 1 })
   cvitae_id?: BigInt | number
-
 
   @Expose()
   @Transform(({ value }) => (value ? value.toISOString() : null), {

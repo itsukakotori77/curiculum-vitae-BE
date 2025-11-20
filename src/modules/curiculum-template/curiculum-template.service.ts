@@ -49,6 +49,7 @@ export class CuriculumTemplateService {
       data: {
         name: data.name,
         type: data.type,
+        is_photo: data.is_photo!,
         cvitaes: data.cvitae_id
           ? {
               create: {
@@ -78,6 +79,8 @@ export class CuriculumTemplateService {
       where: { id: data.id },
       data: {
         name: data.name,
+        type: data.type,
+        is_photo: data.is_photo!,
       },
       include: {
         cvitaes: {

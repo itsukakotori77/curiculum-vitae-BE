@@ -20,12 +20,11 @@ async function bootstrap() {
     app.useGlobalPipes(
       new ValidationPipe({
         whitelist: true,
-        forbidNonWhitelisted: true,
+        forbidNonWhitelisted: false,
         transform: true,
         transformOptions: { enableImplicitConversion: true },
         exceptionFactory: (errors: any) => {
           const errorMessages = extractValidation(errors)
-          console.log('validation', errorMessages)
           Logger.debug(errors)
           return new BadRequestException(errorMessages)
         },
