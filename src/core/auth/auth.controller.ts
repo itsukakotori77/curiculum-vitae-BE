@@ -35,7 +35,7 @@ export class AuthController {
       return res.status(HttpStatus.INTERNAL_SERVER_ERROR).json({
         code: '02',
         success: false,
-        message: 'Internal server error',
+        message: error.message,
       })
     }
   }

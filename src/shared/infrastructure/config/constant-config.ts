@@ -13,6 +13,13 @@ export class ConstantConfig {
   public readonly imageKitKey: string
   public readonly imageKitSecret: string 
   public readonly imageKitUrl: string 
+  public readonly databaseHost: string 
+  public readonly databaseUsername: string 
+  public readonly databasePassword: string 
+  public readonly databaseName: string 
+  public readonly databasePort: string 
+  public readonly databaseUrl: string
+  
 
   constructor(private configService: ConfigService) {
     this.port = this.configService.get<number>('NEST_PORT', 5000)
@@ -29,5 +36,14 @@ export class ConstantConfig {
     this.imageKitUrl = this.configService.get<string>('IMAGEKIT_URL')!
     this.imageKitKey = this.configService.get<string>('IMAGEKIT_KEY')!
     this.imageKitSecret = this.configService.get<string>('IMAGEKIT_SECRET')!
+
+    this.databaseHost = this.configService.get<string>('NEST_DATABASE_HOST')!
+    this.databaseUsername = this.configService.get<string>('NEST_DATABASE_USERNAME')!
+    this.databasePassword = this.configService.get<string>('NEST_DATABASE_PASSWORD')!
+    this.databaseName = this.configService.get<string>('NEST_DATABASE_NAME')!
+    this.databasePort = this.configService.get<string>('NEST_DATABASE_PORT')!
+    this.databaseUrl = this.configService.get<string>('NEST_DATABASE_URL')!
+
+
   }
 }

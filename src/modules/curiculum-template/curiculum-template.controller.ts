@@ -9,13 +9,18 @@ import {
   Put,
   Query,
   Res,
+  UploadedFiles,
   UseGuards,
+  UseInterceptors,
 } from '@nestjs/common'
 import { CuriculumTemplateService } from './curiculum-template.service'
 import { PaginationPayloadDto } from 'src/core/dto/pagination-payload-dto'
 import { Response } from 'express'
 import { CuriculumTemplateDto } from './curiculum-template-dto'
 import { JwtAuthGuard } from 'src/core/jwt/jwt-auth-guard'
+import { ApiBody, ApiConsumes } from '@nestjs/swagger'
+import { FileFieldsInterceptor } from '@nestjs/platform-express'
+import { IPayloadTemplate } from 'src/interface/cvitae'
 
 @Controller()
 @UseGuards(JwtAuthGuard)
@@ -69,8 +74,35 @@ export class CuriculumTemplateController {
   }
 
   @Post('create')
-  async create(@Body() request: CuriculumTemplateDto, @Res() res: Response) {
+  @ApiConsumes('multipart/form-data')
+  @ApiBody({ type: CuriculumTemplateDto })
+  @UseInterceptors(
+    FileFieldsInterceptor([
+      { name: 'file_photo', maxCount: 1 },
+      { name: 'file_nophoto', maxCount: 1 },
+    ]),
+  )
+  async create(
+    @UploadedFiles() files: IPayloadTemplate,
+    @Body() request: CuriculumTemplateDto,
+    @Res() res: Response,
+  ) {
     try {
+      const filePhoto = files.file_photo?.[0]
+      const fileNoPhoto = files.file_nophoto?.[0]
+
+      // if (!filePhoto || !fileNoPhoto) {
+      //   return res.status(HttpStatus.BAD_REQUEST).json({
+      //     code: '02',
+      //     message: 'Both file_photo and file_nophoto are required',
+      //     data: null,
+      //   })
+      // }
+
+      // Attach single files to request
+      request.file_photo = filePhoto
+      request.file_nophoto = fileNoPhoto
+
       const data = await this.curTemplateService.create(request)
       return res.status(HttpStatus.OK).json({
         code: '00',
@@ -82,6 +114,7 @@ export class CuriculumTemplateController {
         code: '01',
         success: false,
         message: error.message,
+        request: request,
       })
     }
   }

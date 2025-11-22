@@ -58,4 +58,18 @@ export class CloudinaryService {
       throw error
     }
   }
+
+  async uploadImages(
+    filesConfig: { file: Express.Multer.File; folder?: string }[],
+  ): Promise<UploadApiResponse[]> {
+    try {
+      const uploadPromises = filesConfig.map((config) =>
+        this.uploadImage(config.file, config.folder),
+      )
+      const results = await Promise.all(uploadPromises)
+      return results
+    } catch (error) {
+      throw error
+    }
+  }
 }

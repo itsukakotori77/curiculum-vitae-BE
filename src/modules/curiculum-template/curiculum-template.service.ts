@@ -4,10 +4,14 @@ import { ICurriculumTemplate } from 'src/interface/cvitae'
 import { PrismaService } from 'src/prisma/prisma.service'
 import { plainToInstance } from 'class-transformer'
 import { CuriculumTemplateDto } from './curiculum-template-dto'
+import { CloudinaryService } from 'src/shared/infrastructure/services/cloudinary.service'
 
 @Injectable()
 export class CuriculumTemplateService {
-  constructor(private prisma: PrismaService) {}
+  constructor(
+    private prisma: PrismaService,
+    private cloud: CloudinaryService,
+  ) {}
 
   async getAll(data: PaginationPayloadDto): Promise<ICurriculumTemplate> {
     const skip = (data.page - 1) * data.limit
@@ -45,35 +49,85 @@ export class CuriculumTemplateService {
   }
 
   async create(data: CuriculumTemplateDto): Promise<CuriculumTemplateDto> {
-    const res = await this.prisma.cVitaeTemplate.create({
-      data: {
-        name: data.name,
-        type: data.type,
-        is_photo: data.is_photo!,
-        cvitaes: data.cvitae_id
-          ? {
-              create: {
-                cvitae: {
-                  connect: { id: BigInt(+data.cvitae_id) },
+    try {
+      let photoUrl: any
+      let noPhotoUrl: any
+
+      // Upload images if provided
+      if (data.file_photo || data.file_nophoto) {
+        const filesToUpload: { file: Express.Multer.File; folder?: string }[] =
+          []
+
+        if (data.file_photo) {
+          filesToUpload.push({
+            file: data.file_photo,
+            folder: 'cv_images',
+          })
+        }
+
+        if (data.file_nophoto) {
+          filesToUpload.push({
+            file: data.file_nophoto,
+            folder: 'cv_images',
+          })
+        }
+
+        const uploadResults = await this.cloud.uploadImages(filesToUpload)
+
+        // Map results back (assumes uploadImages returns URLs in same order)
+        let resultIndex = 0
+        if (data.file_photo) {
+          photoUrl = uploadResults[resultIndex++]?.url
+        }
+        if (data.file_nophoto) {
+          noPhotoUrl = uploadResults[resultIndex++]?.url
+        }
+      }
+
+      // Create database record with uploaded URLs
+      const res = await this.prisma.cVitaeTemplate.create({
+        data: {
+          name: data.name,
+          type: data.type,
+          is_photo: data.is_photo ?? false,
+          template_photo: photoUrl,
+          template_nophoto: noPhotoUrl,
+          cvitaes: data.cvitae_id
+            ? {
+                create: {
+                  cvitae: {
+                    connect: { id: BigInt(+data.cvitae_id!) },
+                  },
                 },
-              },
-            }
-          : undefined,
-      },
-      include: {
-        cvitaes: {
-          include: {
-            cvitae: true,
+              }
+            : undefined,
+        },
+        include: {
+          cvitaes: {
+            include: {
+              cvitae: true,
+            },
           },
         },
-      },
-    })
-  
-    return plainToInstance(CuriculumTemplateDto, res, {
-      excludeExtraneousValues: true,
-    })
+      })
+
+      return plainToInstance(CuriculumTemplateDto, res, {
+        excludeExtraneousValues: true,
+      })
+    } catch (error) {
+      console.error('Create template failed:', error)
+
+      // TODO: Implement cleanup of uploaded files if DB operation fails
+      // if (photoUrl || noPhotoUrl) {
+      //   await this.cloud.deleteImages([photoUrl, noPhotoUrl].filter(Boolean));
+      // }
+
+      throw new Error(
+        `Failed to create curriculum template: ${error instanceof Error ? error.message : 'Unknown error'}`,
+      )
+    }
   }
-  
+
   async update(data: CuriculumTemplateDto): Promise<CuriculumTemplateDto> {
     const res = await this.prisma.cVitaeTemplate.update({
       where: { id: data.id },
@@ -90,7 +144,7 @@ export class CuriculumTemplateService {
         },
       },
     })
-  
+
     return plainToInstance(CuriculumTemplateDto, res, {
       excludeExtraneousValues: true,
     })

@@ -37,15 +37,39 @@ export class CuriculumTemplateDto {
 
     return Boolean(value)
   })
-  @IsNumber()
+  // @IsNumber()
   @ApiProperty({ default: 1 })
   is_photo?: boolean
+
+  // FIXED: Add type and format for file upload
+  @ApiProperty({
+    type: 'string',
+    format: 'binary',
+    description: 'Template Photo',
+    required: false
+  })
+  file_photo?: Express.Multer.File
+
+  // FIXED: Add type and format for file upload
+  @ApiProperty({
+    type: 'string',
+    format: 'binary',
+    description: 'Template NoPhoto',
+    required: false
+  })
+  file_nophoto?: Express.Multer.File
 
   @Expose()
   @IsString()
   @IsOptional()
   @ApiProperty({ default: '/path/name.png' })
-  template_path?: string
+  template_photo?: string
+
+  @Expose()
+  @IsString()
+  @IsOptional()
+  @ApiProperty({ default: '/path/name.png' })
+  template_nophoto?: string
 
   @Expose()
   @Transform(({ value }) => {
