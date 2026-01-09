@@ -21,6 +21,7 @@ import { JwtAuthGuard } from 'src/core/jwt/jwt-auth-guard'
 import { ApiBody, ApiConsumes } from '@nestjs/swagger'
 import { FileFieldsInterceptor } from '@nestjs/platform-express'
 import { IPayloadTemplate } from 'src/interface/cvitae'
+import { PayloadTemplateDto } from 'src/core/dto/curiculum-dto'
 
 @Controller()
 @UseGuards(JwtAuthGuard)
@@ -28,7 +29,7 @@ export class CuriculumTemplateController {
   constructor(private curTemplateService: CuriculumTemplateService) {}
 
   @Get('getAll')
-  async getAll(@Query() request: PaginationPayloadDto, @Res() res: Response) {
+  async getAll(@Query() request: PayloadTemplateDto, @Res() res: Response) {
     try {
       const data = await this.curTemplateService.getAll(request)
       return res.status(HttpStatus.OK).json({

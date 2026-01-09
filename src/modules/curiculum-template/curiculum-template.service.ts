@@ -5,6 +5,7 @@ import { PrismaService } from 'src/prisma/prisma.service'
 import { plainToInstance } from 'class-transformer'
 import { CuriculumTemplateDto } from './curiculum-template-dto'
 import { CloudinaryService } from 'src/shared/infrastructure/services/cloudinary.service'
+import { PayloadTemplateDto } from 'src/core/dto/curiculum-dto'
 
 @Injectable()
 export class CuriculumTemplateService {
@@ -13,12 +14,28 @@ export class CuriculumTemplateService {
     private cloud: CloudinaryService,
   ) {}
 
-  async getAll(data: PaginationPayloadDto): Promise<ICurriculumTemplate> {
+  async getAll(data: PayloadTemplateDto): Promise<ICurriculumTemplate> {
+    console.log('request', data)
     const skip = (data.page - 1) * data.limit
+    const whereConditions: any = {}
+
+    // STYLES
+    if (data?.styles && data?.styles?.length > 0) {
+      whereConditions.type = {
+        in: data.styles,
+      }
+    }
+
+    // IS PHOTO
+    if (data.isPhoto !== undefined) {
+      whereConditions.is_photo = data.isPhoto == 1 ? true : false
+    }
+
     const res = await this.prisma.cVitaeTemplate.findMany({
       skip: skip,
       take: data.limit,
       orderBy: { [data.sortBy]: data.sortSystem },
+      where: whereConditions,
     })
 
     const totalData = res.length
@@ -61,14 +78,14 @@ export class CuriculumTemplateService {
         if (data.file_photo) {
           filesToUpload.push({
             file: data.file_photo,
-            folder: 'cv_images',
+            folder: 'cv_images/templates',
           })
         }
 
         if (data.file_nophoto) {
           filesToUpload.push({
             file: data.file_nophoto,
-            folder: 'cv_images',
+            folder: 'cv_images/templates',
           })
         }
 
