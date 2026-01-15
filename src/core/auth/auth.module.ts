@@ -7,6 +7,7 @@ import { JwtStrategy } from '../jwt/jwt-strategy'
 import { ConstantConfig } from 'src/shared/infrastructure/config/constant-config'
 import { AppConfigModule } from '../../shared/infrastructure/config/app-config.module'
 import { AuthController } from './auth.controller'
+import { GoogleStrategy } from '../oauth/google-strategy'
 
 @Module({
   imports: [
@@ -34,7 +35,7 @@ import { AuthController } from './auth.controller'
     }),
     PassportModule,
   ],
-  providers: [AuthService, JwtStrategy],
+  providers: [AuthService, JwtStrategy, GoogleStrategy],
   controllers: [AuthController],
   exports: [JwtModule, PassportModule, AuthService],
 })

@@ -7,19 +7,22 @@ export class ConstantConfig {
   public readonly port: number
   public readonly baseUrl: string
   public readonly jwtSecret: string
-  public readonly apiImage: string 
+  public readonly apiImage: string
   public readonly cloudKey: string
   public readonly cloutSecret: string
   public readonly imageKitKey: string
-  public readonly imageKitSecret: string 
-  public readonly imageKitUrl: string 
-  public readonly databaseHost: string 
-  public readonly databaseUsername: string 
-  public readonly databasePassword: string 
-  public readonly databaseName: string 
-  public readonly databasePort: string 
+  public readonly imageKitSecret: string
+  public readonly imageKitUrl: string
+  public readonly databaseHost: string
+  public readonly databaseUsername: string
+  public readonly databasePassword: string
+  public readonly databaseName: string
+  public readonly databasePort: string
   public readonly databaseUrl: string
-  
+  public readonly googleClientId: string
+  public readonly googleClientSecret: string
+  public readonly googleCallbackUrl: string
+  public readonly webFrontUrl: string
 
   constructor(private configService: ConfigService) {
     this.port = this.configService.get<number>('NEST_PORT', 5000)
@@ -29,7 +32,7 @@ export class ConstantConfig {
     )
     this.jwtSecret = this.configService.get<string>('NEST_JWT_SECRET')!
     this.apiImage = this.configService.get<string>('CLOUDINARY_URL')!
-    
+
     this.cloudKey = this.configService.get<string>('CLOUDINARY_API_KEY')!
     this.cloutSecret = this.configService.get<string>('CLOUDINARY_API_SECRET')!
 
@@ -38,12 +41,25 @@ export class ConstantConfig {
     this.imageKitSecret = this.configService.get<string>('IMAGEKIT_SECRET')!
 
     this.databaseHost = this.configService.get<string>('NEST_DATABASE_HOST')!
-    this.databaseUsername = this.configService.get<string>('NEST_DATABASE_USERNAME')!
-    this.databasePassword = this.configService.get<string>('NEST_DATABASE_PASSWORD')!
+    this.databaseUsername = this.configService.get<string>(
+      'NEST_DATABASE_USERNAME',
+    )!
+    this.databasePassword = this.configService.get<string>(
+      'NEST_DATABASE_PASSWORD',
+    )!
     this.databaseName = this.configService.get<string>('NEST_DATABASE_NAME')!
     this.databasePort = this.configService.get<string>('NEST_DATABASE_PORT')!
     this.databaseUrl = this.configService.get<string>('NEST_DATABASE_URL')!
 
+    // GOOGLE CLIENT
+    this.googleClientId = this.configService.get<string>('GOOGLE_CLIENT_ID')!
+    this.googleClientSecret = this.configService.get<string>(
+      'GOOGLE_CLIENT_SECRET',
+    )!
+    this.googleCallbackUrl = this.configService.get<string>(
+      'GOOGLE_CALLBACK_URL',
+    )!
 
+    this.webFrontUrl = this.configService.get<string>('WEB_FRONT_URL')!
   }
 }

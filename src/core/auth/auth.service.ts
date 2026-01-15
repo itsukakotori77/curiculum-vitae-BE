@@ -5,6 +5,8 @@ import { IAuthResponse, IJwtPayload } from 'src/interface/auth'
 import * as bcrypt from 'bcrypt'
 import { JwtService } from '@nestjs/jwt'
 import { ConstantConfig } from 'src/shared/infrastructure/config/constant-config'
+import { randomString } from 'src/libs/common'
+import { strRandom } from 'src/libs/constans'
 
 @Injectable()
 export class AuthService {
@@ -18,11 +20,8 @@ export class AuthService {
   async login(data: AuthDto): Promise<IAuthResponse> {
     const user = await this.prisma.user.findFirst({
       where: {
-        OR: [
-          { username: data.username },
-          { email: data.username }
-        ]
-      }
+        OR: [{ username: data.username }, { email: data.username }],
+      },
     })
 
     if (!user || !(await bcrypt.compare(data.password, user.password))) {
@@ -39,6 +38,39 @@ export class AuthService {
       id: +user.id.toString(),
       email: user.email,
       username: data.username,
+      token: this.jwtService.sign(payload),
+    }
+  }
+
+  async googleLogin(googleUser: any): Promise<IAuthResponse> {
+    // Check if user exists
+    let user = await this.prisma.user.findUnique({
+      where: { email: googleUser.email },
+    })
+
+    // If user doesn't exist, create new user
+    if (!user) {
+      user = await this.prisma.user.create({
+        data: {
+          name: googleUser.firstName + ' ' + googleUser.lastName,
+          username: googleUser.email.split('@')[0],
+          email: googleUser.email,
+          password: await bcrypt.hash(Math.random().toString(36), 10),
+          remember_token: randomString(50, strRandom),
+        },
+      })
+    }
+
+    const payload = {
+      id: +user.id.toString(),
+      email: user.email,
+      username: user.username,
+    }
+
+    return {
+      id: +user.id.toString(),
+      email: user.email,
+      username: user.username,
       token: this.jwtService.sign(payload),
     }
   }

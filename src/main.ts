@@ -17,6 +17,11 @@ async function bootstrap() {
     app.useGlobalInterceptors(new LoggingInterceptor())
     // app.useGlobalFilters(new AllExceptionsFilter())
 
+    app.enableCors({
+      origin: 'http://localhost:5001', 
+      credentials: true,
+    })
+
     app.useGlobalPipes(
       new ValidationPipe({
         whitelist: true,
@@ -34,7 +39,7 @@ async function bootstrap() {
     const config = new DocumentBuilder()
       .setTitle('API CV Generator')
       .setDescription('API description here')
-      .setVersion('1.0')
+      .setVersion('2.0')
       .addBearerAuth(
         {
           type: 'http',
