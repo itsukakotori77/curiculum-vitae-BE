@@ -71,11 +71,11 @@ export class AuthController {
       const data = await this.authService.googleLogin(req.user)
 
       return res.redirect(
-        `${this.constant.webFrontUrl}?token=${data.token}`,
+        `${this.constant.webFrontUrl}/api/v1/user?token=${data.token}`
       )
     } catch (error: any) {
       return res.redirect(
-        `${this.constant.webFrontUrl}/login?error=auth_failed`,
+        `${this.constant.webFrontUrl}/api/v1/user?error=auth_failed`
       )
     }
   }
