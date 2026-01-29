@@ -20,7 +20,7 @@ export class AuthController {
   constructor(
     private authService: AuthService,
     private constant: ConstantConfig,
-  ) {}
+  ) { }
 
   @Post('login')
   async login(@Body() request: AuthDto, @Res() res: Response) {
