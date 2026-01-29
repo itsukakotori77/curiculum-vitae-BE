@@ -39,7 +39,7 @@ async function bootstrap() {
     const config = new DocumentBuilder()
       .setTitle('API CV Generator')
       .setDescription('API description here')
-      .setVersion('2.0')
+      .setVersion('1.0')
       .addBearerAuth(
         {
           type: 'http',
