@@ -6,6 +6,8 @@ import { plainToInstance } from 'class-transformer'
 import { CuriculumTemplateDto } from './curiculum-template-dto'
 import { CloudinaryService } from 'src/shared/infrastructure/services/cloudinary.service'
 import { PayloadTemplateDto } from 'src/core/dto/curiculum-dto'
+import { Logger } from '@nestjs/common'
+
 
 @Injectable()
 export class CuriculumTemplateService {
@@ -89,7 +91,9 @@ export class CuriculumTemplateService {
           })
         }
 
+        Logger.log('Files to upload:', filesToUpload)
         const uploadResults = await this.cloud.uploadImages(filesToUpload)
+        Logger.log('Upload results:', uploadResults)
 
         // Map results back (assumes uploadImages returns URLs in same order)
         let resultIndex = 0
